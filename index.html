@@ -209,13 +209,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can contact me with email [email:yizhenwu@mail.ustc.edu.cn]</p>
-<h2 id="Start_at_17:00pm,_2015-8-10">Start at 17:00pm, 2015.8.10</h2><h3 id="问题罗列">问题罗列</h3><p>First.自我介绍?</p>
-<p>Q1：开始问我的项目，问我最想分享的一个项目是？<br>A1：说了我最近一年都在做的虚拟机迁移的项目，在项目中着重描述了我解决问题的出发点，随后陈述了两个基本问题，最后给出我的方案。</p>
-<p>Q2：SDN网路和IP网络最大的不同是？<br>A2：关于这个的不同，我觉得主要是SDN网络核心思想就是将控制与数据分离，采用集中控制的方式；而IP网络中路由是由路由器分布式路由。</p>
-<p>Q3：C++和C有什么不同？<br>A3：C++相对C来说，更加具有封装性，支持重载、继承和多态等特性。</p>
-<p>Q4：在平时写C++程序中，用到了重载和多态吗？觉得重载有什么问题？<br>A4：重载使用多了，会导致程序看起来比较混乱(不怎么会答)。</p>
-<p>Q5：问一个算法，给出两个int数组，两个int数组元素都不存在重复，如何找出两个数组相同的元素，并且给出算法的复杂度分析。<br>A5.1：首先枚举是可以的，但是复杂度是O(n^2);<br>A5.2：设计一个位存储，将两个数组的元素读入数组：<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a<span class="comment">[]</span>: a<span class="comment">[1]</span>,a<span class="comment">[2]</span>,a<span class="comment">[3]</span>,...,a<span class="comment">[m]</span>;</span><br><span class="line">binA: 根据a<span class="comment">[x]</span>数值binA中对应数字的bit置1没有则置0；</span><br><span class="line">b<span class="comment">[]</span>：同样读入binB中；</span><br><span class="line">讲binA和binB位操作，算出相同位数。</span><br></pre></td></tr></table></figure></p>
-<p>Q6:这样做的缺点是?<br>A6:当一个数很大?将会占用很长的bite位。</p>
+<h2 id="Start_at_17:00pm,_2015-8-10">Start at 17:00pm, 2015.8.10</h2><h3 id="问题回忆罗列">问题回忆罗列</h3><p>First.自我介绍?</p>
+<p>Q1:开始问我的项目，问我最想分享的一个项目是?<br>A1:说了我最近一年都在做的虚拟机迁移的项目,在项目中着重描述了我解决问题的出发点,随后陈述了两个基本问题，最后给出我的方案。</p>
+<p>Q2:SDN网路和IP网络最大的不同是?<br>A2:关于这个的不同:我觉得主要是SDN网络核心思想就是将控制与数据分离,采用集中控制的方式,而IP网络中路由是由路由器分布式路由。</p>
+<p>Q3:C++和C有什么不同?<br>A3:C++相对C来说，更加具有封装性，支持重载、继承和多态等特性。</p>
+<p>Q4:在平时写C++程序中,用到了重载和多态吗?觉得重载有什么问题?<br>A4:重载使用多了，会导致程序看起来比较混乱(不怎么会答)。</p>
+<p>Q5:问一个算法:给出两个int数组,两个int数组元素都不存在重复,如何找出两个数组相同的元素,并且给出算法的复杂度分析。<br>A5.1:首先枚举是可以的，但是复杂度是O(n^2);<br>A5.2:设计一个位存储,将两个数组的元素读入数组。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">a</span><span class="attr_selector">[]</span>: <span class="tag">a</span><span class="attr_selector">[1]</span>,<span class="tag">a</span><span class="attr_selector">[2]</span>,<span class="tag">a</span><span class="attr_selector">[3]</span>,...,<span class="tag">a</span><span class="attr_selector">[m]</span>;</span><br><span class="line"><span class="rule"><span class="attribute">binA</span>:<span class="value"> 根据a[x]数值binA中对应数字的bit置<span class="number">1</span>没有则置<span class="number">0</span></span></span>;</span><br><span class="line"><span class="tag">b</span><span class="attr_selector">[]</span>:同样读入<span class="tag">binB</span>中;</span><br><span class="line">讲<span class="tag">binA</span>和<span class="tag">binB</span>位操作,算出相同位数。</span><br></pre></td></tr></table></figure></p>
+<p>Q6:这样做的缺点是?有没有别的方法?<br>A6.1:当一个数很大?将会占用很长的bit位。<br>A6.2:可以用查找的方式,我说的做法是,取较长数组A对元素进行hash之后,用另一数组B查找该元素是否在,hash查找的复杂度为O(1),因此查找效率很好。</p>
+<p>Q7:hash表实现的几种方式你知道吗?<br>A7:面试我的时候，我当时不知道,<em>得补</em>!!!</p>
+<p>Q7:你平时编程都用到了哪些数据结构?<br>A7:我用过图的数据结构,链表和数组等。这个他没有接着去问了~</p>
+<p>Q8:考虑到我所关注的大多是网络层,现在以我对网络层的理解,怎么看待http协议的优缺点?<br>A8:首先我觉得http协议是client发起请求-&gt;server,server响应,我觉得这是一种单工的操作方式,也就是服务器端不能主动推送消息至client,而网络层的交互可以看成是“双工”。</p>
+<p>Q8.1:这个是一个特点,还有别的吗?<br>A8.1:我不知道了。。。<em>得补</em>!!!</p>
+<p>Q9:再问一个C和C++内存管理,我是怎么理解的?<br>A9:首先C++允许使用C中malloc和free函数,同时C++有增加内存管理的操作符new和delete,是的可以为对象的内存管理。。。</p>
+<p>Q10:在多线程场景下,多线程操作一块内存,那怎么样控制new和delete的匹配?<br>A10:我思考了下,加一个flag标识。当这块内存被new出来之后,就置flag=1,在释放内存的时候,使用这个内存的线程检查该flag再释放内存。</p>
+<p>Q11:TCP的拥塞控制?<br>A11:通过窗口机制实现拥塞控制,具体的我也没答出来。</p>
+<p>Q12:我怎么看待TCP和UDP?<br>A12:我觉得TCP和UDP本质区别是TCP是有连接的,这种连接实质上是通信双方维护一致的连接状态而看起来是有连接的,而UDP是无连接的。由此点可以引出,TCP连接确保数据包有序,但是确保有序付出的代价是吞吐量总是波动的。相对UDP的尽力传输机制就吞吐量来说优势就不明显了。</p>
+<p>Q13:移动网络中访问一个网站和wifi网络下访问一个网站有何区别?<br>A13:这个问题我不会。。。</p>
+<p>Q14:IP数据包的包头都有哪些字段?<br>A14:我说我知道有MTU,TTL,说了MTU,TTL的功能…问的太细致了!!!</p>
+<p>the end<br>Q:问我有什么问题想问的?<br>A:我说BFS业务部在北京吗?(是废话…);聊了下,我说我喜欢北京。。。<br>A:和谷歌的BFS,请问百度BFS所做的工作是啥?<br>Q:所做的工作是负责百度全网流量的控制和管理,为用户提供更好更快的访问服务,拥塞控制等…<br>最后我提到CDN,他为我解释了CDN是他们部门的一项,他们还有自己的做法,等等。<br>后来我说,这项工作太具有挑战了,可以和百度全网流量打交道,责任巨大…<br>——————————<br>1h8min的电话面试(一面),不知道有没有机会二面,深知细节很重要。。。</p>
 <p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
 
       
