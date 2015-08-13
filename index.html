@@ -208,34 +208,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="python基本入门">python基本入门</h1><p>1.中文乱码<br>    ``</p>
-<pre><code>    <span class="comment"># coding gdb</span>
-`<span class="javascript"></span>`
+        <h1 id="python基本入门">python基本入门</h1><p>1.中文乱码<br>    `</p>
+<pre><code>    <span class="preprocessor"># coding gdb</span>
+`
 </code></pre><p>2.python数据类型</p>
 <ol>
 <li>列表:</li>
 <li>元组:相对于列表,不可重新赋值修改。</li>
 <li>集合:<ul>
 <li>基本运算:交集、并集、差集</li>
-<li>高级功能:利用集合的元素都是唯一的,去除重复元素:<br>  ``<pre><code>a=<span class="function"><span class="title">set</span><span class="params">(<span class="string">"absccssgs"</span>)</span></span>
+<li>高级功能:利用集合的元素都是唯一的,去除重复元素:<br>  `<pre><code>a=<span class="function"><span class="title">set</span><span class="params">(<span class="string">"absccssgs"</span>)</span></span>
 b=<span class="function"><span class="title">set</span><span class="params">(a)</span></span>
-</code></pre>  ``</li>
-<li>字典–关联数组<br>  ``<pre><code><span class="setting">zidian=<span class="value">{<span class="string">'name'</span>:<span class="string">'weiwei'</span>,<span class="string">'home'</span>:<span class="string">'anhui'</span>}</span></span>
-</code></pre>  ``<br>3.pickle</li>
-<li>序列化对象的过程(腌制)<br>  ``<pre><code>import pickle
+</code></pre>  `</li>
+<li>字典–关联数组<br>  `<pre><code><span class="setting">zidian=<span class="value">{<span class="string">'name'</span>:<span class="string">'weiwei'</span>,<span class="string">'home'</span>:<span class="string">'anhui'</span>}</span></span>
+</code></pre>  `<br>3.pickle</li>
+<li>序列化对象的过程(腌制)<br>  `<pre><code>import pickle
 val1=pickle.<span class="function"><span class="title">dumps</span><span class="params">(val)</span></span>
-</code></pre>  ``</li>
-<li>反序列化过程(对象恢复原样)<br>  ``<pre><code>val2=pickle.<span class="function"><span class="title">loads</span><span class="params">(val1)</span></span>
-</code></pre>  ``</li>
-<li>将对象存储到文件里面序列化 <code>dump(object,file)</code><br>  ``<pre><code>import pickle
+</code></pre>  `</li>
+<li>反序列化过程(对象恢复原样)<br>  `<pre><code>val2=pickle.<span class="function"><span class="title">loads</span><span class="params">(val1)</span></span>
+</code></pre>  `</li>
+<li>将对象存储到文件里面序列化 <code>dump(object,file)</code><br>  `<pre><code>import pickle
 f1=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'wb'</span>)</span></span> #<span class="string">'wb'</span>是写
 val1=pickle.<span class="function"><span class="title">dump</span><span class="params">(val,f1,True)</span></span>
 f1.<span class="function"><span class="title">close</span><span class="params">()</span></span>
-</code></pre>  ``</li>
-<li>将dump()存储的文件里面的数据回复(对象恢复原样)<code>load(object,file)</code><br>  ``<pre><code>f2=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'rb'</span>)</span></span> #<span class="string">'rb'</span>是读
+</code></pre>  `</li>
+<li>将dump()存储的文件里面的数据回复(对象恢复原样)<code>load(object,file)</code><br>  `<pre><code>f2=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'rb'</span>)</span></span> #<span class="string">'rb'</span>是读
 t=pickel.<span class="function"><span class="title">load</span><span class="params">(f2)</span></span>
 f2.<span class="function"><span class="title">close</span><span class="params">()</span></span>
-</code></pre>  ``<br>4.<strong>python缩进</strong>(这是和其他语言的最大区别)</li>
+</code></pre>  `<br>4.<strong>python缩进</strong>(这是和其他语言的最大区别)</li>
 </ul>
 </li>
 </ol>
