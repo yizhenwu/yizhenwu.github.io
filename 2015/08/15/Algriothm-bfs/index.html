@@ -3,18 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Algorithm-SORT | Dobest</title>
+  <title>广度优先搜索 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="bubble_sort12345678910111213141516171819202122232425262728293031323334353637383940//标准冒泡排序:不带优化的,即使没有交换仍然继续执行。void buble_sort(int arr[],int length)&amp;#123;	if(arr == NULL || length&amp;lt;=0)return;	int end">
+  <meta name="description" content="算法要点理解BFS:
+
+层层递进,一层一层的搜索。
+因此,一般需要借助队列实现,存储为探索的各层元素。
+
+#算法实现1// BFS &amp;#22312;&amp;#22320;&amp;#22270;&amp;#19978;&amp;#25628;&amp;#32034;&amp;#20301;&amp;#32622;(p,q),&amp;#24182;&amp;#24471;&amp;#21040;&amp;#25628;&amp;#32034;&amp;#27493;&amp;#38271;step&amp;#10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm-SORT">
-<meta property="og:url" content="http://yoursite.com/2015/08/14/Algorithm-SORT/index.html">
+<meta property="og:title" content="广度优先搜索">
+<meta property="og:url" content="http://yoursite.com/2015/08/15/Algriothm-bfs/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="bubble_sort12345678910111213141516171819202122232425262728293031323334353637383940//标准冒泡排序:不带优化的,即使没有交换仍然继续执行。void buble_sort(int arr[],int length)&amp;#123;	if(arr == NULL || length&amp;lt;=0)return;	int end">
-<meta property="og:updated_time" content="2015-08-13T16:48:14.000Z">
+<meta property="og:description" content="算法要点理解BFS:
+
+层层递进,一层一层的搜索。
+因此,一般需要借助队列实现,存储为探索的各层元素。
+
+#算法实现1// BFS &amp;#22312;&amp;#22320;&amp;#22270;&amp;#19978;&amp;#25628;&amp;#32034;&amp;#20301;&amp;#32622;(p,q),&amp;#24182;&amp;#24471;&amp;#21040;&amp;#25628;&amp;#32034;&amp;#27493;&amp;#38271;step&amp;#10">
+<meta property="og:updated_time" content="2015-08-15T14:12:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm-SORT">
-<meta name="twitter:description" content="bubble_sort12345678910111213141516171819202122232425262728293031323334353637383940//标准冒泡排序:不带优化的,即使没有交换仍然继续执行。void buble_sort(int arr[],int length)&amp;#123;	if(arr == NULL || length&amp;lt;=0)return;	int end">
+<meta name="twitter:title" content="广度优先搜索">
+<meta name="twitter:description" content="算法要点理解BFS:
+
+层层递进,一层一层的搜索。
+因此,一般需要借助队列实现,存储为探索的各层元素。
+
+#算法实现1// BFS &amp;#22312;&amp;#22320;&amp;#22270;&amp;#19978;&amp;#25628;&amp;#32034;&amp;#20301;&amp;#32622;(p,q),&amp;#24182;&amp;#24471;&amp;#21040;&amp;#25628;&amp;#32034;&amp;#27493;&amp;#38271;step&amp;#10">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -181,11 +196,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Algorithm-SORT" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Algriothm-bfs" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/14/Algorithm-SORT/" class="article-date">
-  	<time datetime="2015-08-13T16:25:31.000Z" itemprop="datePublished">2015-08-14</time>
+      <a href="/2015/08/15/Algriothm-bfs/" class="article-date">
+  	<time datetime="2015-08-15T09:51:36.000Z" itemprop="datePublished">2015-08-15</time>
 </a>
     </div>
   
@@ -198,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Algorithm-SORT
+      广度优先搜索
     </h1>
   
 
@@ -214,7 +229,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="bubble_sort">bubble_sort</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标准冒泡排序:不带优化的,即使没有交换仍然继续执行。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buble_sort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> length)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(arr == <span class="literal">NULL</span> || length&lt;=<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> end=length-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(end;end&gt;<span class="number">0</span>;end--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=end-<span class="number">1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i] &lt; arr[i+<span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> temp=arr[i];</span><br><span class="line">				arr[i]=arr[i+<span class="number">1</span>];</span><br><span class="line">				arr[i+<span class="number">1</span>]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//优化冒泡排序:引入flag在没有交换后即认为排序结束。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buble_sort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> length)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(arr == <span class="literal">NULL</span> || length&lt;=<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> end=length-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> flag=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(end;end&gt;<span class="number">0</span> &amp;&amp; flag;end--)</span><br><span class="line">	&#123;</span><br><span class="line">		flag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=end-<span class="number">1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i] &lt; arr[i+<span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> temp=arr[i];</span><br><span class="line">				arr[i]=arr[i+<span class="number">1</span>];</span><br><span class="line">				arr[i+<span class="number">1</span>]=temp;</span><br><span class="line">				<span class="keyword">if</span>(flag==<span class="number">0</span>)flag=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="算法要点">算法要点</h1><p>理解BFS:</p>
+<ol>
+<li>层层递进,一层一层的搜索。</li>
+<li>因此,一般需要借助队列实现,存储为探索的各层元素。</li>
+</ol>
+<p>#算法实现<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// BFS &#22312;&#22320;&#22270;&#19978;&#25628;&#32034;&#20301;&#32622;(p,q),&#24182;&#24471;&#21040;&#25628;&#32034;&#27493;&#38271;step&#10;typedef struct Queue&#10;&#123;&#10;&#9;int x;&#10;&#9;int y;&#10;&#125;;&#10;Queue que[2501];//&#20551;&#35774;50*50&#30340;&#22320;&#22270;,&#20849;2500&#20010;&#20301;&#32622;&#10;&#10;int book[51][51] = &#123;0&#125;;&#10;int next[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0.-1&#125;,&#123;-1,0&#125;&#125;;//&#22235;&#20010;&#26041;&#21521;&#10;&#10;//&#21021;&#22987;&#21270;head&#21644;tail&#22343;&#22312;&#31532;&#19968;&#20010;&#20301;&#32622;&#10;**int head = 1;**&#10;**int tail = 1;**&#10;&#10;//&#23558;&#28385;&#36275;&#26465;&#20214;&#30340;&#20301;&#32622;(x,y)&#21152;&#20837;&#38431;&#21015;&#12290;&#10;int startx = 0;&#10;int starty = 0;&#10;que[tail].x = startx;&#10;que[tail].y = starty;&#10;book[startx][starty] = 1;&#10;tail++;&#10;&#10;int flag = 0;//&#26631;&#35782;&#26159;&#21542;&#21040;&#36798;&#30446;&#30340;(p,q)&#20301;&#32622;&#10;int tx,ty;//&#19979;&#19968;&#36339;&#25628;&#32034;&#20301;&#32622;&#10;&#10;int step =0;//&#25628;&#32034;&#21040;&#30446;&#26631;&#20043;&#21069;&#36208;&#20102;&#22810;&#23569;&#27493;&#10;&#10;**while(head &#60; tail)**&#10;&#123;&#10;&#9;for(int k=0;k&#60;=3;k++)&#10;&#9;&#123;&#10;&#9;&#9;tx = que[head].x + next[k][0];&#10;&#9;&#9;ty = que[head].y + next[k][1];&#10;&#9;&#9;if(tx &#60; 1 || tx &#62; n || ty &#60; 1 || ty &#62; n) continue;&#10;&#9;&#9;//a[tx][ty] = 0;&#34920;&#31034;&#21487;&#20197;&#36807;,&#20854;&#20182;&#20540;&#20026;&#38556;&#30861;&#29289;&#10;&#9;&#9;if(a[tx][ty] == 0 &#38;&#38; book[tx][ty] == 0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;**book[tx][ty] = 1;**&#10;&#9;&#9;&#9;**que[tail].x = tx;**&#10;&#9;&#9;&#9;**que[tail].y = ty;**&#10;&#9;&#9;&#9;step++;&#10;&#9;&#9;&#9;**tail++;**&#10;&#9;&#9;&#125;&#10;&#9;&#9;if(tx ==p &#38;&#38; ty ==q)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;flag = 1;&#10;&#9;&#9;&#9;break;&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#9;if(flag == 1)break;&#10;&#9;**head++;**&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -223,18 +244,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/15/Im-a-translator/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/15/Double-equal/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Im a translator
+          如何比较两个double(float)是否相等?
         
       </div>
     </a>
   
   
-    <a href="/2015/08/13/day1-python/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">day1 python</div>
+    <a href="/2015/08/15/Algriothm-dfs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深度优先搜索</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -263,7 +284,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Algorithm-SORT" data-title="Algorithm-SORT" data-url="http://yoursite.com/2015/08/14/Algorithm-SORT/"></div>
+	<div class="ds-thread" data-thread-key="Algriothm-bfs" data-title="广度优先搜索" data-url="http://yoursite.com/2015/08/15/Algriothm-bfs/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
