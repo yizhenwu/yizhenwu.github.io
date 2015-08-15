@@ -3,33 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>广度优先搜索 | Dobest</title>
+  <title>BFS | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="算法要点理解BFS:
 
 层层递进,一层一层的搜索。
 因此,一般需要借助队列实现,存储为探索的各层元素。
 
-#算法实现1// BFS &amp;#22312;&amp;#22320;&amp;#22270;&amp;#19978;&amp;#25628;&amp;#32034;&amp;#20301;&amp;#32622;(p,q),&amp;#24182;&amp;#24471;&amp;#21040;&amp;#25628;&amp;#32034;&amp;#27493;&amp;#38271;step&amp;#10">
+#算法实现 举例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// BFS 在地图上搜索位置(p,q),并得到搜索步长steptypedef st">
 <meta property="og:type" content="article">
-<meta property="og:title" content="广度优先搜索">
-<meta property="og:url" content="http://yoursite.com/2015/08/15/Algriothm-bfs/index.html">
+<meta property="og:title" content="BFS">
+<meta property="og:url" content="http://yoursite.com/2015/08/15/BFS/index.html">
 <meta property="og:site_name" content="Dobest">
 <meta property="og:description" content="算法要点理解BFS:
 
 层层递进,一层一层的搜索。
 因此,一般需要借助队列实现,存储为探索的各层元素。
 
-#算法实现1// BFS &amp;#22312;&amp;#22320;&amp;#22270;&amp;#19978;&amp;#25628;&amp;#32034;&amp;#20301;&amp;#32622;(p,q),&amp;#24182;&amp;#24471;&amp;#21040;&amp;#25628;&amp;#32034;&amp;#27493;&amp;#38271;step&amp;#10">
-<meta property="og:updated_time" content="2015-08-15T14:12:54.000Z">
+#算法实现 举例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// BFS 在地图上搜索位置(p,q),并得到搜索步长steptypedef st">
+<meta property="og:updated_time" content="2015-08-15T15:35:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="广度优先搜索">
+<meta name="twitter:title" content="BFS">
 <meta name="twitter:description" content="算法要点理解BFS:
 
 层层递进,一层一层的搜索。
 因此,一般需要借助队列实现,存储为探索的各层元素。
 
-#算法实现1// BFS &amp;#22312;&amp;#22320;&amp;#22270;&amp;#19978;&amp;#25628;&amp;#32034;&amp;#20301;&amp;#32622;(p,q),&amp;#24182;&amp;#24471;&amp;#21040;&amp;#25628;&amp;#32034;&amp;#27493;&amp;#38271;step&amp;#10">
+#算法实现 举例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// BFS 在地图上搜索位置(p,q),并得到搜索步长steptypedef st">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -196,11 +196,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Algriothm-bfs" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-BFS" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/15/Algriothm-bfs/" class="article-date">
-  	<time datetime="2015-08-15T09:51:36.000Z" itemprop="datePublished">2015-08-15</time>
+      <a href="/2015/08/15/BFS/" class="article-date">
+  	<time datetime="2015-08-15T15:34:50.000Z" itemprop="datePublished">2015-08-15</time>
 </a>
     </div>
   
@@ -213,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      广度优先搜索
+      BFS
     </h1>
   
 
@@ -234,7 +234,7 @@
 <li>层层递进,一层一层的搜索。</li>
 <li>因此,一般需要借助队列实现,存储为探索的各层元素。</li>
 </ol>
-<p>#算法实现<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// BFS &#22312;&#22320;&#22270;&#19978;&#25628;&#32034;&#20301;&#32622;(p,q),&#24182;&#24471;&#21040;&#25628;&#32034;&#27493;&#38271;step&#10;typedef struct Queue&#10;&#123;&#10;&#9;int x;&#10;&#9;int y;&#10;&#125;;&#10;Queue que[2501];//&#20551;&#35774;50*50&#30340;&#22320;&#22270;,&#20849;2500&#20010;&#20301;&#32622;&#10;&#10;int book[51][51] = &#123;0&#125;;&#10;int next[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0.-1&#125;,&#123;-1,0&#125;&#125;;//&#22235;&#20010;&#26041;&#21521;&#10;&#10;//&#21021;&#22987;&#21270;head&#21644;tail&#22343;&#22312;&#31532;&#19968;&#20010;&#20301;&#32622;&#10;**int head = 1;**&#10;**int tail = 1;**&#10;&#10;//&#23558;&#28385;&#36275;&#26465;&#20214;&#30340;&#20301;&#32622;(x,y)&#21152;&#20837;&#38431;&#21015;&#12290;&#10;int startx = 0;&#10;int starty = 0;&#10;que[tail].x = startx;&#10;que[tail].y = starty;&#10;book[startx][starty] = 1;&#10;tail++;&#10;&#10;int flag = 0;//&#26631;&#35782;&#26159;&#21542;&#21040;&#36798;&#30446;&#30340;(p,q)&#20301;&#32622;&#10;int tx,ty;//&#19979;&#19968;&#36339;&#25628;&#32034;&#20301;&#32622;&#10;&#10;int step =0;//&#25628;&#32034;&#21040;&#30446;&#26631;&#20043;&#21069;&#36208;&#20102;&#22810;&#23569;&#27493;&#10;&#10;**while(head &#60; tail)**&#10;&#123;&#10;&#9;for(int k=0;k&#60;=3;k++)&#10;&#9;&#123;&#10;&#9;&#9;tx = que[head].x + next[k][0];&#10;&#9;&#9;ty = que[head].y + next[k][1];&#10;&#9;&#9;if(tx &#60; 1 || tx &#62; n || ty &#60; 1 || ty &#62; n) continue;&#10;&#9;&#9;//a[tx][ty] = 0;&#34920;&#31034;&#21487;&#20197;&#36807;,&#20854;&#20182;&#20540;&#20026;&#38556;&#30861;&#29289;&#10;&#9;&#9;if(a[tx][ty] == 0 &#38;&#38; book[tx][ty] == 0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;**book[tx][ty] = 1;**&#10;&#9;&#9;&#9;**que[tail].x = tx;**&#10;&#9;&#9;&#9;**que[tail].y = ty;**&#10;&#9;&#9;&#9;step++;&#10;&#9;&#9;&#9;**tail++;**&#10;&#9;&#9;&#125;&#10;&#9;&#9;if(tx ==p &#38;&#38; ty ==q)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;flag = 1;&#10;&#9;&#9;&#9;break;&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#9;if(flag == 1)break;&#10;&#9;**head++;**&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#算法实现<br> 举例<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BFS 在地图上搜索位置(p,q),并得到搜索步长step</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Queue</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">&#125;;</span><br><span class="line">Queue que[<span class="number">2501</span>];<span class="comment">//假设50*50的地图,共2500个位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> book[<span class="number">51</span>][<span class="number">51</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> next[<span class="number">4</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0.</span>-<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;<span class="comment">//四个方向</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化head和tail均在第一个位置</span></span><br><span class="line">**<span class="keyword">int</span> head = <span class="number">1</span>;**</span><br><span class="line">**<span class="keyword">int</span> tail = <span class="number">1</span>;**</span><br><span class="line"></span><br><span class="line"><span class="comment">//将满足条件的位置(x,y)加入队列。</span></span><br><span class="line"><span class="keyword">int</span> startx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> starty = <span class="number">0</span>;</span><br><span class="line">que[tail].x = startx;</span><br><span class="line">que[tail].y = starty;</span><br><span class="line">book[startx][starty] = <span class="number">1</span>;</span><br><span class="line">tail++;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;<span class="comment">//标识是否到达目的(p,q)位置</span></span><br><span class="line"><span class="keyword">int</span> tx,ty;<span class="comment">//下一跳搜索位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> step =<span class="number">0</span>;<span class="comment">//搜索到目标之前走了多少步</span></span><br><span class="line"></span><br><span class="line">**<span class="keyword">while</span>(head &lt; tail)**</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=<span class="number">3</span>;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		tx = que[head].x + next[k][<span class="number">0</span>];</span><br><span class="line">		ty = que[head].y + next[k][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span>(tx &lt; <span class="number">1</span> || tx &gt; n || ty &lt; <span class="number">1</span> || ty &gt; n) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="comment">//a[tx][ty] = 0;表示可以过,其他值为障碍物</span></span><br><span class="line">		<span class="keyword">if</span>(a[tx][ty] == <span class="number">0</span> &amp;&amp; book[tx][ty] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			**book[tx][ty] = <span class="number">1</span>;**</span><br><span class="line">			**que[tail].x = tx;**</span><br><span class="line">			**que[tail].y = ty;**</span><br><span class="line">			step++;</span><br><span class="line">			**tail++;**</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tx ==p &amp;&amp; ty ==q)</span><br><span class="line">		&#123;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">	**head++;**</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -244,18 +244,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/15/Double-equal/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          如何比较两个double(float)是否相等?
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/15/Algriothm-dfs/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">深度优先搜索</div>
+    <a href="/2015/08/15/Im-a-translator/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Im a translator</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -284,7 +275,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Algriothm-bfs" data-title="广度优先搜索" data-url="http://yoursite.com/2015/08/15/Algriothm-bfs/"></div>
+	<div class="ds-thread" data-thread-key="BFS" data-title="BFS" data-url="http://yoursite.com/2015/08/15/BFS/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

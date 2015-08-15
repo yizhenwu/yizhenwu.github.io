@@ -182,11 +182,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Print1ToMaxofDigits" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-BFS" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/15/Print1ToMaxofDigits/" class="article-date">
-  	<time datetime="2015-08-15T11:59:20.000Z" itemprop="datePublished">2015-08-15</time>
+      <a href="/2015/08/15/BFS/" class="article-date">
+  	<time datetime="2015-08-15T15:34:50.000Z" itemprop="datePublished">2015-08-15</time>
 </a>
     </div>
   
@@ -199,121 +199,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/Print1ToMaxofDigits/">打印1到最大的n位数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Double-equal" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/Double-equal/" class="article-date">
-  	<time datetime="2015-08-15T11:38:22.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/Double-equal/">如何比较两个double(float)是否相等?</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#原理<br>计算机内部表示小数(float,double型小数)都是有误差的(因为计算机只有0,1)。</p>
-<p>#方法</p>
-<ol>
-<li>判断两个小数是否相等,只能判断它们之差的绝对值是不是在一个很小的范围内(我觉得超过其要求的精度即可)。</li>
-<li>如果两个数之差很小,那么就可以认为他们是相等的。</li>
-</ol>
-<p>#代码<br><code>`
-//以double为例
-bool equal(double num1,double num2)
-{
-    if(num1 - num2 &gt; -0.000001 &amp;&amp; num1-num2 &lt; 0.00001)
-        return true;
-    else return false;
-}</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Algriothm-bfs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/Algriothm-bfs/" class="article-date">
-  	<time datetime="2015-08-15T09:51:36.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/Algriothm-bfs/">广度优先搜索</a>
+      <a class="article-title" href="/2015/08/15/BFS/">BFS</a>
     </h1>
   
 
@@ -327,129 +213,7 @@ bool equal(double num1,double num2)
 <li>层层递进,一层一层的搜索。</li>
 <li>因此,一般需要借助队列实现,存储为探索的各层元素。</li>
 </ol>
-<p>#算法实现<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// BFS &#22312;&#22320;&#22270;&#19978;&#25628;&#32034;&#20301;&#32622;(p,q),&#24182;&#24471;&#21040;&#25628;&#32034;&#27493;&#38271;step&#10;typedef struct Queue&#10;&#123;&#10;&#9;int x;&#10;&#9;int y;&#10;&#125;;&#10;Queue que[2501];//&#20551;&#35774;50*50&#30340;&#22320;&#22270;,&#20849;2500&#20010;&#20301;&#32622;&#10;&#10;int book[51][51] = &#123;0&#125;;&#10;int next[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0.-1&#125;,&#123;-1,0&#125;&#125;;//&#22235;&#20010;&#26041;&#21521;&#10;&#10;//&#21021;&#22987;&#21270;head&#21644;tail&#22343;&#22312;&#31532;&#19968;&#20010;&#20301;&#32622;&#10;**int head = 1;**&#10;**int tail = 1;**&#10;&#10;//&#23558;&#28385;&#36275;&#26465;&#20214;&#30340;&#20301;&#32622;(x,y)&#21152;&#20837;&#38431;&#21015;&#12290;&#10;int startx = 0;&#10;int starty = 0;&#10;que[tail].x = startx;&#10;que[tail].y = starty;&#10;book[startx][starty] = 1;&#10;tail++;&#10;&#10;int flag = 0;//&#26631;&#35782;&#26159;&#21542;&#21040;&#36798;&#30446;&#30340;(p,q)&#20301;&#32622;&#10;int tx,ty;//&#19979;&#19968;&#36339;&#25628;&#32034;&#20301;&#32622;&#10;&#10;int step =0;//&#25628;&#32034;&#21040;&#30446;&#26631;&#20043;&#21069;&#36208;&#20102;&#22810;&#23569;&#27493;&#10;&#10;**while(head &#60; tail)**&#10;&#123;&#10;&#9;for(int k=0;k&#60;=3;k++)&#10;&#9;&#123;&#10;&#9;&#9;tx = que[head].x + next[k][0];&#10;&#9;&#9;ty = que[head].y + next[k][1];&#10;&#9;&#9;if(tx &#60; 1 || tx &#62; n || ty &#60; 1 || ty &#62; n) continue;&#10;&#9;&#9;//a[tx][ty] = 0;&#34920;&#31034;&#21487;&#20197;&#36807;,&#20854;&#20182;&#20540;&#20026;&#38556;&#30861;&#29289;&#10;&#9;&#9;if(a[tx][ty] == 0 &#38;&#38; book[tx][ty] == 0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;**book[tx][ty] = 1;**&#10;&#9;&#9;&#9;**que[tail].x = tx;**&#10;&#9;&#9;&#9;**que[tail].y = ty;**&#10;&#9;&#9;&#9;step++;&#10;&#9;&#9;&#9;**tail++;**&#10;&#9;&#9;&#125;&#10;&#9;&#9;if(tx ==p &#38;&#38; ty ==q)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;flag = 1;&#10;&#9;&#9;&#9;break;&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#9;if(flag == 1)break;&#10;&#9;**head++;**&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Algriothm-dfs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/Algriothm-dfs/" class="article-date">
-  	<time datetime="2015-08-15T09:51:25.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/Algriothm-dfs/">深度优先搜索</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="算法要点">算法要点</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void dfs(int step)&#10;&#123;&#10;&#9;**&#21028;&#26029;&#36793;&#30028;**;&#10;&#9;&#23581;&#35797;&#27599;&#19968;&#31181;&#21487;&#33021; for(int i=0;i&#60;n;i++)&#10;&#9;&#123;&#10;&#9;&#9;if(book[i]==0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;book[i]=1;&#10;&#9;&#9;&#9;&#32487;&#32493;&#19979;&#19968;&#27493; dfs(step+1);&#10;&#9;&#9;&#9;book[i]=0;&#10;&#9;&#125;&#10;&#9;**&#36820;&#22238;** return;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>理解DFS:</p>
-<ol>
-<li>边界条件是递归跳出的条件,也是程序要完成的功能。</li>
-<li>注意防止DFS在<strong>一次搜索中</strong>重复搜索已经搜索过的节点,一般增加book[i]=1,来标识该节点被搜索过了。</li>
-<li>注意为实现下一次搜索,需要在本次搜索结束后释放被搜索过的节点,book[i]=0,才可以进行下一次搜索。</li>
-<li>如果想将所有节点都搜索一遍后结束,那么就不需要释放book[i]=0了,根据需要变化。</li>
-</ol>
-<p>#算法实现<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// DFS &#22312;&#22320;&#22270;&#19978;&#25628;&#32034;&#20301;&#32622;(p,q),&#24182;&#24471;&#21040;&#26368;&#30701;&#25628;&#32034;&#27493;&#38271;step&#10;int book[100]=&#123;0&#125;;&#10;&#10;void dfs(int x,int y,int step)&#10;&#123;&#10;&#9;int next[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0.-1&#125;,&#123;-1,0&#125;&#125;;//&#22235;&#20010;&#26041;&#21521;&#10;&#9;if(x == p &#38;&#38; y == q)&#10;&#9;&#123;&#10;&#9;&#9;if(step &#60; min)&#10;&#9;&#9;&#9;min=step;&#10;&#9;&#9;return;//&#36825;&#37324;&#30340;&#36820;&#22238;&#26159;&#23436;&#25104;&#19968;&#27425;&#25628;&#32034;&#21518;,&#36820;&#22238;&#20043;&#21518;&#25165;&#21487;&#20197;&#36827;&#34892;&#19979;&#19968;&#27493;&#25628;&#32034;&#12290;&#10;&#9;&#9;&#9;   //&#27492;&#22788;&#36820;&#22238;&#24456;&#37325;&#35201;!!!&#10;&#9;&#125;&#10;&#9;int tx,ty; //&#29992;&#20110;&#23384;&#20648;&#26356;&#26032;&#21518;&#20301;&#32622;&#10;&#9;for(int k=0;k&#60;=3;k++)&#10;&#9;&#123;&#10;&#9;&#9;tx = x + next[k][0];&#10;&#9;&#9;ty = y + next[k][1];&#10;&#9;&#9;if(tx &#60; 1 || tx &#62; n || ty &#60; 1 || ty &#62; n) continue;&#10;&#9;&#9;if(a[tx][ty] == 0 &#38;&#38; book[tx][ty] == 0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;book[tx][ty] = 1;&#10;&#9;&#9;&#9;dfs(tx,ty,step+1);&#10;&#9;&#9;&#9;book[tx][ty] = 0;&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#9;return;&#10;&#125;&#10;&#10;// DFS &#23454;&#29616;n&#30340;&#20840;&#25490;&#21015;&#10;void dfs(int step)&#10;&#123;&#10;&#9;if(step == n)&#10;&#9;&#123;&#10;&#9;&#9;for(int i=0;i&#60;n;i++)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;cout&#60;&#60;a[i]&#60;&#60;&#34; &#34;;&#10;&#9;&#9;&#125;&#10;&#9;&#9;return;//&#36825;&#37324;&#30340;&#36820;&#22238;&#26159;&#23436;&#25104;&#19968;&#27425;&#25628;&#32034;&#21518;,&#36820;&#22238;&#20043;&#21518;&#25165;&#21487;&#20197;&#36827;&#34892;&#19979;&#19968;&#27493;&#25628;&#32034;&#12290;&#10;&#9;&#9;&#9;   //&#27492;&#22788;&#36820;&#22238;&#24456;&#37325;&#35201;!!!&#10;&#9;&#125;&#10;&#9;for(int k=0;k&#60;n;k++)&#10;&#9;&#123;&#10;&#9;&#9;a[step] = i;&#10;&#9;&#9;book[i] =1;&#10;&#9;&#9;dfs[step+1];&#10;&#9;&#9;book[i] = 0;&#10;&#9;&#125;&#10;&#9;return;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Algriothm-quick-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/Algriothm-quick-sort/" class="article-date">
-  	<time datetime="2015-08-15T09:17:32.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/Algriothm-quick-sort/">快速排序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#算法要点</p>
-<ol>
-<li>基准数;</li>
-<li>哨兵i=0(指向序列最左边);</li>
-<li>哨兵j=length-1(指向序列最右边);</li>
-<li>哨兵j先行,j–,直到发现第一个<strong>小于基准数</strong>的位置;</li>
-<li>随后,哨兵i后行,i++,直到发现第一个<strong>大于基准数</strong>的位置;</li>
-<li>交换哨兵i,哨兵j所指向的元素;</li>
-<li>goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;</li>
-<li>处理()</li>
-</ol>
-<p>#算法实现<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(left&gt;=right)<span class="keyword">return</span>;</span><br><span class="line">	temp=a[left] <span class="comment">//基准数temp,temp首先为待排序数组的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i=left; <span class="comment">//哨兵i</span></span><br><span class="line">	<span class="keyword">int</span> j=right-<span class="number">1</span>; <span class="comment">//哨兵j</span></span><br><span class="line">	<span class="keyword">while</span>(i != j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(a[j] &gt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(a[i] &lt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=a[i];</span><br><span class="line">			a[i]=a[j];</span><br><span class="line">			a[j]=t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//算法要点step7</span></span><br><span class="line">	a[left]=a[i];</span><br><span class="line">	a[i]=temp;</span><br><span class="line">	<span class="comment">//递归继续处理左边的</span></span><br><span class="line">	quick_sort(left,i);</span><br><span class="line">	<span class="comment">//递归继续处理右边的</span></span><br><span class="line">	quick_sort(i,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>#复杂度分析<br>每次执行都一分为二的递归实现,因此完成排序复杂度O(NlogN)。</p>
+<p>#算法实现<br> 举例<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BFS 在地图上搜索位置(p,q),并得到搜索步长step</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Queue</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">&#125;;</span><br><span class="line">Queue que[<span class="number">2501</span>];<span class="comment">//假设50*50的地图,共2500个位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> book[<span class="number">51</span>][<span class="number">51</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> next[<span class="number">4</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0.</span>-<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;<span class="comment">//四个方向</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化head和tail均在第一个位置</span></span><br><span class="line">**<span class="keyword">int</span> head = <span class="number">1</span>;**</span><br><span class="line">**<span class="keyword">int</span> tail = <span class="number">1</span>;**</span><br><span class="line"></span><br><span class="line"><span class="comment">//将满足条件的位置(x,y)加入队列。</span></span><br><span class="line"><span class="keyword">int</span> startx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> starty = <span class="number">0</span>;</span><br><span class="line">que[tail].x = startx;</span><br><span class="line">que[tail].y = starty;</span><br><span class="line">book[startx][starty] = <span class="number">1</span>;</span><br><span class="line">tail++;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;<span class="comment">//标识是否到达目的(p,q)位置</span></span><br><span class="line"><span class="keyword">int</span> tx,ty;<span class="comment">//下一跳搜索位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> step =<span class="number">0</span>;<span class="comment">//搜索到目标之前走了多少步</span></span><br><span class="line"></span><br><span class="line">**<span class="keyword">while</span>(head &lt; tail)**</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=<span class="number">3</span>;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		tx = que[head].x + next[k][<span class="number">0</span>];</span><br><span class="line">		ty = que[head].y + next[k][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span>(tx &lt; <span class="number">1</span> || tx &gt; n || ty &lt; <span class="number">1</span> || ty &gt; n) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="comment">//a[tx][ty] = 0;表示可以过,其他值为障碍物</span></span><br><span class="line">		<span class="keyword">if</span>(a[tx][ty] == <span class="number">0</span> &amp;&amp; book[tx][ty] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			**book[tx][ty] = <span class="number">1</span>;**</span><br><span class="line">			**que[tail].x = tx;**</span><br><span class="line">			**que[tail].y = ty;**</span><br><span class="line">			step++;</span><br><span class="line">			**tail++;**</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tx ==p &amp;&amp; ty ==q)</span><br><span class="line">		&#123;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">	**head++;**</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -773,10 +537,197 @@ bool equal(double num1,double num2)
 
 
   
+    <article id="post-congestion-control" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+    <div class="article-meta">
+      <a href="/2015/08/12/congestion-control/" class="article-date">
+  	<time datetime="2015-08-11T16:13:41.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/congestion-control/">congestion control</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="TCP拥塞控制">TCP拥塞控制</h1><h2 id="什么是拥塞">什么是拥塞</h2><p>对网络的某一资源的需求超过资源的可用范围，网络性能变坏,这就是拥塞。</p>
+<h2 id="区分拥塞控制和流量控制">区分拥塞控制和流量控制</h2><ul>
+<li>拥塞控制:全局性的过程,防止过多的<strong>发送方</strong>数据注入网络中,避免路由器和链路不发生过载;</li>
+<li>流量控制:点对点的通信量控制。</li>
+</ul>
+<h3 id="拥塞控制对象">拥塞控制对象</h3><p>拥塞的原因即负载过大,因此拥塞控制的对象就是发送者的流量(源头),TCP的滑动窗口协议,窗口大小取决于接收窗口和拥塞控制窗口。<em>区分:发送窗口 &lt;= 拥塞窗口</em><br><strong>发送窗口=min(rwnd,cwnd)</strong></p>
+<h3 id="拥塞控制方法">拥塞控制方法</h3><p>发送方维护一个拥塞窗口<strong>cwnd(congestion window)</strong>的状态变量。拥塞窗口取决于网络的拥塞情况,并且动态变化。</p>
+<ul>
+<li><p>慢启动<br>思路:一开始不发送大量的数据,先探测网路的拥塞程度,因此从小到大增加拥塞窗口。假定每个TCP报文都按照MSS最大报文长度来发送。<br>Start          ——&gt;    cwnd=1;<br>after 1 RTT    ——&gt;    cwnd=2;<br>after 2 RTT    ——&gt;    cwnd=4;<br>after 3 RTT    ——&gt;    cwnd=8;<br>…<br>慢启动实质是起点低,但是增长速度很快(指数级)。RTT*log2W时间即可占满W带宽(假设允许无线增长下去,当然不允许这样下去)。</p>
+</li>
+<li><p>慢启动门限(ssthresh)<br>即:当cwnd超过该门限,慢启动过程结束,进入<strong>拥塞避免</strong>阶段。</p>
+</li>
+<li><p>拥塞避免阶段做法<br>化指数增长为加法增长,此时每收到一次确认:<strong>cwnd=cwnd+1</strong>。慢慢的将吞吐量调整到最大值。</p>
+</li>
+<li><p>拥塞检测<br>TCP认为网络拥塞的主体是拥塞丢包,即每个TCP报文都有一个定时器(RTO:重传定时器),当RTO超时还没有得到ACK,TCP就对该报文进行重传,而且TCP即认为是网络出现拥塞了:<br>++ 把ssthresh降低为cwnd的一半;<br>++ 把cwnd设置为1;<br>++ 重新进入慢启动过程。</p>
+</li>
+</ul>
+<p><img src="http://cdn.sinacloud.net/tcp-congesstion/tcp%20congestion.png?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439316191&amp;ssig=qgEN6GLS9r" alt="cwrd变化"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Baidu-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/Baidu-interview/" class="article-date">
+  	<time datetime="2015-08-11T13:04:17.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/Baidu-interview/">Baidu interview (BFE团队)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can contact me with email [email:yizhenwu@mail.ustc.edu.cn]</p>
+<h2 id="Start_at_17:00pm,_2015-8-10">Start at 17:00pm, 2015.8.10</h2><h3 id="问题回忆罗列">问题回忆罗列</h3><p>First.自我介绍?</p>
+<p>Q1:开始问我的项目，问我最想分享的一个项目是?<br>A1:说了我最近一年都在做的虚拟机迁移的项目,在项目中着重描述了我解决问题的出发点,随后陈述了两个基本问题，最后给出我的方案。</p>
+<p>Q2:SDN网路和IP网络最大的不同是?<br>A2:关于这个的不同:我觉得主要是SDN网络核心思想就是将控制与数据分离,采用集中控制的方式,而IP网络中路由是由路由器分布式路由。</p>
+<p>Q3:C++和C有什么不同?<br>A3:C++相对C来说，更加具有封装性，支持重载、继承和多态等特性。</p>
+<p>Q4:在平时写C++程序中,用到了重载和多态吗?觉得重载有什么问题?<br>A4:重载使用多了，会导致程序看起来比较混乱(不怎么会答)。</p>
+<p>Q5:问一个算法:给出两个int数组,两个int数组元素都不存在重复,如何找出两个数组相同的元素,并且给出算法的复杂度分析。<br>A5.1:首先枚举是可以的，但是复杂度是O(n^2);<br>A5.2:设计一个位存储,将两个数组的元素读入数组。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">a</span><span class="attr_selector">[]</span>: <span class="tag">a</span><span class="attr_selector">[1]</span>,<span class="tag">a</span><span class="attr_selector">[2]</span>,<span class="tag">a</span><span class="attr_selector">[3]</span>,...,<span class="tag">a</span><span class="attr_selector">[m]</span>;</span><br><span class="line"><span class="rule"><span class="attribute">binA</span>:<span class="value"> 根据a[x]数值binA中对应数字的bit置<span class="number">1</span>没有则置<span class="number">0</span></span></span>;</span><br><span class="line"><span class="tag">b</span><span class="attr_selector">[]</span>:同样读入<span class="tag">binB</span>中;</span><br><span class="line">讲<span class="tag">binA</span>和<span class="tag">binB</span>位操作,算出相同位数。</span><br></pre></td></tr></table></figure></p>
+<p>Q6:这样做的缺点是?有没有别的方法?<br>A6.1:当一个数很大?将会占用很长的bit位。<br>A6.2:可以用查找的方式,我说的做法是,取较长数组A对元素进行hash之后,用另一数组B查找该元素是否在,hash查找的复杂度为O(1),因此查找效率很好。</p>
+<p>Q7:hash表实现的几种方式你知道吗?<br>A7:面试我的时候，我当时不知道,<em>得补</em>!!!</p>
+<p>Q7:你平时编程都用到了哪些数据结构?<br>A7:我用过图的数据结构,链表和数组等。这个他没有接着去问了~</p>
+<p>Q8:考虑到我所关注的大多是网络层,现在以我对网络层的理解,怎么看待http协议的优缺点?<br>A8:首先我觉得http协议是client发起请求-&gt;server,server响应,我觉得这是一种单工的操作方式,也就是服务器端不能主动推送消息至client,而网络层的交互可以看成是“双工”。</p>
+<p>Q8.1:这个是一个特点,还有别的吗?<br>A8.1:我不知道了。。。<em>得补</em>!!!</p>
+<p>Q9:再问一个C和C++内存管理,我是怎么理解的?<br>A9:首先C++允许使用C中malloc和free函数,同时C++有增加内存管理的操作符new和delete,是的可以为对象的内存管理。。。</p>
+<p>Q10:在多线程场景下,多线程操作一块内存,那怎么样控制new和delete的匹配?<br>A10:我思考了下,加一个flag标识。当这块内存被new出来之后,就置flag=1,在释放内存的时候,使用这个内存的线程检查该flag再释放内存。</p>
+<p>Q11:TCP的拥塞控制?<br>A11:通过窗口机制实现拥塞控制,具体的我也没答出来。</p>
+<p>Q12:我怎么看待TCP和UDP?<br>A12:我觉得TCP和UDP本质区别是TCP是有连接的,这种连接实质上是通信双方维护一致的连接状态而看起来是有连接的,而UDP是无连接的。由此点可以引出,TCP连接确保数据包有序,但是确保有序付出的代价是吞吐量总是波动的。相对UDP的尽力传输机制就吞吐量来说优势就不明显了。</p>
+<p>Q13:移动网络中访问一个网站和wifi网络下访问一个网站有何区别?<br>A13:这个问题我不会。。。</p>
+<p>Q14:IP数据包的包头都有哪些字段?<br>A14:我说我知道有MTU,TTL,说了MTU,TTL的功能…问的太细致了!!!</p>
+<p>the end<br>Q:问我有什么问题想问的?<br>A:我说BFS业务部在北京吗?(是废话…);聊了下,我说我喜欢北京。。。<br>A:和谷歌的BFS,请问百度BFS所做的工作是啥?<br>Q:所做的工作是负责百度全网流量的控制和管理,为用户提供更好更快的访问服务,拥塞控制等…<br>最后我提到CDN,他为我解释了CDN是他们部门的一项,他们还有自己的做法,等等。<br>后来我说,这项工作太具有挑战了,可以和百度全网流量打交道,责任巨大…<br>——————————<br>1h8min的电话面试(一面),不知道有没有机会二面,深知细节很重要。。。</p>
+<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/My-first-blog/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/My-first-blog/">My first blog</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
   
 </div>
       <footer id="footer">
