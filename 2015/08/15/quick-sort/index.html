@@ -3,18 +3,51 @@
 <head>
   <meta charset="utf-8">
   
-  <title>DFS | Dobest</title>
+  <title>quick-sort | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="算法要点1void dfs(int step)&amp;#10;&amp;#123;&amp;#10;&amp;#9;**&amp;#21028;&amp;#26029;&amp;#36793;&amp;#30028;**;&amp;#10;&amp;#9;&amp;#23581;&amp;#35797;&amp;#27599;&amp;#19968;&amp;#31181;&amp;#21487;&amp;#33021; for(int i=0;i&amp;#60;n;i++)&amp;#10;&amp;#9;&amp;#123;&amp;#10;&amp;#9;&amp;#9;if">
+  <meta name="description" content="#算法要点
+
+基准数;
+哨兵i=0(指向序列最左边);
+哨兵j=length-1(指向序列最右边);
+哨兵j先行,j–,直到发现第一个小于基准数的位置;
+随后,哨兵i后行,i++,直到发现第一个大于基准数的位置;
+交换哨兵i,哨兵j所指向的元素;
+goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;
+处理()
+
+#算法实现1234567891011121314">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DFS">
-<meta property="og:url" content="http://yoursite.com/2015/08/15/DFS/index.html">
+<meta property="og:title" content="quick-sort">
+<meta property="og:url" content="http://yoursite.com/2015/08/15/quick-sort/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="算法要点1void dfs(int step)&amp;#10;&amp;#123;&amp;#10;&amp;#9;**&amp;#21028;&amp;#26029;&amp;#36793;&amp;#30028;**;&amp;#10;&amp;#9;&amp;#23581;&amp;#35797;&amp;#27599;&amp;#19968;&amp;#31181;&amp;#21487;&amp;#33021; for(int i=0;i&amp;#60;n;i++)&amp;#10;&amp;#9;&amp;#123;&amp;#10;&amp;#9;&amp;#9;if">
-<meta property="og:updated_time" content="2015-08-15T15:37:58.000Z">
+<meta property="og:description" content="#算法要点
+
+基准数;
+哨兵i=0(指向序列最左边);
+哨兵j=length-1(指向序列最右边);
+哨兵j先行,j–,直到发现第一个小于基准数的位置;
+随后,哨兵i后行,i++,直到发现第一个大于基准数的位置;
+交换哨兵i,哨兵j所指向的元素;
+goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;
+处理()
+
+#算法实现1234567891011121314">
+<meta property="og:updated_time" content="2015-08-15T15:39:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DFS">
-<meta name="twitter:description" content="算法要点1void dfs(int step)&amp;#10;&amp;#123;&amp;#10;&amp;#9;**&amp;#21028;&amp;#26029;&amp;#36793;&amp;#30028;**;&amp;#10;&amp;#9;&amp;#23581;&amp;#35797;&amp;#27599;&amp;#19968;&amp;#31181;&amp;#21487;&amp;#33021; for(int i=0;i&amp;#60;n;i++)&amp;#10;&amp;#9;&amp;#123;&amp;#10;&amp;#9;&amp;#9;if">
+<meta name="twitter:title" content="quick-sort">
+<meta name="twitter:description" content="#算法要点
+
+基准数;
+哨兵i=0(指向序列最左边);
+哨兵j=length-1(指向序列最右边);
+哨兵j先行,j–,直到发现第一个小于基准数的位置;
+随后,哨兵i后行,i++,直到发现第一个大于基准数的位置;
+交换哨兵i,哨兵j所指向的元素;
+goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;
+处理()
+
+#算法实现1234567891011121314">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -181,11 +214,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-DFS" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-quick-sort" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/15/DFS/" class="article-date">
-  	<time datetime="2015-08-15T15:37:06.000Z" itemprop="datePublished">2015-08-15</time>
+      <a href="/2015/08/15/quick-sort/" class="article-date">
+  	<time datetime="2015-08-15T15:39:06.000Z" itemprop="datePublished">2015-08-15</time>
 </a>
     </div>
   
@@ -198,7 +231,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      DFS
+      quick-sort
     </h1>
   
 
@@ -214,15 +247,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="算法要点">算法要点</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void dfs(int step)&#10;&#123;&#10;&#9;**&#21028;&#26029;&#36793;&#30028;**;&#10;&#9;&#23581;&#35797;&#27599;&#19968;&#31181;&#21487;&#33021; for(int i=0;i&#60;n;i++)&#10;&#9;&#123;&#10;&#9;&#9;if(book[i]==0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;book[i]=1;&#10;&#9;&#9;&#9;&#32487;&#32493;&#19979;&#19968;&#27493; dfs(step+1);&#10;&#9;&#9;&#9;book[i]=0;&#10;&#9;&#125;&#10;&#9;**&#36820;&#22238;** return;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>理解DFS:</p>
+        <p>#算法要点</p>
 <ol>
-<li>边界条件是递归跳出的条件,也是程序要完成的功能。</li>
-<li>注意防止DFS在<strong>一次搜索中</strong>重复搜索已经搜索过的节点,一般增加book[i]=1,来标识该节点被搜索过了。</li>
-<li>注意为实现下一次搜索,需要在本次搜索结束后释放被搜索过的节点,book[i]=0,才可以进行下一次搜索。</li>
-<li>如果想将所有节点都搜索一遍后结束,那么就不需要释放book[i]=0了,根据需要变化。</li>
+<li>基准数;</li>
+<li>哨兵i=0(指向序列最左边);</li>
+<li>哨兵j=length-1(指向序列最右边);</li>
+<li>哨兵j先行,j–,直到发现第一个<strong>小于基准数</strong>的位置;</li>
+<li>随后,哨兵i后行,i++,直到发现第一个<strong>大于基准数</strong>的位置;</li>
+<li>交换哨兵i,哨兵j所指向的元素;</li>
+<li>goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;</li>
+<li>处理()</li>
 </ol>
-<p>#算法实现<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// DFS &#22312;&#22320;&#22270;&#19978;&#25628;&#32034;&#20301;&#32622;(p,q),&#24182;&#24471;&#21040;&#26368;&#30701;&#25628;&#32034;&#27493;&#38271;step&#10;int book[100]=&#123;0&#125;;&#10;&#10;void dfs(int x,int y,int step)&#10;&#123;&#10;&#9;int next[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0.-1&#125;,&#123;-1,0&#125;&#125;;//&#22235;&#20010;&#26041;&#21521;&#10;&#9;if(x == p &#38;&#38; y == q)&#10;&#9;&#123;&#10;&#9;&#9;if(step &#60; min)&#10;&#9;&#9;&#9;min=step;&#10;&#9;&#9;return;//&#36825;&#37324;&#30340;&#36820;&#22238;&#26159;&#23436;&#25104;&#19968;&#27425;&#25628;&#32034;&#21518;,&#36820;&#22238;&#20043;&#21518;&#25165;&#21487;&#20197;&#36827;&#34892;&#19979;&#19968;&#27493;&#25628;&#32034;&#12290;&#10;&#9;&#9;&#9;   //&#27492;&#22788;&#36820;&#22238;&#24456;&#37325;&#35201;!!!&#10;&#9;&#125;&#10;&#9;int tx,ty; //&#29992;&#20110;&#23384;&#20648;&#26356;&#26032;&#21518;&#20301;&#32622;&#10;&#9;for(int k=0;k&#60;=3;k++)&#10;&#9;&#123;&#10;&#9;&#9;tx = x + next[k][0];&#10;&#9;&#9;ty = y + next[k][1];&#10;&#9;&#9;if(tx &#60; 1 || tx &#62; n || ty &#60; 1 || ty &#62; n) continue;&#10;&#9;&#9;if(a[tx][ty] == 0 &#38;&#38; book[tx][ty] == 0)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;book[tx][ty] = 1;&#10;&#9;&#9;&#9;dfs(tx,ty,step+1);&#10;&#9;&#9;&#9;book[tx][ty] = 0;&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#9;return;&#10;&#125;&#10;&#10;// DFS &#23454;&#29616;n&#30340;&#20840;&#25490;&#21015;&#10;void dfs(int step)&#10;&#123;&#10;&#9;if(step == n)&#10;&#9;&#123;&#10;&#9;&#9;for(int i=0;i&#60;n;i++)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;cout&#60;&#60;a[i]&#60;&#60;&#34; &#34;;&#10;&#9;&#9;&#125;&#10;&#9;&#9;return;//&#36825;&#37324;&#30340;&#36820;&#22238;&#26159;&#23436;&#25104;&#19968;&#27425;&#25628;&#32034;&#21518;,&#36820;&#22238;&#20043;&#21518;&#25165;&#21487;&#20197;&#36827;&#34892;&#19979;&#19968;&#27493;&#25628;&#32034;&#12290;&#10;&#9;&#9;&#9;   //&#27492;&#22788;&#36820;&#22238;&#24456;&#37325;&#35201;!!!&#10;&#9;&#125;&#10;&#9;for(int k=0;k&#60;n;k++)&#10;&#9;&#123;&#10;&#9;&#9;a[step] = i;&#10;&#9;&#9;book[i] =1;&#10;&#9;&#9;dfs[step+1];&#10;&#9;&#9;book[i] = 0;&#10;&#9;&#125;&#10;&#9;return;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#算法实现<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(left&gt;=right)<span class="keyword">return</span>;</span><br><span class="line">	temp=a[left] <span class="comment">//基准数temp,temp首先为待排序数组的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i=left; <span class="comment">//哨兵i</span></span><br><span class="line">	<span class="keyword">int</span> j=right-<span class="number">1</span>; <span class="comment">//哨兵j</span></span><br><span class="line">	<span class="keyword">while</span>(i != j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(a[j] &gt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(a[i] &lt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=a[i];</span><br><span class="line">			a[i]=a[j];</span><br><span class="line">			a[j]=t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//算法要点step7</span></span><br><span class="line">	a[left]=a[i];</span><br><span class="line">	a[i]=temp;</span><br><span class="line">	<span class="comment">//递归继续处理左边的</span></span><br><span class="line">	quick_sort(left,i);</span><br><span class="line">	<span class="comment">//递归继续处理右边的</span></span><br><span class="line">	quick_sort(i,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#复杂度分析<br>每次执行都一分为二的递归实现,因此完成排序复杂度O(NlogN)。</p>
 
       
     </div>
@@ -232,18 +269,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/15/quick-sort/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          quick-sort
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/15/BFS/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">BFS</div>
+    <a href="/2015/08/15/DFS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DFS</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -272,7 +300,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="DFS" data-title="DFS" data-url="http://yoursite.com/2015/08/15/DFS/"></div>
+	<div class="ds-thread" data-thread-key="quick-sort" data-title="quick-sort" data-url="http://yoursite.com/2015/08/15/quick-sort/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
