@@ -182,149 +182,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Baidu-interview" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/11/Baidu-interview/" class="article-date">
-  	<time datetime="2015-08-11T13:04:17.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/Baidu-interview/">Baidu interview (BFE团队)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can contact me with email [email:yizhenwu@mail.ustc.edu.cn]</p>
-<h2 id="Start_at_17:00pm,_2015-8-10">Start at 17:00pm, 2015.8.10</h2><h3 id="问题回忆罗列">问题回忆罗列</h3><p>First.自我介绍?</p>
-<p>Q1:开始问我的项目，问我最想分享的一个项目是?<br>A1:说了我最近一年都在做的虚拟机迁移的项目,在项目中着重描述了我解决问题的出发点,随后陈述了两个基本问题，最后给出我的方案。</p>
-<p>Q2:SDN网路和IP网络最大的不同是?<br>A2:关于这个的不同:我觉得主要是SDN网络核心思想就是将控制与数据分离,采用集中控制的方式,而IP网络中路由是由路由器分布式路由。</p>
-<p>Q3:C++和C有什么不同?<br>A3:C++相对C来说，更加具有封装性，支持重载、继承和多态等特性。</p>
-<p>Q4:在平时写C++程序中,用到了重载和多态吗?觉得重载有什么问题?<br>A4:重载使用多了，会导致程序看起来比较混乱(不怎么会答)。</p>
-<p>Q5:问一个算法:给出两个int数组,两个int数组元素都不存在重复,如何找出两个数组相同的元素,并且给出算法的复杂度分析。<br>A5.1:首先枚举是可以的，但是复杂度是O(n^2);<br>A5.2:设计一个位存储,将两个数组的元素读入数组。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">a</span><span class="attr_selector">[]</span>: <span class="tag">a</span><span class="attr_selector">[1]</span>,<span class="tag">a</span><span class="attr_selector">[2]</span>,<span class="tag">a</span><span class="attr_selector">[3]</span>,...,<span class="tag">a</span><span class="attr_selector">[m]</span>;</span><br><span class="line"><span class="rule"><span class="attribute">binA</span>:<span class="value"> 根据a[x]数值binA中对应数字的bit置<span class="number">1</span>没有则置<span class="number">0</span></span></span>;</span><br><span class="line"><span class="tag">b</span><span class="attr_selector">[]</span>:同样读入<span class="tag">binB</span>中;</span><br><span class="line">讲<span class="tag">binA</span>和<span class="tag">binB</span>位操作,算出相同位数。</span><br></pre></td></tr></table></figure></p>
-<p>Q6:这样做的缺点是?有没有别的方法?<br>A6.1:当一个数很大?将会占用很长的bit位。<br>A6.2:可以用查找的方式,我说的做法是,取较长数组A对元素进行hash之后,用另一数组B查找该元素是否在,hash查找的复杂度为O(1),因此查找效率很好。</p>
-<p>Q7:hash表实现的几种方式你知道吗?<br>A7:面试我的时候，我当时不知道,<em>得补</em>!!!</p>
-<p>Q7:你平时编程都用到了哪些数据结构?<br>A7:我用过图的数据结构,链表和数组等。这个他没有接着去问了~</p>
-<p>Q8:考虑到我所关注的大多是网络层,现在以我对网络层的理解,怎么看待http协议的优缺点?<br>A8:首先我觉得http协议是client发起请求-&gt;server,server响应,我觉得这是一种单工的操作方式,也就是服务器端不能主动推送消息至client,而网络层的交互可以看成是“双工”。</p>
-<p>Q8.1:这个是一个特点,还有别的吗?<br>A8.1:我不知道了。。。<em>得补</em>!!!</p>
-<p>Q9:再问一个C和C++内存管理,我是怎么理解的?<br>A9:首先C++允许使用C中malloc和free函数,同时C++有增加内存管理的操作符new和delete,是的可以为对象的内存管理。。。</p>
-<p>Q10:在多线程场景下,多线程操作一块内存,那怎么样控制new和delete的匹配?<br>A10:我思考了下,加一个flag标识。当这块内存被new出来之后,就置flag=1,在释放内存的时候,使用这个内存的线程检查该flag再释放内存。</p>
-<p>Q11:TCP的拥塞控制?<br>A11:通过窗口机制实现拥塞控制,具体的我也没答出来。</p>
-<p>Q12:我怎么看待TCP和UDP?<br>A12:我觉得TCP和UDP本质区别是TCP是有连接的,这种连接实质上是通信双方维护一致的连接状态而看起来是有连接的,而UDP是无连接的。由此点可以引出,TCP连接确保数据包有序,但是确保有序付出的代价是吞吐量总是波动的。相对UDP的尽力传输机制就吞吐量来说优势就不明显了。</p>
-<p>Q13:移动网络中访问一个网站和wifi网络下访问一个网站有何区别?<br>A13:这个问题我不会。。。</p>
-<p>Q14:IP数据包的包头都有哪些字段?<br>A14:我说我知道有MTU,TTL,说了MTU,TTL的功能…问的太细致了!!!</p>
-<p>the end<br>Q:问我有什么问题想问的?<br>A:我说BFS业务部在北京吗?(是废话…);聊了下,我说我喜欢北京。。。<br>A:和谷歌的BFS,请问百度BFS所做的工作是啥?<br>Q:所做的工作是负责百度全网流量的控制和管理,为用户提供更好更快的访问服务,拥塞控制等…<br>最后我提到CDN,他为我解释了CDN是他们部门的一项,他们还有自己的做法,等等。<br>后来我说,这项工作太具有挑战了,可以和百度全网流量打交道,责任巨大…<br>——————————<br>1h8min的电话面试(一面),不知道有没有机会二面,深知细节很重要。。。</p>
-<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-address-num" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/11/address-num/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/address-num/">取变量还是取地址</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>c++中定义了<code>-&gt;</code>运算符，该运算符是把<strong>解引用</strong>和<strong>成员访问</strong>两个操作结合在一起。即<code>it-&gt;men</code>与<code>(*it).men</code>的含义相同。</p>
-<p>因此注意区分：<br>对数组：<br>    struct str_t<br>    {<br>        long long len;<br>        char data[32];</p>
-<pre><code>};
-<span class="keyword">struct</span> <span class="keyword">data1_t</span>
-{
-    <span class="keyword">long</span> <span class="keyword">long</span> len;
-    <span class="keyword">char</span> data1[<span class="number">2</span>]
-    <span class="keyword">int</span> *data2[<span class="number">2</span>];
-};
-
-<span class="keyword">struct</span> <span class="keyword">str_t</span> str;
-<span class="built_in">memset</span>((<span class="keyword">void</span>*)&amp;str,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>));
-str.len=<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>)-<span class="keyword">sizeof</span>(<span class="keyword">int</span>);
-
-<span class="keyword">struct</span> <span class="keyword">data_t</span> *pData=(<span class="keyword">struct</span> <span class="keyword">data1_t</span>*)&amp;str;
-(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是数值，不是首地址**！！！</span>
-
-(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是地址**！！！</span>
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-modify-const" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/11/modify-const/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+      <a href="/2015/08/14/modify-const/" class="article-date">
+  	<time datetime="2015-08-13T16:04:03.000Z" itemprop="datePublished">2015-08-14</time>
 </a>
     </div>
   
@@ -337,7 +199,7 @@ str.len=<span class="keyword">sizeof</span>(<span class="keyword">struct</span> 
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/modify-const/">const变量通过指针的修改问题</a>
+      <a class="article-title" href="/2015/08/14/modify-const/">const变量通过指针的修改问题</a>
     </h1>
   
 
@@ -389,64 +251,11 @@ system(<span class="string">"pause"</span>);
 
 
   
-    <article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/11/My-first-blog/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/My-first-blog/">My first blog</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-fork" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/11/fork/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+      <a href="/2015/08/13/fork/" class="article-date">
+  	<time datetime="2015-08-13T15:04:03.000Z" itemprop="datePublished">2015-08-13</time>
 </a>
     </div>
   
@@ -459,7 +268,7 @@ system(<span class="string">"pause"</span>);
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/fork/">关于fork()函数大总结</a>
+      <a class="article-title" href="/2015/08/13/fork/">关于fork()函数大总结</a>
     </h1>
   
 
@@ -578,11 +387,11 @@ system(<span class="string">"pause"</span>);
 
 
   
-    <article id="post-switch-break" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-day1-python" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/11/switch-break/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+      <a href="/2015/08/13/day1-python/" class="article-date">
+  	<time datetime="2015-08-13T13:51:19.000Z" itemprop="datePublished">2015-08-13</time>
 </a>
     </div>
   
@@ -595,7 +404,7 @@ system(<span class="string">"pause"</span>);
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/switch-break/">switch语句与break分析</a>
+      <a class="article-title" href="/2015/08/13/day1-python/">day1 python</a>
     </h1>
   
 
@@ -604,187 +413,346 @@ system(<span class="string">"pause"</span>);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="例子">例子</h1><pre><code><span class="comment">//程序中没有break，分析程序输出。</span>
-<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)
-{
-    <span class="keyword">switch</span>(i)
-    {
-        <span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
-        <span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
-        <span class="keyword">default</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
-    }
-}
-</code></pre><h1 id="分析">分析</h1><ol>
-<li>i=0: <ul>
-<li>case 0:printf(“%d”,i);   0</li>
-<li>case 2:printf(“%d”,i);   0</li>
-<li>default:printf(“%d”,i);  0</li>
-</ul>
-</li>
-<li>i=1:<ul>
-<li>default:printf(“%d”,i);  1    </li>
-</ul>
-</li>
-<li>i=2:<ul>
-<li>case 2:printf(“%d”,i);   2</li>
-<li>default:printf(“%d”,i);  2</li>
-</ul>
-</li>
-</ol>
-<h1 id="结论">结论</h1><p>对于满足条件已经进入分支，case语句没有break，分支后面的语句都是会被执行，包括default。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-c++memory management" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/11/c++memory management/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/c++memory management/">C++内存管理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="32位/64位系统中不同类型变量对应的字节数">32位/64位系统中不同类型变量对应的字节数</h1><ol>
-<li>char: 1字节；<br></li>
-<li>char*: 4字节(32位)/8字节(64位)；<br></li>
-<li>short int: 2字节；<br></li>
-<li>int: 4字节；<br></li>
-<li>unsigned int: 4字节；<br></li>
-<li>float: 4字节；<br></li>
-<li>double: 8字节；<br></li>
-<li>long: 4字节(32位)/8字节(64位)；<br></li>
-<li>long long: 8字节；<br></li>
-<li>usingned long: 4字节(32位)/8字节(64位)；<br></li>
-</ol>
-<h1 id="内存管理">内存管理</h1><h2 id="64位系统中内存管理遵循8字节对齐">64位系统中内存管理遵循8字节对齐</h2><p>原则：按照8字节为单位分配存储空间，如果不足，则自动补齐，本次分配不足以存放下一个变量时，会重新分配空间。</p>
-<pre><code><span class="keyword">struct</span> A{
-   <span class="keyword">unsigned</span> <span class="keyword">int</span> a;<span class="comment">//a占4字节,开辟一个8字节内存P;</span>
-   <span class="keyword">char</span> b[<span class="number">2</span>];<span class="comment">//b[]占1*2=2字节,在a后的连续2字节内存放，</span>
-             <span class="comment">//P还剩2字节;</span>
-   <span class="keyword">double</span> c;<span class="comment">//c占8字节,P不足以存放,因此将剩余的2字节补全</span>
-            <span class="comment">//因此开辟新8个字节存放c</span>
-   <span class="keyword">short</span> d;<span class="comment">//d占2字节，开辟新的8字节内存，存放d。</span>
-           <span class="comment">//将剩余6字节补全.</span>
-}
-</code></pre><p><strong>So：</strong>总共开辟了3个8字节的空间，即24字节空间来存储该结构。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-address-increament" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/11/address-increament/" class="article-date">
-  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/address-increament/">栈的地址生长方式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="栈的地址生长方式">栈的地址生长方式</h1><pre><code><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> src[<span class="number">16</span>])</span>
-</span>{
-    <span class="keyword">int</span> val1=<span class="number">0</span>;
-    <span class="keyword">int</span> dst[<span class="number">16</span>]={<span class="number">0</span>};
-    <span class="keyword">int</span> val2=<span class="number">0</span>;
-    <span class="keyword">const</span> <span class="keyword">int</span> *psrc=src;
-    <span class="comment">//问题1：如下代码行输出什么？</span>
-    <span class="built_in">fprintf</span>(<span class="built_in">stdout</span>,<span class="string">"size of src=%lu\n"</span>,<span class="keyword">sizeof</span>(src));
-    <span class="comment">//问题2：如下代码有什么副作用？</span>
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">16</span>;i++)<span class="comment">//越dst[16]界</span>
-    {
-        dst[i]=*psrc+i;
-        psrc++;
-    }
-        <span class="keyword">return</span> <span class="number">0</span>;
- }
-</code></pre><hr>
-<p>常说：</p>
+        <h1 id="python基本入门">python基本入门</h1><p>1.中文乱码</p>
+<pre><code><span class="preprocessor"># coding gdb</span>
+</code></pre><p>2.python数据类型</p>
 <ol>
-<li>栈和堆的区别中，有一点是，栈的地址从高地址到低地址生长；</li>
+<li>列表:</li>
+<li>元组:相对于列表,不可重新赋值修改。</li>
+<li>集合:<ul>
+<li>基本运算:交集、并集、差集</li>
+<li>高级功能:利用集合的元素都是唯一的,去除重复元素:<br>  a=set(“absccssgs”)<br>  b=set(a)</li>
+<li>字典–关联数组<br>  zidian={‘name’:’weiwei’,’home’:’anhui’}</li>
+</ul>
+</li>
 </ol>
-<p>因此在栈中：</p>
-<pre><code><span class="tag">val1------</span>高地址
-     <span class="tag">bigger</span> <span class="tag">than</span>
-<span class="tag">dst</span><span class="attr_selector">[]</span><span class="tag">-----</span>中地址
-    且: &amp;<span class="tag">dst</span><span class="attr_selector">[1]</span> &lt; &amp;<span class="tag">dst</span><span class="attr_selector">[2]</span> &lt;... &lt; &amp;<span class="tag">dst</span><span class="attr_selector">[15]</span>    
-     <span class="tag">bigger</span> <span class="tag">than</span>
-<span class="tag">val-------</span>低地址
-</code></pre><hr>
-<p>因此：当dst数组溢出的时候，将会是向<strong>高地址</strong>溢出，因此<strong>val1</strong>将会被覆盖。</p>
+<p>4.pickle</p>
+<pre><code>- 序列化对象的过程(腌制)
+    import pickle
+    val1=pickle.<span class="function"><span class="title">dumps</span><span class="params">(val)</span></span>
+- 反序列化过程(对象恢复原样)
+    val2=pickle.<span class="function"><span class="title">loads</span><span class="params">(val1)</span></span>
+- 将对象存储到文件里面序列化  <span class="function"><span class="title">dump</span><span class="params">(object,file)</span></span>
+    import pickle
+    f1=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'wb'</span>)</span></span> #<span class="string">'wb'</span>是写
+    val1=pickle.<span class="function"><span class="title">dump</span><span class="params">(val,f1,True)</span></span>
+    f1.<span class="function"><span class="title">close</span><span class="params">()</span></span>
+- 将<span class="function"><span class="title">dump</span><span class="params">()</span></span>存储的文件里面的数据回复(对象恢复原样)`<span class="function"><span class="title">load</span><span class="params">(object,file)</span></span>`
+    f2=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'rb'</span>)</span></span> #<span class="string">'rb'</span>是读
+    t=pickel.<span class="function"><span class="title">load</span><span class="params">(f2)</span></span>
+    f2.<span class="function"><span class="title">close</span><span class="params">()</span></span>
+</code></pre><p>5.<strong>python缩进</strong>(这是和其他语言的最大区别)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-travel-huihanggudao" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/12/travel-huihanggudao/" class="article-date">
+  	<time datetime="2015-08-12T09:45:54.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/travel-huihanggudao/">2015.8.1 in 徽杭古道</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##第一阶段:<br>时间:2015.8.1, 9:30am<br>地点:合肥高铁南站<br>目的:绩溪北站</p>
+<p>##第二阶段:<br>时间:2015.8.1,11:30am<br>地点:龙川古月楼(“古月”引以为“胡”)<br>动作:当地农家乐</p>
+<p>##第三阶段:<br>时间:2015.8.1,12:30pm<br>地点:龙川风景区<br>事件:参观绩溪龙脉、胡总老家。</p>
+<blockquote>
+<p>胡家名门旺族<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3686.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485385&amp;ssig=fEolzREOlH" alt="胡氏祠堂"></p>
+<p>小河“川”过–龙川<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3700.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485452&amp;ssig=8ZAsn45f6l" alt="龙川小河"></p>
+<p>绩溪就靠这座龙脉<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3767.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485584&amp;ssig=1Wk%2FmTC5Zy" alt="绩溪龙脉"></p>
+<p>小桥<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3799.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485604&amp;ssig=d4TJhm5u%2FI" alt="桥"></p>
+<p>胡总爷爷的房子<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3826.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485652&amp;ssig=uMqfhMnzJW" alt="胡总老家,门牌:010号"></p>
+<p>蓝天凹<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3953.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485725&amp;ssig=G5W9%2FmBdQm" alt="蓝天凹"></p>
+<p>蓝天凹上的一片空地<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_3962.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485768&amp;ssig=4x%2B5GK5jQT" alt="下山途中"></p>
+<p>合影–我与洪博<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_4015.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485819&amp;ssig=wMQurR0ITc" alt="我与洪博"></p>
+<p>合影–师妹<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_4034.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485846&amp;ssig=tyRR%2BMQnLC" alt="师妹"></p>
+<p>合影–集体照<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_4071.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485884&amp;ssig=rQ2YNr0W8e" alt="导师一行8人"></p>
+<p>合影–蓝天凹的蓝蓝的天<br><img src="http://cdn.sinacloud.net/travell/huihanggudao/IMG_4113.jpg?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439485920&amp;ssig=ryIJmNxx5b" alt="”蓝天“凹的”蓝天“"></p>
+</blockquote>
+<p>##第四阶段:<br>时间:2015.8.2,10:30am<br>地点:浙江临安<br>事件:下一站游杭州</p>
+<p>##第五阶段:<br>时间:2015.8.2,12:30pm<br>地点:浙江杭州<br>吃饭:皇饭儿</p>
+<p>##第六阶段:<br>时间:2015.8.2,14:30pm-2015.8.4,15:30pm<br>地点:浙江杭州双日游<br>吃饭:西湖区</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-office-activation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/12/office-activation/" class="article-date">
+  	<time datetime="2015-08-12T06:16:38.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/office-activation/">Microsoft software activation</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="当不采用默认安装在C盘,怎么样激活。">当不采用默认安装在C盘,怎么样激活。</h2><p>1.打开KMS.bat,修改对应项目,改为相应的路径;<br>2.拷贝OSPP.VBS和SLERROR.XML至C盘根目录;<br>3.管理员身份运行kMS.bat,即可激活。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-congestion-control" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/12/congestion-control/" class="article-date">
+  	<time datetime="2015-08-11T16:13:41.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/congestion-control/">congestion control</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="TCP拥塞控制">TCP拥塞控制</h1><h2 id="什么是拥塞">什么是拥塞</h2><p>对网络的某一资源的需求超过资源的可用范围，网络性能变坏,这就是拥塞。</p>
+<h2 id="区分拥塞控制和流量控制">区分拥塞控制和流量控制</h2><ul>
+<li>拥塞控制:全局性的过程,防止过多的<strong>发送方</strong>数据注入网络中,避免路由器和链路不发生过载;</li>
+<li>流量控制:点对点的通信量控制。</li>
+</ul>
+<h3 id="拥塞控制对象">拥塞控制对象</h3><p>拥塞的原因即负载过大,因此拥塞控制的对象就是发送者的流量(源头),TCP的滑动窗口协议,窗口大小取决于接收窗口和拥塞控制窗口。<em>区分:发送窗口 &lt;= 拥塞窗口</em><br><strong>发送窗口=min(rwnd,cwnd)</strong></p>
+<h3 id="拥塞控制方法">拥塞控制方法</h3><p>发送方维护一个拥塞窗口<strong>cwnd(congestion window)</strong>的状态变量。拥塞窗口取决于网络的拥塞情况,并且动态变化。</p>
+<ul>
+<li><p>慢启动<br>思路:一开始不发送大量的数据,先探测网路的拥塞程度,因此从小到大增加拥塞窗口。假定每个TCP报文都按照MSS最大报文长度来发送。<br>Start          ——&gt;    cwnd=1;<br>after 1 RTT    ——&gt;    cwnd=2;<br>after 2 RTT    ——&gt;    cwnd=4;<br>after 3 RTT    ——&gt;    cwnd=8;<br>…<br>慢启动实质是起点低,但是增长速度很快(指数级)。RTT*log2W时间即可占满W带宽(假设允许无线增长下去,当然不允许这样下去)。</p>
+</li>
+<li><p>慢启动门限(ssthresh)<br>即:当cwnd超过该门限,慢启动过程结束,进入<strong>拥塞避免</strong>阶段。</p>
+</li>
+<li><p>拥塞避免阶段做法<br>化指数增长为加法增长,此时每收到一次确认:<strong>cwnd=cwnd+1</strong>。慢慢的将吞吐量调整到最大值。</p>
+</li>
+<li><p>拥塞检测<br>TCP认为网络拥塞的主体是拥塞丢包,即每个TCP报文都有一个定时器(RTO:重传定时器),当RTO超时还没有得到ACK,TCP就对该报文进行重传,而且TCP即认为是网络出现拥塞了:<br>++ 把ssthresh降低为cwnd的一半;<br>++ 把cwnd设置为1;<br>++ 重新进入慢启动过程。</p>
+</li>
+</ul>
+<p><img src="http://cdn.sinacloud.net/tcp-congesstion/tcp%20congestion.png?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439316191&amp;ssig=qgEN6GLS9r" alt="cwrd变化"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Baidu-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/Baidu-interview/" class="article-date">
+  	<time datetime="2015-08-11T13:04:17.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/Baidu-interview/">Baidu interview (BFE团队)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can contact me with email [email:yizhenwu@mail.ustc.edu.cn]</p>
+<h2 id="Start_at_17:00pm,_2015-8-10">Start at 17:00pm, 2015.8.10</h2><h3 id="问题回忆罗列">问题回忆罗列</h3><p>First.自我介绍?</p>
+<p>Q1:开始问我的项目，问我最想分享的一个项目是?<br>A1:说了我最近一年都在做的虚拟机迁移的项目,在项目中着重描述了我解决问题的出发点,随后陈述了两个基本问题，最后给出我的方案。</p>
+<p>Q2:SDN网路和IP网络最大的不同是?<br>A2:关于这个的不同:我觉得主要是SDN网络核心思想就是将控制与数据分离,采用集中控制的方式,而IP网络中路由是由路由器分布式路由。</p>
+<p>Q3:C++和C有什么不同?<br>A3:C++相对C来说，更加具有封装性，支持重载、继承和多态等特性。</p>
+<p>Q4:在平时写C++程序中,用到了重载和多态吗?觉得重载有什么问题?<br>A4:重载使用多了，会导致程序看起来比较混乱(不怎么会答)。</p>
+<p>Q5:问一个算法:给出两个int数组,两个int数组元素都不存在重复,如何找出两个数组相同的元素,并且给出算法的复杂度分析。<br>A5.1:首先枚举是可以的，但是复杂度是O(n^2);<br>A5.2:设计一个位存储,将两个数组的元素读入数组。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">a</span><span class="attr_selector">[]</span>: <span class="tag">a</span><span class="attr_selector">[1]</span>,<span class="tag">a</span><span class="attr_selector">[2]</span>,<span class="tag">a</span><span class="attr_selector">[3]</span>,...,<span class="tag">a</span><span class="attr_selector">[m]</span>;</span><br><span class="line"><span class="rule"><span class="attribute">binA</span>:<span class="value"> 根据a[x]数值binA中对应数字的bit置<span class="number">1</span>没有则置<span class="number">0</span></span></span>;</span><br><span class="line"><span class="tag">b</span><span class="attr_selector">[]</span>:同样读入<span class="tag">binB</span>中;</span><br><span class="line">讲<span class="tag">binA</span>和<span class="tag">binB</span>位操作,算出相同位数。</span><br></pre></td></tr></table></figure></p>
+<p>Q6:这样做的缺点是?有没有别的方法?<br>A6.1:当一个数很大?将会占用很长的bit位。<br>A6.2:可以用查找的方式,我说的做法是,取较长数组A对元素进行hash之后,用另一数组B查找该元素是否在,hash查找的复杂度为O(1),因此查找效率很好。</p>
+<p>Q7:hash表实现的几种方式你知道吗?<br>A7:面试我的时候，我当时不知道,<em>得补</em>!!!</p>
+<p>Q7:你平时编程都用到了哪些数据结构?<br>A7:我用过图的数据结构,链表和数组等。这个他没有接着去问了~</p>
+<p>Q8:考虑到我所关注的大多是网络层,现在以我对网络层的理解,怎么看待http协议的优缺点?<br>A8:首先我觉得http协议是client发起请求-&gt;server,server响应,我觉得这是一种单工的操作方式,也就是服务器端不能主动推送消息至client,而网络层的交互可以看成是“双工”。</p>
+<p>Q8.1:这个是一个特点,还有别的吗?<br>A8.1:我不知道了。。。<em>得补</em>!!!</p>
+<p>Q9:再问一个C和C++内存管理,我是怎么理解的?<br>A9:首先C++允许使用C中malloc和free函数,同时C++有增加内存管理的操作符new和delete,是的可以为对象的内存管理。。。</p>
+<p>Q10:在多线程场景下,多线程操作一块内存,那怎么样控制new和delete的匹配?<br>A10:我思考了下,加一个flag标识。当这块内存被new出来之后,就置flag=1,在释放内存的时候,使用这个内存的线程检查该flag再释放内存。</p>
+<p>Q11:TCP的拥塞控制?<br>A11:通过窗口机制实现拥塞控制,具体的我也没答出来。</p>
+<p>Q12:我怎么看待TCP和UDP?<br>A12:我觉得TCP和UDP本质区别是TCP是有连接的,这种连接实质上是通信双方维护一致的连接状态而看起来是有连接的,而UDP是无连接的。由此点可以引出,TCP连接确保数据包有序,但是确保有序付出的代价是吞吐量总是波动的。相对UDP的尽力传输机制就吞吐量来说优势就不明显了。</p>
+<p>Q13:移动网络中访问一个网站和wifi网络下访问一个网站有何区别?<br>A13:这个问题我不会。。。</p>
+<p>Q14:IP数据包的包头都有哪些字段?<br>A14:我说我知道有MTU,TTL,说了MTU,TTL的功能…问的太细致了!!!</p>
+<p>the end<br>Q:问我有什么问题想问的?<br>A:我说BFS业务部在北京吗?(是废话…);聊了下,我说我喜欢北京。。。<br>A:和谷歌的BFS,请问百度BFS所做的工作是啥?<br>Q:所做的工作是负责百度全网流量的控制和管理,为用户提供更好更快的访问服务,拥塞控制等…<br>最后我提到CDN,他为我解释了CDN是他们部门的一项,他们还有自己的做法,等等。<br>后来我说,这项工作太具有挑战了,可以和百度全网流量打交道,责任巨大…<br>——————————<br>1h8min的电话面试(一面),不知道有没有机会二面,深知细节很重要。。。</p>
+<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/My-first-blog/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/My-first-blog/">My first blog</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
 
       
     </div>
