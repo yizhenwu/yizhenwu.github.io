@@ -3,24 +3,54 @@
 <head>
   <meta charset="utf-8">
   
-  <title>My first blog | Dobest</title>
+  <title>switch语句与break分析 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
+  <meta name="description" content="例子//程序中没有break，分析程序输出。
+for(int i=0;i&amp;lt;3;i++)
+{
+    switch(i)
+    {
+        case 0:printf(&quot;%d&quot;,i);
+        case 2:printf(&quot;%d&quot;,i);
+        default:printf(&quot;%d&quot;,i);
+    }
+}
+分析
+i=0: 
+case 0:printf(“%d”,i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My first blog">
-<meta property="og:url" content="http://yoursite.com/2015/08/11/My-first-blog/index.html">
+<meta property="og:title" content="switch语句与break分析">
+<meta property="og:url" content="http://yoursite.com/2015/08/11/switch-break/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
-<meta property="og:updated_time" content="2015-08-11T13:05:46.000Z">
+<meta property="og:description" content="例子//程序中没有break，分析程序输出。
+for(int i=0;i&amp;lt;3;i++)
+{
+    switch(i)
+    {
+        case 0:printf(&quot;%d&quot;,i);
+        case 2:printf(&quot;%d&quot;,i);
+        default:printf(&quot;%d&quot;,i);
+    }
+}
+分析
+i=0: 
+case 0:printf(“%d”,i">
+<meta property="og:updated_time" content="2015-08-16T15:35:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My first blog">
-<meta name="twitter:description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
+<meta name="twitter:title" content="switch语句与break分析">
+<meta name="twitter:description" content="例子//程序中没有break，分析程序输出。
+for(int i=0;i&amp;lt;3;i++)
+{
+    switch(i)
+    {
+        case 0:printf(&quot;%d&quot;,i);
+        case 2:printf(&quot;%d&quot;,i);
+        default:printf(&quot;%d&quot;,i);
+    }
+}
+分析
+i=0: 
+case 0:printf(“%d”,i">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -187,10 +217,10 @@ More info: Writi">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-switch-break" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/11/My-first-blog/" class="article-date">
+      <a href="/2015/08/11/switch-break/" class="article-date">
   	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
 </a>
     </div>
@@ -204,7 +234,7 @@ More info: Writi">
         
   
     <h1 class="article-title" itemprop="name">
-      My first blog
+      switch语句与break分析
     </h1>
   
 
@@ -220,9 +250,34 @@ More info: Writi">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+        <h1 id="例子">例子</h1><pre><code><span class="comment">//程序中没有break，分析程序输出。</span>
+<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)
+{
+    <span class="keyword">switch</span>(i)
+    {
+        <span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+        <span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+        <span class="keyword">default</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+    }
+}
+</code></pre><h1 id="分析">分析</h1><ol>
+<li>i=0: <ul>
+<li>case 0:printf(“%d”,i);   0</li>
+<li>case 2:printf(“%d”,i);   0</li>
+<li>default:printf(“%d”,i);  0</li>
+</ul>
+</li>
+<li>i=1:<ul>
+<li>default:printf(“%d”,i);  1    </li>
+</ul>
+</li>
+<li>i=2:<ul>
+<li>case 2:printf(“%d”,i);   2</li>
+<li>default:printf(“%d”,i);  2</li>
+</ul>
+</li>
+</ol>
+<h1 id="结论">结论</h1><p>对于满足条件已经进入分支，case语句没有break，分支后面的语句都是会被执行，包括default。</p>
 
       
     </div>
@@ -232,18 +287,18 @@ More info: Writi">
     
 <nav id="article-nav">
   
-    <a href="/2015/08/11/modify-const/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/11/fork/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          const变量通过指针的修改问题
+          关于fork()函数大总结
         
       </div>
     </a>
   
   
-    <a href="/2015/08/11/fork/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于fork()函数大总结</div>
+    <a href="/2015/08/11/c++memory management/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++内存管理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -272,7 +327,7 @@ More info: Writi">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="My-first-blog" data-title="My first blog" data-url="http://yoursite.com/2015/08/11/My-first-blog/"></div>
+	<div class="ds-thread" data-thread-key="switch-break" data-title="switch语句与break分析" data-url="http://yoursite.com/2015/08/11/switch-break/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

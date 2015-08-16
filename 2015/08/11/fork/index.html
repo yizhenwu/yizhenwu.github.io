@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于fork()函数大总结 | Dobest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于fork()函数大总结基本概念进程：包括代码、数据和分配给进程的资源（进程是在数据集合上一次的运行）。
+fork()：通过系统调用的方式，创建一个与原来(父)进程一模一样的进程，也就是两个进程可以完成同样的处理，但是初始参数不同，进程的处理也就会不同。
+系统调用fork()函数后所进行的操作：
+
+系统首先给新的进程分配资源（如存储数据和代码的空间）。
+把原来(父)进程的值复制到新进程中，cop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于fork()函数大总结">
+<meta property="og:url" content="http://yoursite.com/2015/08/11/fork/index.html">
+<meta property="og:site_name" content="Dobest">
+<meta property="og:description" content="关于fork()函数大总结基本概念进程：包括代码、数据和分配给进程的资源（进程是在数据集合上一次的运行）。
+fork()：通过系统调用的方式，创建一个与原来(父)进程一模一样的进程，也就是两个进程可以完成同样的处理，但是初始参数不同，进程的处理也就会不同。
+系统调用fork()函数后所进行的操作：
+
+系统首先给新的进程分配资源（如存储数据和代码的空间）。
+把原来(父)进程的值复制到新进程中，cop">
+<meta property="og:image" content="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121121573496.gif">
+<meta property="og:image" content="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121122414385.gif">
+<meta property="og:updated_time" content="2015-08-16T15:36:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于fork()函数大总结">
+<meta name="twitter:description" content="关于fork()函数大总结基本概念进程：包括代码、数据和分配给进程的资源（进程是在数据集合上一次的运行）。
+fork()：通过系统调用的方式，创建一个与原来(父)进程一模一样的进程，也就是两个进程可以完成同样的处理，但是初始参数不同，进程的处理也就会不同。
+系统调用fork()函数后所进行的操作：
+
+系统首先给新的进程分配资源（如存储数据和代码的空间）。
+把原来(父)进程的值复制到新进程中，cop">
+  
+    <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://cdn.duitang.com/uploads/item/201507/28/20150728160222_aTuiS.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Yizhen Wu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">it is my true life.</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.givesmehope.com/">GivesMeHope</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">在路上。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Yizhen Wu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://cdn.duitang.com/uploads/item/201507/28/20150728160222_aTuiS.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Yizhen Wu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">it is my true life.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-fork" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/fork/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于fork()函数大总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于fork()函数大总结">关于fork()函数大总结</h1><h1 id="基本概念">基本概念</h1><p>进程：包括代码、数据和分配给进程的资源（进程是在数据集合上一次的运行）。</p>
+<p>fork()：通过系统调用的方式，创建一个与原来(父)进程一模一样的进程，也就是两个进程可以完成同样的处理，但是初始参数不同，进程的处理也就会不同。</p>
+<p>系统调用fork()函数后所进行的操作：</p>
+<ol>
+<li>系统首先给新的进程分配资源（如存储数据和代码的空间）。</li>
+<li>把原来(父)进程的值复制到新进程中，copy itself，只有少数的值不同。</li>
+<li>两个进程创建后是独立的，在不同的内存地址中，不共用。 </li>
+<li>两个进程的进程号pid不同！</li>
+</ol>
+<ul>
+<li>原(父)进程，fork()返回新创建的子进程的进程pid。</li>
+<li>子进程中，fork()返回0。</li>
+<li>如果出现错误，fork()返回负数： <ul>
+<li><em>进程数达到上限</em>；</li>
+<li>内存不足。</li>
+</ul>
+</li>
+</ul>
+<h1 id="举例说明1">举例说明1</h1><pre><code><span class="comment">//代码说下</span>
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(　）{ 
+     <span class="keyword">int</span> i; 
+     <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt;<span class="number">5</span>;i++)</span></span>{ 
+        <span class="keyword">int</span> pid = fork(); 
+        <span class="keyword">if</span>(pid == <span class="number">0</span>){ 
+            <span class="comment">//do something </span>
+        } <span class="keyword">else</span> { 
+        <span class="comment">//do something </span>
+        } 
+        }
+    <span class="comment">// do somthing,sleep</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code></pre><p>注意：</p>
+<ol>
+<li>在执行<code>int pid = fork()</code>之前只有一个进程在执行代码。</li>
+<li>但在这句之后将会变成两个进程，这两个进程一模一样，均执行下一句<code>if(pid == 0)...</code>后面的代码。</li>
+</ol>
+<blockquote>
+<p> <a href="http://blog.csdn.net/jason314/article/details/5640969" target="_blank" rel="external">参考：linux中fork（）函数详解（原创！！实例讲解）</a> </p>
+</blockquote>
+<h1 id="举例说明2">举例说明2</h1><pre><code><span class="keyword">int</span> main()
+{
+    pid_t pid1;
+    pid_t pid2;
+
+    pid1 = <span class="keyword">fork</span>();
+    pid2 = <span class="keyword">fork</span>();
+    <span class="keyword">printf</span>(<span class="string">"pid1:<span class="variable">%d</span>, pid2:<span class="variable">%d</span>\n"</span>, pid1, pid2);
+}
+</code></pre><p>要求：这个程序执行到这个程序的所有进程结束这段时间，没有其他新进程执行。</p>
+<ol>
+<li>一共运行了几个进程？</li>
+<li>如果其中一个进程输出“pid：1001，pid2：1002”，那么其他进程输出结果(不考虑执行顺序)？</li>
+</ol>
+<h2 id="预备知识">预备知识</h2><ol>
+<li>在Linux下，进程有一个唯一的PID标识进程。PID从1~32768的正整数，其中init进程的pid=1，其他进程都是从2以此编号，<em>用完32768之后，从2重新开始</em>。</li>
+<li>Linux进程查询 <code>ps aux</code> 或者 <code>top</code>命令。Linux的进程采用进程表结构存储正在运行的进程。</li>
+<li>Linux的进程呈树状结构，init是所有进程的父进程，也是第一个进程。</li>
+</ol>
+<h2 id="详细细节">详细细节</h2><p>如图所示fork()进程：<br><img src="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121121573496.gif" alt="fock()进程"></p>
+<ol>
+<li>执行程序，生成进程P，P执行完所有的Part.A的代码。</li>
+<li>当执行到<code>pid=fork();</code>时，P启动一个新的进程Q，Q是P的子进程且和P是一个程序的进程。Q由P直接copy itself生成（拥有其所有变量、计数器等当前值）。</li>
+<li>P进程中，<strong>fork()将Q的PID放回给变量pid</strong>，并继续执行Part.B的代码。</li>
+<li>Q进程中，<strong>将o赋给pid</strong>，并执行Part.B代码。 </li>
+</ol>
+<h2 id="关键细节">关键细节</h2><ol>
+<li>P进程执行了所有的程序，而Q进程只执行了fork()后面的所有程序(Part.B)。</li>
+<li>Q拥有P进程的运行变量及环境等，在这个基础上运行，而不是初始环境。</li>
+<li>P中的fork()启动子进程Q，返回Q的pid。而Q的fork()不启动新的进程，将返回o。</li>
+</ol>
+<h2 id="解题">解题</h2><p>进程树如图：<br><img src="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121122414385.gif" alt="进程树"></p>
+<ol>
+<li>假设初始进程是P0，设其PID=xxx；</li>
+<li>当执行到<code>pid1=fork();</code>时，P0将启动新的子进程P1，题目中P1的PID为1001。</li>
+<li>因此，P0的fork()返回1001给pid1，将继续执行<code>pid2=fork()</code>;此时启动一个新进程P2，题目中P2的PID=1002。</li>
+<li>因此，P0中第二个fork返回1002给pid2，继续执行完后续程序，直到结束。所以程序输出“<code>pid1:1001,pid2:1002</code>”。</li>
+<li>此时分析P2，P2启动时，P0中pid=1001，所以P2复制P0的1001，而作为子进程pid2=o。从P2的第二个fork()后开始执行，结束后输出“<code>pid1:1001,pid2:o</code>”。</li>
+<li>此时分析P1，P1的第一条fork()返回o给pid1，然后执行后面的代码。下一句代码即<code>pid2=fork();</code>此时P1产生新进程P3。</li>
+<li>P1的<code>pid2=fork();</code>返回PID:1003给pid2，所以pid2=1003。P1继续执行后续程序，结束，输出“<code>pid1:o,pid2:1003</code>”。</li>
+<li>P3作为P1的子进程，复制P1中pid1=o，并且第二条fork()返回o给pid2，所以P3最后输出“<code>pid1:o,pid2:o</code>”。</li>
+<li>程序结束。</li>
+</ol>
+<blockquote>
+<p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/12/11/talk-about-fork-in-linux.html" target="_blank" rel="external">参考：从一道面试题谈linux下fork的运行机制</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/11/My-first-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          My first blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/11/switch-break/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">switch语句与break分析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="fork" data-title="关于fork()函数大总结" data-url="http://yoursite.com/2015/08/11/fork/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Yizhen Wu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

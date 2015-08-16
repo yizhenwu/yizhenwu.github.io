@@ -3,24 +3,48 @@
 <head>
   <meta charset="utf-8">
   
-  <title>My first blog | Dobest</title>
+  <title>C++内存管理 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
+  <meta name="description" content="32位/64位系统中不同类型变量对应的字节数
+char: 1字节；
+char*: 4字节(32位)/8字节(64位)；
+short int: 2字节；
+int: 4字节；
+unsigned int: 4字节；
+float: 4字节；
+double: 8字节；
+long: 4字节(32位)/8字节(64位)；
+long long: 8字节；
+usingned long: 4字节(32位)/8字节(6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My first blog">
-<meta property="og:url" content="http://yoursite.com/2015/08/11/My-first-blog/index.html">
+<meta property="og:title" content="C++内存管理">
+<meta property="og:url" content="http://yoursite.com/2015/08/11/c++memory management/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
-<meta property="og:updated_time" content="2015-08-11T13:05:46.000Z">
+<meta property="og:description" content="32位/64位系统中不同类型变量对应的字节数
+char: 1字节；
+char*: 4字节(32位)/8字节(64位)；
+short int: 2字节；
+int: 4字节；
+unsigned int: 4字节；
+float: 4字节；
+double: 8字节；
+long: 4字节(32位)/8字节(64位)；
+long long: 8字节；
+usingned long: 4字节(32位)/8字节(6">
+<meta property="og:updated_time" content="2015-08-16T15:35:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My first blog">
-<meta name="twitter:description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
+<meta name="twitter:title" content="C++内存管理">
+<meta name="twitter:description" content="32位/64位系统中不同类型变量对应的字节数
+char: 1字节；
+char*: 4字节(32位)/8字节(64位)；
+short int: 2字节；
+int: 4字节；
+unsigned int: 4字节；
+float: 4字节；
+double: 8字节；
+long: 4字节(32位)/8字节(64位)；
+long long: 8字节；
+usingned long: 4字节(32位)/8字节(6">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -187,10 +211,10 @@ More info: Writi">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-c++memory management" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/11/My-first-blog/" class="article-date">
+      <a href="/2015/08/11/c++memory management/" class="article-date">
   	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
 </a>
     </div>
@@ -204,7 +228,7 @@ More info: Writi">
         
   
     <h1 class="article-title" itemprop="name">
-      My first blog
+      C++内存管理
     </h1>
   
 
@@ -220,9 +244,29 @@ More info: Writi">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+        <h1 id="32位/64位系统中不同类型变量对应的字节数">32位/64位系统中不同类型变量对应的字节数</h1><ol>
+<li>char: 1字节；<br></li>
+<li>char*: 4字节(32位)/8字节(64位)；<br></li>
+<li>short int: 2字节；<br></li>
+<li>int: 4字节；<br></li>
+<li>unsigned int: 4字节；<br></li>
+<li>float: 4字节；<br></li>
+<li>double: 8字节；<br></li>
+<li>long: 4字节(32位)/8字节(64位)；<br></li>
+<li>long long: 8字节；<br></li>
+<li>usingned long: 4字节(32位)/8字节(64位)；<br></li>
+</ol>
+<h1 id="内存管理">内存管理</h1><h2 id="64位系统中内存管理遵循8字节对齐">64位系统中内存管理遵循8字节对齐</h2><p>原则：按照8字节为单位分配存储空间，如果不足，则自动补齐，本次分配不足以存放下一个变量时，会重新分配空间。</p>
+<pre><code><span class="keyword">struct</span> A{
+   <span class="keyword">unsigned</span> <span class="keyword">int</span> a;<span class="comment">//a占4字节,开辟一个8字节内存P;</span>
+   <span class="keyword">char</span> b[<span class="number">2</span>];<span class="comment">//b[]占1*2=2字节,在a后的连续2字节内存放，</span>
+             <span class="comment">//P还剩2字节;</span>
+   <span class="keyword">double</span> c;<span class="comment">//c占8字节,P不足以存放,因此将剩余的2字节补全</span>
+            <span class="comment">//因此开辟新8个字节存放c</span>
+   <span class="keyword">short</span> d;<span class="comment">//d占2字节，开辟新的8字节内存，存放d。</span>
+           <span class="comment">//将剩余6字节补全.</span>
+}
+</code></pre><p><strong>So：</strong>总共开辟了3个8字节的空间，即24字节空间来存储该结构。</p>
 
       
     </div>
@@ -232,18 +276,18 @@ More info: Writi">
     
 <nav id="article-nav">
   
-    <a href="/2015/08/11/modify-const/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/11/switch-break/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          const变量通过指针的修改问题
+          switch语句与break分析
         
       </div>
     </a>
   
   
-    <a href="/2015/08/11/fork/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于fork()函数大总结</div>
+    <a href="/2015/08/11/address-increament/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">栈的地址生长方式</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -272,7 +316,7 @@ More info: Writi">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="My-first-blog" data-title="My first blog" data-url="http://yoursite.com/2015/08/11/My-first-blog/"></div>
+	<div class="ds-thread" data-thread-key="c++memory management" data-title="C++内存管理" data-url="http://yoursite.com/2015/08/11/c++memory management/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

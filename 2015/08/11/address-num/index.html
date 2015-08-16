@@ -3,24 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>My first blog | Dobest</title>
+  <title>取变量还是取地址 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
+  <meta name="description" content="c++中定义了-&amp;gt;运算符，该运算符是把解引用和成员访问两个操作结合在一起。即it-&amp;gt;men与(*it).men的含义相同。
+因此注意区分：对数组：    struct str_t    {        long long len;        char data[32];
+};
+struct data1_t
+{
+    long long len;
+    char data1[2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My first blog">
-<meta property="og:url" content="http://yoursite.com/2015/08/11/My-first-blog/index.html">
+<meta property="og:title" content="取变量还是取地址">
+<meta property="og:url" content="http://yoursite.com/2015/08/11/address-num/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
-<meta property="og:updated_time" content="2015-08-11T13:05:46.000Z">
+<meta property="og:description" content="c++中定义了-&amp;gt;运算符，该运算符是把解引用和成员访问两个操作结合在一起。即it-&amp;gt;men与(*it).men的含义相同。
+因此注意区分：对数组：    struct str_t    {        long long len;        char data[32];
+};
+struct data1_t
+{
+    long long len;
+    char data1[2">
+<meta property="og:updated_time" content="2015-08-16T15:36:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My first blog">
-<meta name="twitter:description" content="Welcome to Yizhenwu! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]
-Quick StartCreate a new post1&quot;My New blog&quot;
-More info: Writi">
+<meta name="twitter:title" content="取变量还是取地址">
+<meta name="twitter:description" content="c++中定义了-&amp;gt;运算符，该运算符是把解引用和成员访问两个操作结合在一起。即it-&amp;gt;men与(*it).men的含义相同。
+因此注意区分：对数组：    struct str_t    {        long long len;        char data[32];
+};
+struct data1_t
+{
+    long long len;
+    char data1[2">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -187,10 +199,10 @@ More info: Writi">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-address-num" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/11/My-first-blog/" class="article-date">
+      <a href="/2015/08/11/address-num/" class="article-date">
   	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
 </a>
     </div>
@@ -204,7 +216,7 @@ More info: Writi">
         
   
     <h1 class="article-title" itemprop="name">
-      My first blog
+      取变量还是取地址
     </h1>
   
 
@@ -220,10 +232,25 @@ More info: Writi">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+        <p>c++中定义了<code>-&gt;</code>运算符，该运算符是把<strong>解引用</strong>和<strong>成员访问</strong>两个操作结合在一起。即<code>it-&gt;men</code>与<code>(*it).men</code>的含义相同。</p>
+<p>因此注意区分：<br>对数组：<br>    struct str_t<br>    {<br>        long long len;<br>        char data[32];</p>
+<pre><code>};
+<span class="keyword">struct</span> <span class="keyword">data1_t</span>
+{
+    <span class="keyword">long</span> <span class="keyword">long</span> len;
+    <span class="keyword">char</span> data1[<span class="number">2</span>]
+    <span class="keyword">int</span> *data2[<span class="number">2</span>];
+};
 
+<span class="keyword">struct</span> <span class="keyword">str_t</span> str;
+<span class="built_in">memset</span>((<span class="keyword">void</span>*)&amp;str,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>));
+str.len=<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>)-<span class="keyword">sizeof</span>(<span class="keyword">int</span>);
+
+<span class="keyword">struct</span> <span class="keyword">data_t</span> *pData=(<span class="keyword">struct</span> <span class="keyword">data1_t</span>*)&amp;str;
+(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是数值，不是首地址**！！！</span>
+
+(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是地址**！！！</span>
+</code></pre>
       
     </div>
     
@@ -232,18 +259,18 @@ More info: Writi">
     
 <nav id="article-nav">
   
-    <a href="/2015/08/11/modify-const/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/11/Baidu-interview/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          const变量通过指针的修改问题
+          Baidu interview (BFE团队)
         
       </div>
     </a>
   
   
-    <a href="/2015/08/11/fork/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于fork()函数大总结</div>
+    <a href="/2015/08/11/modify-const/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">const变量通过指针的修改问题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -272,7 +299,7 @@ More info: Writi">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="My-first-blog" data-title="My first blog" data-url="http://yoursite.com/2015/08/11/My-first-blog/"></div>
+	<div class="ds-thread" data-thread-key="address-num" data-title="取变量还是取地址" data-url="http://yoursite.com/2015/08/11/address-num/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

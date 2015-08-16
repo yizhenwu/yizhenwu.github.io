@@ -252,6 +252,143 @@
 
 
   
+    <article id="post-address-num" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/address-num/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/address-num/">取变量还是取地址</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>c++中定义了<code>-&gt;</code>运算符，该运算符是把<strong>解引用</strong>和<strong>成员访问</strong>两个操作结合在一起。即<code>it-&gt;men</code>与<code>(*it).men</code>的含义相同。</p>
+<p>因此注意区分：<br>对数组：<br>    struct str_t<br>    {<br>        long long len;<br>        char data[32];</p>
+<pre><code>};
+<span class="keyword">struct</span> <span class="keyword">data1_t</span>
+{
+    <span class="keyword">long</span> <span class="keyword">long</span> len;
+    <span class="keyword">char</span> data1[<span class="number">2</span>]
+    <span class="keyword">int</span> *data2[<span class="number">2</span>];
+};
+
+<span class="keyword">struct</span> <span class="keyword">str_t</span> str;
+<span class="built_in">memset</span>((<span class="keyword">void</span>*)&amp;str,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>));
+str.len=<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>)-<span class="keyword">sizeof</span>(<span class="keyword">int</span>);
+
+<span class="keyword">struct</span> <span class="keyword">data_t</span> *pData=(<span class="keyword">struct</span> <span class="keyword">data1_t</span>*)&amp;str;
+(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是数值，不是首地址**！！！</span>
+
+(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是地址**！！！</span>
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-modify-const" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/modify-const/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/modify-const/">const变量通过指针的修改问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="const变量通过指针的修改问题">const变量通过指针的修改问题</h1><ol>
+<li>const变量是不允许直接被修改的！<br> <code>const int i = 0; i = 10;</code> </li>
+<li>但是const变量却可以在特定条件下通过<strong>指针</strong>修改！如:<br> void main(){<pre><code><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;
+<span class="keyword">int</span> *j = (<span class="keyword">int</span> *)&amp;i;
+*j = <span class="number">1</span>;
+<span class="built_in">printf</span>(<span class="string">"%d,%d"</span>, i, *j); <span class="comment">//i=0,j=1</span>
+system(<span class="string">"pause"</span>);
+</code></pre> }</li>
+<li>对2结果i=0说明：因为i是const变量，因此在编译器在i的预处理的时候就进行了替换，编译器只对const变量的值读取一次，所以输出0。</li>
+<li>对2结果j=1说明：因为i地址空间实际存储的值发生了改变。（之所以能改变是因为地址在堆里面）</li>
+<li>新例子：<br> const int i = 0;<br> void main(){<pre><code><span class="keyword">int</span> *j = (<span class="keyword">int</span> *)&amp;i;
+*j = <span class="number">1</span>;
+<span class="keyword">printf</span>(<span class="string">"<span class="variable">%d</span>,<span class="variable">%d</span>"</span>, i, *j); 
+<span class="keyword">system</span>(<span class="string">"pause"</span>);
+</code></pre> }//编译错误<br> //因为i在全局区，因此只具有只读属性。<h2 id="总结">总结</h2></li>
+<li>const全局变量存储在全局存储空间，其值只有可读属性，不能修改；</li>
+<li>const局部变量存储在堆栈中，可通过指针修改其值；</li>
+<li>const变量在预处理是处理，编译器只对其值读取一次。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-My-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -281,6 +418,373 @@
         <p>Welcome to <a href="http://yizhenwu.github.io/" target="_blank" rel="external">Yizhenwu</a>! This is my first testing blog. If you get any problems when reading my blog, you can find the answer in [QQ:1150569259]</p>
 <h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"My New blog"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="http://yizhenwu.github.io" target="_blank" rel="external">Writing</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-fork" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/fork/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/fork/">关于fork()函数大总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于fork()函数大总结">关于fork()函数大总结</h1><h1 id="基本概念">基本概念</h1><p>进程：包括代码、数据和分配给进程的资源（进程是在数据集合上一次的运行）。</p>
+<p>fork()：通过系统调用的方式，创建一个与原来(父)进程一模一样的进程，也就是两个进程可以完成同样的处理，但是初始参数不同，进程的处理也就会不同。</p>
+<p>系统调用fork()函数后所进行的操作：</p>
+<ol>
+<li>系统首先给新的进程分配资源（如存储数据和代码的空间）。</li>
+<li>把原来(父)进程的值复制到新进程中，copy itself，只有少数的值不同。</li>
+<li>两个进程创建后是独立的，在不同的内存地址中，不共用。 </li>
+<li>两个进程的进程号pid不同！</li>
+</ol>
+<ul>
+<li>原(父)进程，fork()返回新创建的子进程的进程pid。</li>
+<li>子进程中，fork()返回0。</li>
+<li>如果出现错误，fork()返回负数： <ul>
+<li><em>进程数达到上限</em>；</li>
+<li>内存不足。</li>
+</ul>
+</li>
+</ul>
+<h1 id="举例说明1">举例说明1</h1><pre><code><span class="comment">//代码说下</span>
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(　）{ 
+     <span class="keyword">int</span> i; 
+     <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt;<span class="number">5</span>;i++)</span></span>{ 
+        <span class="keyword">int</span> pid = fork(); 
+        <span class="keyword">if</span>(pid == <span class="number">0</span>){ 
+            <span class="comment">//do something </span>
+        } <span class="keyword">else</span> { 
+        <span class="comment">//do something </span>
+        } 
+        }
+    <span class="comment">// do somthing,sleep</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code></pre><p>注意：</p>
+<ol>
+<li>在执行<code>int pid = fork()</code>之前只有一个进程在执行代码。</li>
+<li>但在这句之后将会变成两个进程，这两个进程一模一样，均执行下一句<code>if(pid == 0)...</code>后面的代码。</li>
+</ol>
+<blockquote>
+<p> <a href="http://blog.csdn.net/jason314/article/details/5640969" target="_blank" rel="external">参考：linux中fork（）函数详解（原创！！实例讲解）</a> </p>
+</blockquote>
+<h1 id="举例说明2">举例说明2</h1><pre><code><span class="keyword">int</span> main()
+{
+    pid_t pid1;
+    pid_t pid2;
+
+    pid1 = <span class="keyword">fork</span>();
+    pid2 = <span class="keyword">fork</span>();
+    <span class="keyword">printf</span>(<span class="string">"pid1:<span class="variable">%d</span>, pid2:<span class="variable">%d</span>\n"</span>, pid1, pid2);
+}
+</code></pre><p>要求：这个程序执行到这个程序的所有进程结束这段时间，没有其他新进程执行。</p>
+<ol>
+<li>一共运行了几个进程？</li>
+<li>如果其中一个进程输出“pid：1001，pid2：1002”，那么其他进程输出结果(不考虑执行顺序)？</li>
+</ol>
+<h2 id="预备知识">预备知识</h2><ol>
+<li>在Linux下，进程有一个唯一的PID标识进程。PID从1~32768的正整数，其中init进程的pid=1，其他进程都是从2以此编号，<em>用完32768之后，从2重新开始</em>。</li>
+<li>Linux进程查询 <code>ps aux</code> 或者 <code>top</code>命令。Linux的进程采用进程表结构存储正在运行的进程。</li>
+<li>Linux的进程呈树状结构，init是所有进程的父进程，也是第一个进程。</li>
+</ol>
+<h2 id="详细细节">详细细节</h2><p>如图所示fork()进程：<br><img src="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121121573496.gif" alt="fock()进程"></p>
+<ol>
+<li>执行程序，生成进程P，P执行完所有的Part.A的代码。</li>
+<li>当执行到<code>pid=fork();</code>时，P启动一个新的进程Q，Q是P的子进程且和P是一个程序的进程。Q由P直接copy itself生成（拥有其所有变量、计数器等当前值）。</li>
+<li>P进程中，<strong>fork()将Q的PID放回给变量pid</strong>，并继续执行Part.B的代码。</li>
+<li>Q进程中，<strong>将o赋给pid</strong>，并执行Part.B代码。 </li>
+</ol>
+<h2 id="关键细节">关键细节</h2><ol>
+<li>P进程执行了所有的程序，而Q进程只执行了fork()后面的所有程序(Part.B)。</li>
+<li>Q拥有P进程的运行变量及环境等，在这个基础上运行，而不是初始环境。</li>
+<li>P中的fork()启动子进程Q，返回Q的pid。而Q的fork()不启动新的进程，将返回o。</li>
+</ol>
+<h2 id="解题">解题</h2><p>进程树如图：<br><img src="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121122414385.gif" alt="进程树"></p>
+<ol>
+<li>假设初始进程是P0，设其PID=xxx；</li>
+<li>当执行到<code>pid1=fork();</code>时，P0将启动新的子进程P1，题目中P1的PID为1001。</li>
+<li>因此，P0的fork()返回1001给pid1，将继续执行<code>pid2=fork()</code>;此时启动一个新进程P2，题目中P2的PID=1002。</li>
+<li>因此，P0中第二个fork返回1002给pid2，继续执行完后续程序，直到结束。所以程序输出“<code>pid1:1001,pid2:1002</code>”。</li>
+<li>此时分析P2，P2启动时，P0中pid=1001，所以P2复制P0的1001，而作为子进程pid2=o。从P2的第二个fork()后开始执行，结束后输出“<code>pid1:1001,pid2:o</code>”。</li>
+<li>此时分析P1，P1的第一条fork()返回o给pid1，然后执行后面的代码。下一句代码即<code>pid2=fork();</code>此时P1产生新进程P3。</li>
+<li>P1的<code>pid2=fork();</code>返回PID:1003给pid2，所以pid2=1003。P1继续执行后续程序，结束，输出“<code>pid1:o,pid2:1003</code>”。</li>
+<li>P3作为P1的子进程，复制P1中pid1=o，并且第二条fork()返回o给pid2，所以P3最后输出“<code>pid1:o,pid2:o</code>”。</li>
+<li>程序结束。</li>
+</ol>
+<blockquote>
+<p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/12/11/talk-about-fork-in-linux.html" target="_blank" rel="external">参考：从一道面试题谈linux下fork的运行机制</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-switch-break" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/switch-break/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/switch-break/">switch语句与break分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="例子">例子</h1><pre><code><span class="comment">//程序中没有break，分析程序输出。</span>
+<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)
+{
+    <span class="keyword">switch</span>(i)
+    {
+        <span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+        <span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+        <span class="keyword">default</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+    }
+}
+</code></pre><h1 id="分析">分析</h1><ol>
+<li>i=0: <ul>
+<li>case 0:printf(“%d”,i);   0</li>
+<li>case 2:printf(“%d”,i);   0</li>
+<li>default:printf(“%d”,i);  0</li>
+</ul>
+</li>
+<li>i=1:<ul>
+<li>default:printf(“%d”,i);  1    </li>
+</ul>
+</li>
+<li>i=2:<ul>
+<li>case 2:printf(“%d”,i);   2</li>
+<li>default:printf(“%d”,i);  2</li>
+</ul>
+</li>
+</ol>
+<h1 id="结论">结论</h1><p>对于满足条件已经进入分支，case语句没有break，分支后面的语句都是会被执行，包括default。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-c++memory management" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/c++memory management/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/c++memory management/">C++内存管理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="32位/64位系统中不同类型变量对应的字节数">32位/64位系统中不同类型变量对应的字节数</h1><ol>
+<li>char: 1字节；<br></li>
+<li>char*: 4字节(32位)/8字节(64位)；<br></li>
+<li>short int: 2字节；<br></li>
+<li>int: 4字节；<br></li>
+<li>unsigned int: 4字节；<br></li>
+<li>float: 4字节；<br></li>
+<li>double: 8字节；<br></li>
+<li>long: 4字节(32位)/8字节(64位)；<br></li>
+<li>long long: 8字节；<br></li>
+<li>usingned long: 4字节(32位)/8字节(64位)；<br></li>
+</ol>
+<h1 id="内存管理">内存管理</h1><h2 id="64位系统中内存管理遵循8字节对齐">64位系统中内存管理遵循8字节对齐</h2><p>原则：按照8字节为单位分配存储空间，如果不足，则自动补齐，本次分配不足以存放下一个变量时，会重新分配空间。</p>
+<pre><code><span class="keyword">struct</span> A{
+   <span class="keyword">unsigned</span> <span class="keyword">int</span> a;<span class="comment">//a占4字节,开辟一个8字节内存P;</span>
+   <span class="keyword">char</span> b[<span class="number">2</span>];<span class="comment">//b[]占1*2=2字节,在a后的连续2字节内存放，</span>
+             <span class="comment">//P还剩2字节;</span>
+   <span class="keyword">double</span> c;<span class="comment">//c占8字节,P不足以存放,因此将剩余的2字节补全</span>
+            <span class="comment">//因此开辟新8个字节存放c</span>
+   <span class="keyword">short</span> d;<span class="comment">//d占2字节，开辟新的8字节内存，存放d。</span>
+           <span class="comment">//将剩余6字节补全.</span>
+}
+</code></pre><p><strong>So：</strong>总共开辟了3个8字节的空间，即24字节空间来存储该结构。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-address-increament" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/11/address-increament/" class="article-date">
+  	<time datetime="2015-08-11T13:04:03.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/address-increament/">栈的地址生长方式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="栈的地址生长方式">栈的地址生长方式</h1><pre><code><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> src[<span class="number">16</span>])</span>
+</span>{
+    <span class="keyword">int</span> val1=<span class="number">0</span>;
+    <span class="keyword">int</span> dst[<span class="number">16</span>]={<span class="number">0</span>};
+    <span class="keyword">int</span> val2=<span class="number">0</span>;
+    <span class="keyword">const</span> <span class="keyword">int</span> *psrc=src;
+    <span class="comment">//问题1：如下代码行输出什么？</span>
+    <span class="built_in">fprintf</span>(<span class="built_in">stdout</span>,<span class="string">"size of src=%lu\n"</span>,<span class="keyword">sizeof</span>(src));
+    <span class="comment">//问题2：如下代码有什么副作用？</span>
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">16</span>;i++)<span class="comment">//越dst[16]界</span>
+    {
+        dst[i]=*psrc+i;
+        psrc++;
+    }
+        <span class="keyword">return</span> <span class="number">0</span>;
+ }
+</code></pre><hr>
+<p>常说：</p>
+<ol>
+<li>栈和堆的区别中，有一点是，栈的地址从高地址到低地址生长；</li>
+</ol>
+<p>因此在栈中：</p>
+<pre><code><span class="tag">val1------</span>高地址
+     <span class="tag">bigger</span> <span class="tag">than</span>
+<span class="tag">dst</span><span class="attr_selector">[]</span><span class="tag">-----</span>中地址
+    且: &amp;<span class="tag">dst</span><span class="attr_selector">[1]</span> &lt; &amp;<span class="tag">dst</span><span class="attr_selector">[2]</span> &lt;... &lt; &amp;<span class="tag">dst</span><span class="attr_selector">[15]</span>    
+     <span class="tag">bigger</span> <span class="tag">than</span>
+<span class="tag">val-------</span>低地址
+</code></pre><hr>
+<p>因此：当dst数组溢出的时候，将会是向<strong>高地址</strong>溢出，因此<strong>val1</strong>将会被覆盖。</p>
 
       
     </div>
