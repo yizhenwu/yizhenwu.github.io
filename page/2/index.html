@@ -210,19 +210,25 @@
       
         <h1 id="const变量通过指针的修改问题">const变量通过指针的修改问题</h1><ol>
 <li>const变量是不允许直接被修改的！<br> <code>const int i = 0; i = 10;</code> </li>
-<li>但是const变量却可以在特定条件下通过<strong>指针</strong>修改！如:<br> void main(){<pre><code><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;
-<span class="keyword">int</span> *j = (<span class="keyword">int</span> *)&amp;i;
-*j = <span class="number">1</span>;
-<span class="built_in">printf</span>(<span class="string">"%d,%d"</span>, i, *j); <span class="comment">//i=0,j=1</span>
-system(<span class="string">"pause"</span>);
-</code></pre> }</li>
+<li>但是const变量却可以在特定条件下通过<strong>指针</strong>修改！如:<pre><code><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>{
+    <span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;
+    <span class="keyword">int</span> *j = (<span class="keyword">int</span> *)&amp;i;
+    *j = <span class="number">1</span>;
+    <span class="built_in">printf</span>(<span class="string">"%d,%d"</span>, i, *j); <span class="comment">//i=0,j=1</span>
+    system(<span class="string">"pause"</span>);
+}
+</code></pre></li>
 <li>对2结果i=0说明：因为i是const变量，因此在编译器在i的预处理的时候就进行了替换，编译器只对const变量的值读取一次，所以输出0。</li>
 <li>对2结果j=1说明：因为i地址空间实际存储的值发生了改变。（之所以能改变是因为地址在堆里面）</li>
-<li>新例子：<br> const int i = 0;<br> void main(){<pre><code><span class="keyword">int</span> *j = (<span class="keyword">int</span> *)&amp;i;
-*j = <span class="number">1</span>;
-<span class="keyword">printf</span>(<span class="string">"<span class="variable">%d</span>,<span class="variable">%d</span>"</span>, i, *j); 
-<span class="keyword">system</span>(<span class="string">"pause"</span>);
-</code></pre> }//编译错误<br> //因为i在全局区，因此只具有只读属性。<h2 id="总结">总结</h2></li>
+<li>新例子：<pre><code><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;
+<span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>{
+    <span class="keyword">int</span> *j = (<span class="keyword">int</span> *)&amp;i;
+    *j = <span class="number">1</span>;
+    <span class="built_in">printf</span>(<span class="string">"%d,%d"</span>, i, *j); 
+    system(<span class="string">"pause"</span>);
+}<span class="comment">//编译错误</span>
+<span class="comment">//因为i在全局区，因此只具有只读属性。</span>
+</code></pre><h2 id="总结">总结</h2></li>
 <li>const全局变量存储在全局存储空间，其值只有可读属性，不能修改；</li>
 <li>const局部变量存储在堆栈中，可通过指针修改其值；</li>
 <li>const变量在预处理是处理，编译器只对其值读取一次。</li>

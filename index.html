@@ -524,7 +524,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>c++中定义了<code>-&gt;</code>运算符，该运算符是把<strong>解引用</strong>和<strong>成员访问</strong>两个操作结合在一起。即<code>it-&gt;men</code>与<code>(*it).men</code>的含义相同。</p>
-<p>因此注意区分：<br>对数组：<br>    struct str_t<br>    {<br>        long long len;<br>        char data[32];</p>
+<p>因此注意区分：<br>对数组：<br>        struct str_t<br>        {<br>            long long len;<br>            char data[32];</p>
 <pre><code>};
 <span class="keyword">struct</span> <span class="keyword">data1_t</span>
 {
@@ -540,7 +540,7 @@ str.len=<span class="keyword">sizeof</span>(<span class="keyword">struct</span> 
 <span class="keyword">struct</span> <span class="keyword">data_t</span> *pData=(<span class="keyword">struct</span> <span class="keyword">data1_t</span>*)&amp;str;
 (<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是数值，不是首地址**！！！</span>
 
-(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是地址**！！！</span>
+(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是地址**</span>
 </code></pre>
       
     </div>
