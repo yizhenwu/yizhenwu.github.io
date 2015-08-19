@@ -5,19 +5,16 @@
   
   <title>深度优先搜索 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="算法要点dfs基本模型12345678910111213void dfs(int step)&amp;#123;	判断边界;	尝试每一种可能 for(int i=0;i&amp;lt;n;i++)	&amp;#123;		if(book[i]==0)		&amp;#123;			book[i]=1;			继续下一步 dfs(step+1);			book[i]=0;	&amp;#125;	返回 return;&amp;#125;
-理解DFS:">
+  <meta name="description" content="算法要点dfs基本模型1234567891011121314void dfs(int step)&amp;#123;	判断边界;	尝试每一种可能 for(int i=0;i&amp;lt;n;i++)	&amp;#123;		if(book[i]==0)		&amp;#123;			book[i]=1;			继续下一步 dfs(step+1);			book[i]=0;		&amp;#125;	返回 return;	&amp;#125;&amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度优先搜索">
 <meta property="og:url" content="http://yoursite.com/2015/08/15/DFS/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="算法要点dfs基本模型12345678910111213void dfs(int step)&amp;#123;	判断边界;	尝试每一种可能 for(int i=0;i&amp;lt;n;i++)	&amp;#123;		if(book[i]==0)		&amp;#123;			book[i]=1;			继续下一步 dfs(step+1);			book[i]=0;	&amp;#125;	返回 return;&amp;#125;
-理解DFS:">
-<meta property="og:updated_time" content="2015-08-19T13:00:32.000Z">
+<meta property="og:description" content="算法要点dfs基本模型1234567891011121314void dfs(int step)&amp;#123;	判断边界;	尝试每一种可能 for(int i=0;i&amp;lt;n;i++)	&amp;#123;		if(book[i]==0)		&amp;#123;			book[i]=1;			继续下一步 dfs(step+1);			book[i]=0;		&amp;#125;	返回 return;	&amp;#125;&amp;#12">
+<meta property="og:updated_time" content="2015-08-19T14:11:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度优先搜索">
-<meta name="twitter:description" content="算法要点dfs基本模型12345678910111213void dfs(int step)&amp;#123;	判断边界;	尝试每一种可能 for(int i=0;i&amp;lt;n;i++)	&amp;#123;		if(book[i]==0)		&amp;#123;			book[i]=1;			继续下一步 dfs(step+1);			book[i]=0;	&amp;#125;	返回 return;&amp;#125;
-理解DFS:">
+<meta name="twitter:description" content="算法要点dfs基本模型1234567891011121314void dfs(int step)&amp;#123;	判断边界;	尝试每一种可能 for(int i=0;i&amp;lt;n;i++)	&amp;#123;		if(book[i]==0)		&amp;#123;			book[i]=1;			继续下一步 dfs(step+1);			book[i]=0;		&amp;#125;	返回 return;	&amp;#125;&amp;#12">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -209,7 +206,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="算法要点">算法要点</h1><figure class="highlight c++"><figcaption><span>dfs基本模型</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	判断边界;</span><br><span class="line">	尝试每一种可能 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(book[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			book[i]=<span class="number">1</span>;</span><br><span class="line">			继续下一步 dfs(step+<span class="number">1</span>);</span><br><span class="line">			book[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	返回 <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="算法要点">算法要点</h1><figure class="highlight c++"><figcaption><span>dfs基本模型</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	判断边界;</span><br><span class="line">	尝试每一种可能 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(book[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			book[i]=<span class="number">1</span>;</span><br><span class="line">			继续下一步 dfs(step+<span class="number">1</span>);</span><br><span class="line">			book[i]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	返回 <span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>理解DFS:</p>
 <ol>
 <li>边界条件是递归跳出的条件,也是程序要完成的功能。</li>
