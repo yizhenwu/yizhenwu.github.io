@@ -3,21 +3,48 @@
 <head>
   <meta charset="utf-8">
   
-  <title>透过指针提供默认参数 | Dobest</title>
+  <title>all-variable | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="程序的编写原则是参数传递比直接在file-scope域适当。
-例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
+  <meta name="description" content="C++中不同变量具有不同的生命周期，具有不同的作用域。
+作用域
+全局作用域；
+局部作用域；
+类作用域；
+文件作用域；
+命名空间作用域
+
+从作用域对变量进行划分
+全局变量(全局作用域): 全局变量在一个源文件中定义，可以作用在多个源文件(前提需要，在不直接包含该全局变量的位置，用extern关键字再次声明)。
+静态局部变量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="透过指针提供默认参数">
-<meta property="og:url" content="http://yoursite.com/2015/08/19/default-parameter-value/index.html">
+<meta property="og:title" content="all-variable">
+<meta property="og:url" content="http://yoursite.com/2015/08/19/all-variables/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="程序的编写原则是参数传递比直接在file-scope域适当。
-例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
-<meta property="og:updated_time" content="2015-08-19T09:36:02.000Z">
+<meta property="og:description" content="C++中不同变量具有不同的生命周期，具有不同的作用域。
+作用域
+全局作用域；
+局部作用域；
+类作用域；
+文件作用域；
+命名空间作用域
+
+从作用域对变量进行划分
+全局变量(全局作用域): 全局变量在一个源文件中定义，可以作用在多个源文件(前提需要，在不直接包含该全局变量的位置，用extern关键字再次声明)。
+静态局部变量">
+<meta property="og:updated_time" content="2015-08-19T15:11:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="透过指针提供默认参数">
-<meta name="twitter:description" content="程序的编写原则是参数传递比直接在file-scope域适当。
-例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
+<meta name="twitter:title" content="all-variable">
+<meta name="twitter:description" content="C++中不同变量具有不同的生命周期，具有不同的作用域。
+作用域
+全局作用域；
+局部作用域；
+类作用域；
+文件作用域；
+命名空间作用域
+
+从作用域对变量进行划分
+全局变量(全局作用域): 全局变量在一个源文件中定义，可以作用在多个源文件(前提需要，在不直接包含该全局变量的位置，用extern关键字再次声明)。
+静态局部变量">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -172,11 +199,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-default-parameter-value" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-all-variables" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/19/default-parameter-value/" class="article-date">
-  	<time datetime="2015-08-19T09:24:04.000Z" itemprop="datePublished">2015-08-19</time>
+      <a href="/2015/08/19/all-variables/" class="article-date">
+  	<time datetime="2015-08-19T14:59:20.000Z" itemprop="datePublished">2015-08-19</time>
 </a>
     </div>
   
@@ -189,7 +216,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      透过指针提供默认参数
+      all-variable
     </h1>
   
 
@@ -209,10 +236,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="程序的编写原则是">程序的编写原则是</h1><p>参数传递比直接在file-scope域适当。</p>
-<h2 id="例子">例子</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream &amp;ofil)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br><span class="line"><span class="comment">//默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream *ofil=<span class="number">0</span>)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br></pre></td></tr></table></figure>
-<h2 id="说明">说明</h2><ol>
-<li>无法设置引用=0，因为引用都代表某个对象。</li>
+        <p>C++中不同变量具有不同的生命周期，具有不同的作用域。</p>
+<h1 id="作用域">作用域</h1><ol>
+<li>全局作用域；</li>
+<li>局部作用域；</li>
+<li>类作用域；</li>
+<li>文件作用域；</li>
+<li>命名空间作用域</li>
+</ol>
+<h2 id="从作用域对变量进行划分">从作用域对变量进行划分</h2><ol>
+<li>全局变量(全局作用域): 全局变量在一个源文件中定义，可以作用在多个源文件(前提需要，在不直接包含该全局变量的位置，用<code>extern</code>关键字再次声明)。</li>
+<li>静态局部变量</li>
 </ol>
 
       
@@ -223,18 +257,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/19/function-template/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          函数模板
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/19/reference/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">引用初识</div>
+    <a href="/2015/08/19/function-template/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数模板</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -263,7 +288,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="default-parameter-value" data-title="透过指针提供默认参数" data-url="http://yoursite.com/2015/08/19/default-parameter-value/"></div>
+	<div class="ds-thread" data-thread-key="all-variables" data-title="all-variable" data-url="http://yoursite.com/2015/08/19/all-variables/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

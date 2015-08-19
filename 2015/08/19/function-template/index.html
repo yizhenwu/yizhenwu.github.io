@@ -3,21 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>透过指针提供默认参数 | Dobest</title>
+  <title>函数模板 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="程序的编写原则是参数传递比直接在file-scope域适当。
-例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
+  <meta name="description" content="需求只定义一份函数内容，就可以支持其他类型，即将单一函数的内容与希望支持多个类型绑定起来。
+函数模板
+函数模板(function template)将参数列表中制度的全部(或部分)参数类型信息抽离出来。以&amp;lt;typename elemType&amp;gt;来表示在使用时才确定(必须确定)的数据类型。
+12template&amp;lt;typename elemType&amp;gt;void display(st">
 <meta property="og:type" content="article">
-<meta property="og:title" content="透过指针提供默认参数">
-<meta property="og:url" content="http://yoursite.com/2015/08/19/default-parameter-value/index.html">
+<meta property="og:title" content="函数模板">
+<meta property="og:url" content="http://yoursite.com/2015/08/19/function-template/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="程序的编写原则是参数传递比直接在file-scope域适当。
-例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
-<meta property="og:updated_time" content="2015-08-19T09:36:02.000Z">
+<meta property="og:description" content="需求只定义一份函数内容，就可以支持其他类型，即将单一函数的内容与希望支持多个类型绑定起来。
+函数模板
+函数模板(function template)将参数列表中制度的全部(或部分)参数类型信息抽离出来。以&amp;lt;typename elemType&amp;gt;来表示在使用时才确定(必须确定)的数据类型。
+12template&amp;lt;typename elemType&amp;gt;void display(st">
+<meta property="og:updated_time" content="2015-08-19T14:48:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="透过指针提供默认参数">
-<meta name="twitter:description" content="程序的编写原则是参数传递比直接在file-scope域适当。
-例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
+<meta name="twitter:title" content="函数模板">
+<meta name="twitter:description" content="需求只定义一份函数内容，就可以支持其他类型，即将单一函数的内容与希望支持多个类型绑定起来。
+函数模板
+函数模板(function template)将参数列表中制度的全部(或部分)参数类型信息抽离出来。以&amp;lt;typename elemType&amp;gt;来表示在使用时才确定(必须确定)的数据类型。
+12template&amp;lt;typename elemType&amp;gt;void display(st">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -172,11 +178,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-default-parameter-value" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-function-template" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/19/default-parameter-value/" class="article-date">
-  	<time datetime="2015-08-19T09:24:04.000Z" itemprop="datePublished">2015-08-19</time>
+      <a href="/2015/08/19/function-template/" class="article-date">
+  	<time datetime="2015-08-19T14:31:49.000Z" itemprop="datePublished">2015-08-19</time>
 </a>
     </div>
   
@@ -189,7 +195,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      透过指针提供默认参数
+      函数模板
     </h1>
   
 
@@ -209,12 +215,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="程序的编写原则是">程序的编写原则是</h1><p>参数传递比直接在file-scope域适当。</p>
-<h2 id="例子">例子</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream &amp;ofil)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br><span class="line"><span class="comment">//默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream *ofil=<span class="number">0</span>)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br></pre></td></tr></table></figure>
-<h2 id="说明">说明</h2><ol>
-<li>无法设置引用=0，因为引用都代表某个对象。</li>
+        <h1 id="需求">需求</h1><p>只定义一份函数内容，就可以支持其他类型，即将单一函数的内容与希望支持多个类型绑定起来。</p>
+<h1 id="函数模板">函数模板</h1><ol>
+<li><p>函数模板(function template)将参数列表中制度的全部(或部分)参数类型信息抽离出来。以<code>&lt;typename elemType&gt;</code>来表示在使用时才确定(必须确定)的数据类型。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">string</span> &amp;str, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数模板也可以是重载函数。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">string</span> &amp;str, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">int</span> &amp;age, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-
+<h1 id="模板函数和模板类">模板函数和模板类</h1>
       
     </div>
     
@@ -223,18 +233,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/19/function-template/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/19/all-variables/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          函数模板
+          all-variable
         
       </div>
     </a>
   
   
-    <a href="/2015/08/19/reference/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">引用初识</div>
+    <a href="/2015/08/19/default-parameter-value/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">透过指针提供默认参数</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -263,7 +273,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="default-parameter-value" data-title="透过指针提供默认参数" data-url="http://yoursite.com/2015/08/19/default-parameter-value/"></div>
+	<div class="ds-thread" data-thread-key="function-template" data-title="函数模板" data-url="http://yoursite.com/2015/08/19/function-template/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
