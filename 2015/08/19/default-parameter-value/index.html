@@ -3,30 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>引用初识 | Dobest</title>
+  <title>透过指针提供默认参数 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Notes:
-对reference的所有操作都是对“reference所代表的对象”操作。
-1234int ival = 1024;int &amp;amp;val = ival;//val是ival的一个引用int *pi = &amp;amp;val;//将ival的地址赋值给pi
-
-为什么使用reference？a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。b. 可实现直">
+  <meta name="description" content="程序的编写原则是参数传递比直接在file-scope域适当。
+例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="引用初识">
-<meta property="og:url" content="http://yoursite.com/2015/08/19/reference/index.html">
+<meta property="og:title" content="透过指针提供默认参数">
+<meta property="og:url" content="http://yoursite.com/2015/08/19/default-parameter-value/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="Notes:
-对reference的所有操作都是对“reference所代表的对象”操作。
-1234int ival = 1024;int &amp;amp;val = ival;//val是ival的一个引用int *pi = &amp;amp;val;//将ival的地址赋值给pi
-
-为什么使用reference？a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。b. 可实现直">
-<meta property="og:updated_time" content="2015-08-19T08:44:12.000Z">
+<meta property="og:description" content="程序的编写原则是参数传递比直接在file-scope域适当。
+例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
+<meta property="og:updated_time" content="2015-08-19T09:36:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="引用初识">
-<meta name="twitter:description" content="Notes:
-对reference的所有操作都是对“reference所代表的对象”操作。
-1234int ival = 1024;int &amp;amp;val = ival;//val是ival的一个引用int *pi = &amp;amp;val;//将ival的地址赋值给pi
-
-为什么使用reference？a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。b. 可实现直">
+<meta name="twitter:title" content="透过指针提供默认参数">
+<meta name="twitter:description" content="程序的编写原则是参数传递比直接在file-scope域适当。
+例子1234567void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream &amp;amp;ofil)&amp;#123;...&amp;#125;//每次都需要传递ofil参数//默认参数void bubble_sort(vector&amp;lt;int&amp;gt;&amp;amp;vec,ofstream *ofil=0)&amp;#">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -181,11 +172,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-reference" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-default-parameter-value" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/19/reference/" class="article-date">
-  	<time datetime="2015-08-19T08:27:24.000Z" itemprop="datePublished">2015-08-19</time>
+      <a href="/2015/08/19/default-parameter-value/" class="article-date">
+  	<time datetime="2015-08-19T09:24:04.000Z" itemprop="datePublished">2015-08-19</time>
 </a>
     </div>
   
@@ -198,7 +189,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      引用初识
+      透过指针提供默认参数
     </h1>
   
 
@@ -218,17 +209,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Notes:">Notes:</h1><ol>
-<li><p>对reference的所有操作都是对“reference所代表的对象”操作。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;val = ival;<span class="comment">//val是ival的一个引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *pi = &amp;val;<span class="comment">//将ival的地址赋值给pi</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为什么使用reference？<br><br>a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。<br><br>b. 可实现直接对所传入的对象进行修改。<br><br>c. 如果不想对原对象进行修改，则用<code>const</code>修饰该引用。<br></p>
-</li>
-<li><p>提领一个指针前，一定要对这个指针做证空处理。</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p==<span class="literal">NULL</span>)<span class="keyword">return</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>传递内置类型时，一般不适用传址方式。传址机制一般用于class object。</p>
-</li>
+        <h1 id="程序的编写原则是">程序的编写原则是</h1><p>参数传递比直接在file-scope域适当。</p>
+<h2 id="例子">例子</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream &amp;ofil)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br><span class="line"><span class="comment">//默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream *ofil=<span class="number">0</span>)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br></pre></td></tr></table></figure>
+<h2 id="说明">说明</h2><ol>
+<li>无法设置引用=0，因为引用都代表某个对象。</li>
 </ol>
 
       
@@ -239,18 +223,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/19/default-parameter-value/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          透过指针提供默认参数
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/19/work-hunting/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">目前找工作形势(8.19)</div>
+    <a href="/2015/08/19/reference/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">引用初识</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -279,7 +254,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="reference" data-title="引用初识" data-url="http://yoursite.com/2015/08/19/reference/"></div>
+	<div class="ds-thread" data-thread-key="default-parameter-value" data-title="透过指针提供默认参数" data-url="http://yoursite.com/2015/08/19/default-parameter-value/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
