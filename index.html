@@ -170,6 +170,108 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-baidu-interview-second" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/20/baidu-interview-second/" class="article-date">
+  	<time datetime="2015-08-20T12:28:15.000Z" itemprop="datePublished">2015-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/20/baidu-interview-second/">BFE团队面试(二面)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天(8.20)，七夕，午睡醒来，室友约会去了，让我独自清净。下午就不去实验室听那叮叮当当的装修声音以及闻那劣质的油漆味。翻开今天刚到的《c和指针》，细细的读来，感觉也是不错的。七夕和好书更配。</p>
+<p>后来，15:40pm收到一个北京的电话，竟然百度BFE的二面，甚是开心。约了个时间晚19:00面试。</p>
+<p>距离一面已经过去了10天了，偶尔收到北京的电话都让我惊喜一下，也会让我失望一下，也就基本放弃了。七夕和好运相连。</p>
+<p>最近说的最多的话就是：尽人事，听天命。做好自己，不去强求，缘分到了就可以了。开始准备晚上19点的面试，翻看之前一面的博客，努力回忆。</p>
+<p>吃个晚饭，取个快递，还是去之前一面的那个教室，去做个了断。黑板上还留着我之前一面留下的分析过程，看着黑板上的记录也是体现出各种被问，一面1h8min，基本把很多问题从我会问到我不会为止了。</p>
+<p>在教室呆了会，看了会书，无关痛痒的复习着，19点的面试把原本平静的心情被打乱了。</p>
+<p>铺垫这么久，19:00准时接到电话，下文正式面试过程：</p>
+<hr>
+<p>接到电话，就知道对方不好应付，一开始自我介绍都各种被interrupt，也是奠定了本次电话面试的基调了。</p>
+<p>以下是电话面试的问题及我的解答：</p>
+<h2 id="项目相关">项目相关</h2><p>Q1：把我对我项目当成一无所知的人，尽量让我了解这个项目。</p>
+<p>A1.1：好，要介绍这个项目，我介绍的逻辑是问题的由来–&gt;面临的挑战–&gt;我的方案–&gt;对比方案。</p>
+<p>A1.2：问题背景，我先假设一下，一个大型游戏服务提供商准备提供一个在线游戏服务，在部署这个游戏服务时，是不知道以后在线用户的分布情况的。因此，初始部署可能存在盲目性。当部署位置远离大规模在线用户，那么这大规模的在线用户势必都将通过长路由来获取服务。这就是问题的由来。</p>
+<p>A1.3：因此，我要做的就是用户分布感知的虚拟机部署和迁移。</p>
+<p>Interrupt1：如何做到用户分布感知？</p>
+<p>A1.4：需要对用户分布进行量化。我的量化方法是，获取全网在线用户，统计每个区域的在线用户数量。</p>
+<p>Interrupt2：用户分布可以直接通过服务器端，看到我当前在线用户的IP地址，根据此IP所属位置，进行划分很方便，何必要分区域去统计呢？</p>
+<p>A1.5：直接通过服务器端的在线IP，确实可以看出，当前用户不同区域的分布情况。因为我要做的是进一步要将这些用户划分到某个数据中心所在区域。</p>
+<p>Interrupt3：在做这个项目遇到的比较大的问题是什么？</p>
+<p>A1.6：比较大的问题是如何在线迁移，让那些在线用户的服务不被中断。</p>
+<p>Interrupt4：何必要在线迁移呢，我觉得很多时候我是不需要在线迁移的，完全可以等到某个时候在迁移。你能举出一个必要的场景么？</p>
+<p>A1.7：嗯，假设就是一个在线游戏服务，玩家是不喜欢玩着玩着掉线的。因此在线迁移也是一项必要的研究。做虚拟机迁移，我采用的是在SDN网络中去考虑，设计了这个重定向迁移的方案。后面具体细节略。</p>
+<p>Interrupt5：迁移是比较简单的，直接向目的位置发送一个镜像就可以，那因此如果我一个玩家在你迁移前打游戏爆出一装备，迁移后，爆出的装备没了，这种数据不同步如何解决。</p>
+<p>A1.8：这个问题涉及数据的拷贝，您的方式只是一次copy，目前的数据拷贝方案都是采用pre-copy方案，巴拉巴拉解释这个pre-copy。</p>
+<p>Interrupt6：目前有多少种做法？</p>
+<p>A1.9：解释一通。</p>
+<hr>
+<p>他笑着总结了，确实有点刁难我，不过是为了看我的反映和理解情况，项目做的挺好。至此进入第二部分。</p>
+<p>Q2：做这个项目看了多少文章？这个项目几个人，我的职责是啥？目前是理论研究还是更多的实践？</p>
+<p>A2：这个项目目前两个人，我是大师兄，带着一个小师弟在做。目前主要是理论研究，未来可能要搭一个虚拟机迁移的平台。</p>
+<p>Q3：对比方案如何？<br>Q4：有没有带队做过其他项目？</p>
+<p>A4：我带队翻译了一本书。介绍一下我如何分工的。</p>
+<hr>
+<p>至此，基本结束了，说我做的挺好。说根据同事对我的面试，算法这边问的比较少，那就再问一个算法。</p>
+<p>Q5：问我是否电脑在附近，可以给我一个题目让我在线完成。</p>
+<p>A5：我面试时候，找了一个安静的教室没有电脑呢。</p>
+<p>Q6：那简单问一个，如何判断第一个出现的字符串。</p>
+<p>A6：给出一个复杂度高的算法，后来继续优化，提了用hash去做，只是后来想了会就投降了。</p>
+<hr>
+<p>对方总结，电话面结束，让我最近保持手机畅通，通知结果。</p>
+<hr>
+<p><strong>总结</strong>：</p>
+<ol>
+<li>昨晚小志还问我这个算法了，当时和他讨论了下，没有具体去看优化算法是怎样的。遇到一个问题就去解决一个问题，因为谁也不知道什么时候会用到。</li>
+<li>尽人事，听天命。</li>
+<li>情人节快乐，虽异地不能一起玩耍，守得初心，一起加油，筑梦ing。</li>
+<li>祝自己好运！</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Interview/">Interview</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-all-variables" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -461,7 +563,7 @@
 <li>2015.7.24, [内推]美团云。目前没消息。</li>
 <li>2015.7.31, [内推]腾讯TEG。之前简历被锁定，目前没消息。</li>
 <li>2015.8.05, [内推]网易游戏游戏运维工程师。8.19收到系统消息称简历筛选结果9.12前通知。</li>
-<li>2015.8.05, [内推]百度BFE。8.10收到一面电话，等二面中。</li>
+<li>2015.8.05, [自投]百度BFE。8.10收到一面电话，等二面中。</li>
 <li>2015.8.13, [特招]TP-Link精英计划-云计算研发工程师，8.19晚师兄见面会，到时去现场看看，据说8.21面试。 </li>
 <li>2015.8.15, [内推]蘑菇街基础产品开发攻城师。师兄回复收到简历，目前没消息。</li>
 <li>2015.8.16, [内推]IBM的Software Defined Storage Developer。目前没消息。</li>
@@ -472,6 +574,7 @@
 <li>2015.8.19, [华为]华为通信性能算法工程师，面试官推荐special offer。</li>
 <li>2015.8.19, [特招]TP-Link精英计划，<em>8.23</em>日面试(一面)，共计两面，9.1前发offer，签两方协议。</li>
 <li>2015.8.23, [校招]阿里巴巴基础平台研发工程师。在线笔试。</li>
+<li>2015.8.20, [自投]百度BFE。终于等到了二面(8.20,19:00pm)，最近保持手机畅通，最近通知我结果。</li>
 </ol>
 
       
@@ -748,66 +851,6 @@
 <li>如果想将所有节点都搜索一遍后结束,那么就不需要释放book[i]=0了,根据需要变化。</li>
 </ol>
 <p>#算法实现<br><figure class="highlight c++"><figcaption><span>举例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DFS 在地图上搜索位置(p,q),并得到最短搜索步长step</span></span><br><span class="line"><span class="keyword">int</span> book[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> step)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> next[<span class="number">4</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0.</span>-<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;<span class="comment">//四个方向</span></span><br><span class="line">	<span class="keyword">if</span>(x == p &amp;&amp; y == q)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(step &lt; min)</span><br><span class="line">			min=step;</span><br><span class="line">		<span class="keyword">return</span>;<span class="comment">//这里的返回是完成一次搜索后,返回之后才可以进行下一步搜索。</span></span><br><span class="line">			   <span class="comment">//此处返回很重要!!!</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> tx,ty; <span class="comment">//用于存储更新后位置</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=<span class="number">3</span>;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		tx = x + next[k][<span class="number">0</span>];</span><br><span class="line">		ty = y + next[k][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span>(tx &lt; <span class="number">1</span> || tx &gt; n || ty &lt; <span class="number">1</span> || ty &gt; n) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(a[tx][ty] == <span class="number">0</span> &amp;&amp; book[tx][ty] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			book[tx][ty] = <span class="number">1</span>;</span><br><span class="line">			dfs(tx,ty,step+<span class="number">1</span>);</span><br><span class="line">			book[tx][ty] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DFS 实现n的全排列</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(step == n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span>;<span class="comment">//这里的返回是完成一次搜索后,返回之后才可以进行下一步搜索。</span></span><br><span class="line">			   <span class="comment">//此处返回很重要!!!</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;n;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[step] = i;</span><br><span class="line">		book[i] =<span class="number">1</span>;</span><br><span class="line">		dfs[step+<span class="number">1</span>];</span><br><span class="line">		book[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Algriothm/">Algriothm</a><a class="article-category-link" href="/categories/Algriothm/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-BFS" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/BFS/" class="article-date">
-  	<time datetime="2015-08-15T15:34:50.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/BFS/">广度优先搜索</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="算法要点">算法要点</h1><p>理解BFS:</p>
-<ol>
-<li>层层递进,一层一层的搜索。</li>
-<li>因此,一般需要借助队列实现,存储为探索的各层元素。</li>
-</ol>
-<p>#算法实现<br> 举例<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BFS 在地图上搜索位置(p,q),并得到搜索步长step</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Queue</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">&#125;;</span><br><span class="line">Queue que[<span class="number">2501</span>];<span class="comment">//假设50*50的地图,共2500个位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> book[<span class="number">51</span>][<span class="number">51</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> next[<span class="number">4</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0.</span>-<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;<span class="comment">//四个方向</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化head和tail均在第一个位置</span></span><br><span class="line"><span class="keyword">int</span> head = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> tail = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将满足条件的位置(x,y)加入队列。</span></span><br><span class="line"><span class="keyword">int</span> startx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> starty = <span class="number">0</span>;</span><br><span class="line">que[tail].x = startx;</span><br><span class="line">que[tail].y = starty;</span><br><span class="line">book[startx][starty] = <span class="number">1</span>;</span><br><span class="line">tail++;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;<span class="comment">//标识是否到达目的(p,q)位置</span></span><br><span class="line"><span class="keyword">int</span> tx,ty;<span class="comment">//下一跳搜索位置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> step =<span class="number">0</span>;<span class="comment">//搜索到目标之前走了多少步</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(head &lt; tail)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=<span class="number">3</span>;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		tx = que[head].x + next[k][<span class="number">0</span>];</span><br><span class="line">		ty = que[head].y + next[k][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span>(tx &lt; <span class="number">1</span> || tx &gt; n || ty &lt; <span class="number">1</span> || ty &gt; n) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="comment">//a[tx][ty] = 0;表示可以过,其他值为障碍物</span></span><br><span class="line">		<span class="keyword">if</span>(a[tx][ty] == <span class="number">0</span> &amp;&amp; book[tx][ty] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			book[tx][ty] = <span class="number">1</span>;</span><br><span class="line">			que[tail].x = tx;</span><br><span class="line">			que[tail].y = ty;</span><br><span class="line">			step++;</span><br><span class="line">			tail++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tx ==p &amp;&amp; ty ==q)</span><br><span class="line">		&#123;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(flag == <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">	head++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
