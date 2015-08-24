@@ -170,6 +170,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-double-equal" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/15/double-equal/" class="article-date">
+  	<time datetime="2015-08-15T15:40:53.000Z" itemprop="datePublished">2015-08-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/15/double-equal/">如何比较两个double(float)是否相等?</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#原理<br>计算机内部表示小数(float,double型小数)都是有误差的(因为计算机只有0,1)。</p>
+<p>#方法</p>
+<ol>
+<li>判断两个小数是否相等,只能判断它们之差的绝对值是不是在一个很小的范围内(我觉得超过其要求的精度即可)。</li>
+<li>如果两个数之差很小,那么就可以认为他们是相等的。</li>
+</ol>
+<p>#代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以double为例</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">equal</span><span class="params">(<span class="keyword">double</span> num1,<span class="keyword">double</span> num2)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(num1 - num2 &gt; -<span class="number">0.000001</span> &amp;&amp; num1-num2 &lt; <span class="number">0.00001</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-quick-sort" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -735,146 +796,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-fork" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/13/fork/" class="article-date">
-  	<time datetime="2015-08-13T15:04:03.000Z" itemprop="datePublished">2015-08-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/13/fork/">关于fork()函数大总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关于fork()函数大总结">关于fork()函数大总结</h1><h1 id="基本概念">基本概念</h1><p>进程：包括代码、数据和分配给进程的资源（进程是在数据集合上一次的运行）。</p>
-<p>fork()：通过系统调用的方式，创建一个与原来(父)进程一模一样的进程，也就是两个进程可以完成同样的处理，但是初始参数不同，进程的处理也就会不同。</p>
-<p>系统调用fork()函数后所进行的操作：</p>
-<ol>
-<li>系统首先给新的进程分配资源（如存储数据和代码的空间）。</li>
-<li>把原来(父)进程的值复制到新进程中，copy itself，只有少数的值不同。</li>
-<li>两个进程创建后是独立的，在不同的内存地址中，不共用。 </li>
-<li>两个进程的进程号pid不同！</li>
-</ol>
-<ul>
-<li>原(父)进程，fork()返回新创建的子进程的进程pid。</li>
-<li>子进程中，fork()返回0。</li>
-<li>如果出现错误，fork()返回负数： <ul>
-<li><em>进程数达到上限</em>；</li>
-<li>内存不足。</li>
-</ul>
-</li>
-</ul>
-<h1 id="举例说明1">举例说明1</h1><pre><code><span class="comment">//代码说下</span>
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(　）{ 
-     <span class="keyword">int</span> i; 
-     <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt;<span class="number">5</span>;i++)</span></span>{ 
-        <span class="keyword">int</span> pid = fork(); 
-        <span class="keyword">if</span>(pid == <span class="number">0</span>){ 
-            <span class="comment">//do something </span>
-        } <span class="keyword">else</span> { 
-        <span class="comment">//do something </span>
-        } 
-        }
-    <span class="comment">// do somthing,sleep</span>
-    <span class="keyword">return</span> <span class="number">0</span>;
-}
-</code></pre><p>注意：</p>
-<ol>
-<li>在执行<code>int pid = fork()</code>之前只有一个进程在执行代码。</li>
-<li>但在这句之后将会变成两个进程，这两个进程一模一样，均执行下一句<code>if(pid == 0)...</code>后面的代码。</li>
-</ol>
-<blockquote>
-<p> <a href="http://blog.csdn.net/jason314/article/details/5640969" target="_blank" rel="external">参考：linux中fork（）函数详解（原创！！实例讲解）</a> </p>
-</blockquote>
-<h1 id="举例说明2">举例说明2</h1><pre><code><span class="keyword">int</span> main()
-{
-    pid_t pid1;
-    pid_t pid2;
-
-    pid1 = <span class="keyword">fork</span>();
-    pid2 = <span class="keyword">fork</span>();
-    <span class="keyword">printf</span>(<span class="string">"pid1:<span class="variable">%d</span>, pid2:<span class="variable">%d</span>\n"</span>, pid1, pid2);
-}
-</code></pre><p>要求：这个程序执行到这个程序的所有进程结束这段时间，没有其他新进程执行。</p>
-<ol>
-<li>一共运行了几个进程？</li>
-<li>如果其中一个进程输出“pid：1001，pid2：1002”，那么其他进程输出结果(不考虑执行顺序)？</li>
-</ol>
-<h2 id="预备知识">预备知识</h2><ol>
-<li>在Linux下，进程有一个唯一的PID标识进程。PID从1~32768的正整数，其中init进程的pid=1，其他进程都是从2以此编号，<em>用完32768之后，从2重新开始</em>。</li>
-<li>Linux进程查询 <code>ps aux</code> 或者 <code>top</code>命令。Linux的进程采用进程表结构存储正在运行的进程。</li>
-<li>Linux的进程呈树状结构，init是所有进程的父进程，也是第一个进程。</li>
-</ol>
-<h2 id="详细细节">详细细节</h2><p>如图所示fork()进程：<br><img src="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121121573496.gif" alt="fock()进程"></p>
-<ol>
-<li>执行程序，生成进程P，P执行完所有的Part.A的代码。</li>
-<li>当执行到<code>pid=fork();</code>时，P启动一个新的进程Q，Q是P的子进程且和P是一个程序的进程。Q由P直接copy itself生成（拥有其所有变量、计数器等当前值）。</li>
-<li>P进程中，<strong>fork()将Q的PID放回给变量pid</strong>，并继续执行Part.B的代码。</li>
-<li>Q进程中，<strong>将o赋给pid</strong>，并执行Part.B代码。 </li>
-</ol>
-<h2 id="关键细节">关键细节</h2><ol>
-<li>P进程执行了所有的程序，而Q进程只执行了fork()后面的所有程序(Part.B)。</li>
-<li>Q拥有P进程的运行变量及环境等，在这个基础上运行，而不是初始环境。</li>
-<li>P中的fork()启动子进程Q，返回Q的pid。而Q的fork()不启动新的进程，将返回o。</li>
-</ol>
-<h2 id="解题">解题</h2><p>进程树如图：<br><img src="http://pic002.cnblogs.com/img/leoo2sk/200912/2009121122414385.gif" alt="进程树"></p>
-<ol>
-<li>假设初始进程是P0，设其PID=xxx；</li>
-<li>当执行到<code>pid1=fork();</code>时，P0将启动新的子进程P1，题目中P1的PID为1001。</li>
-<li>因此，P0的fork()返回1001给pid1，将继续执行<code>pid2=fork()</code>;此时启动一个新进程P2，题目中P2的PID=1002。</li>
-<li>因此，P0中第二个fork返回1002给pid2，继续执行完后续程序，直到结束。所以程序输出“<code>pid1:1001,pid2:1002</code>”。</li>
-<li>此时分析P2，P2启动时，P0中pid=1001，所以P2复制P0的1001，而作为子进程pid2=o。从P2的第二个fork()后开始执行，结束后输出“<code>pid1:1001,pid2:o</code>”。</li>
-<li>此时分析P1，P1的第一条fork()返回o给pid1，然后执行后面的代码。下一句代码即<code>pid2=fork();</code>此时P1产生新进程P3。</li>
-<li>P1的<code>pid2=fork();</code>返回PID:1003给pid2，所以pid2=1003。P1继续执行后续程序，结束，输出“<code>pid1:o,pid2:1003</code>”。</li>
-<li>P3作为P1的子进程，复制P1中pid1=o，并且第二条fork()返回o给pid2，所以P3最后输出“<code>pid1:o,pid2:o</code>”。</li>
-<li>程序结束。</li>
-</ol>
-<blockquote>
-<p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/12/11/talk-about-fork-in-linux.html" target="_blank" rel="external">参考：从一道面试题谈linux下fork的运行机制</a></p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Linux/">Linux</a>
 	</div>
 
 
