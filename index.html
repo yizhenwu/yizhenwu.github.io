@@ -170,6 +170,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-str-permutation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/02/str-permutation/" class="article-date">
+  	<time datetime="2015-09-02T14:58:19.000Z" itemprop="datePublished">2015-09-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/02/str-permutation/">字符串的全排列</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题：给定一个字符串，输出字符串中所有字符的所有排列。如<code>&quot;abc&quot;</code>的全排列是：<code>abc, acb, bac, bca, cab, cba</code>。</p>
+<p>引申问题：给定一个数字<code>n</code>，要求输出该数字<code>1~n</code>的全排列。如<code>n=3</code>的全排列是：<code>123, 132, 231, 213, 312, 321</code>。</p>
+<hr>
+<p>问题分析：对于字符串的全排列问题可以才有交换的思想。举例说明：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">strpermutation</span><span class="params">(<span class="built_in">string</span> res, <span class="built_in">string</span> str)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(str.length() == <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</span><br><span class="line">		&#123;</span><br><span class="line">			strpermutation(res+str[i],str.substr(<span class="number">0</span>,i)+str.substr(i+<span class="number">1</span>,str.length()));	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于引申问题：采用DFS搜索算法实现。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> LENGTH <span class="number">10</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> book[LENGTH] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> res[LENGTH] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfsNpermutation</span><span class="params">(<span class="keyword">int</span> step)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(step == n+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;res[i];	</span><br><span class="line">		&#125;	</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(book[i] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			res[i] = i;</span><br><span class="line">			book[i] = <span class="number">1</span>;</span><br><span class="line">			dfsNpermutation(step+<span class="number">1</span>);</span><br><span class="line">			book[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a><a class="article-category-link" href="/categories/C/Algriothm/">Algriothm</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-feeling9-2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -768,78 +828,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-work-hunting" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/19/work-hunting/" class="article-date">
-  	<time datetime="2015-08-19T04:36:56.000Z" itemprop="datePublished">2015-08-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/work-hunting/">目前找工作形势(2015秋季)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="已投的岗位">已投的岗位</h1><ol>
-<li>2015.7.15, [内推]阿里巴巴基础平台研发工程师。内推2面挂了；</li>
-<li>2015.7.24, [内推]美团云。目前没消息。</li>
-<li>2015.7.31, [内推]腾讯TEG。之前简历被锁定，目前没消息。</li>
-<li>2015.8.05, [内推]网易游戏游戏运维工程师。8.19收到系统消息称简历筛选结果9.12前通知。</li>
-<li>2015.8.05, [自投]百度BFE。8.10收到一面电话，等二面中。</li>
-<li>2015.8.13, [特招]TP-Link精英计划-云计算研发工程师，8.19晚师兄见面会，到时去现场看看，据说8.21面试。 </li>
-<li>2015.8.15, [内推]蘑菇街基础产品开发攻城师。师兄回复收到简历，目前没消息。</li>
-<li>2015.8.16, [内推]IBM的Software Defined Storage Developer。目前没消息。</li>
-<li>2015.8.18, [优招]华为通信性能算法工程师。技术面通过，基本可以拿到华为offer。</li>
-</ol>
-<hr>
-<h1 id="最新消息">最新消息</h1><ol>
-<li>2015.8.19, [华为]华为通信性能算法工程师，面试官推荐special offer。</li>
-<li>2015.8.19, [特招]TP-Link精英计划，<em>8.23</em>日面试(一面)，共计两面，9.1前发offer，签两方协议。</li>
-<li>2015.8.23, [校招]阿里巴巴基础平台研发工程师。在线笔试。</li>
-<li>2015.8.20, [自投]百度BFE。终于等到了二面(8.20,19:00pm)，最近保持手机畅通，最近通知我结果。</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Work/">Work</a>
 	</div>
 
 
