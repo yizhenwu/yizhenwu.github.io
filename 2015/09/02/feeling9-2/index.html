@@ -3,42 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>一维数组与指针 | Dobest</title>
+  <title>最近状态 | Dobest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组名为常量指针1int b[];
-因此：
-
-数组名是一个常量指针，此处为指向int的常量指针。
-注意常量指针不同于指针变量。
-
-数组名不充当指针常量的特例(仅这两种情况)
-当数组名作为sizeof操作符。
-或者单目操作符&amp;amp;的操作数时。例如：1234int size = sizeof(b);//返回数组的长度int *c;c = &amp;amp;a[0];//指向第一个元素的指针c = a;//">
+  <meta name="description" content="感觉到找工作的难度啊。
+就是有时候你付出很多，过程也很好，结果却是意外。
+安静下来，好好干。
+不能乱。
+也不能心情不好，重整雄风，战起来！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一维数组与指针">
-<meta property="og:url" content="http://yoursite.com/2015/08/24/ptr-arr/index.html">
+<meta property="og:title" content="最近状态">
+<meta property="og:url" content="http://yoursite.com/2015/09/02/feeling9-2/index.html">
 <meta property="og:site_name" content="Dobest">
-<meta property="og:description" content="数组名为常量指针1int b[];
-因此：
-
-数组名是一个常量指针，此处为指向int的常量指针。
-注意常量指针不同于指针变量。
-
-数组名不充当指针常量的特例(仅这两种情况)
-当数组名作为sizeof操作符。
-或者单目操作符&amp;amp;的操作数时。例如：1234int size = sizeof(b);//返回数组的长度int *c;c = &amp;amp;a[0];//指向第一个元素的指针c = a;//">
-<meta property="og:updated_time" content="2015-08-24T16:15:10.000Z">
+<meta property="og:description" content="感觉到找工作的难度啊。
+就是有时候你付出很多，过程也很好，结果却是意外。
+安静下来，好好干。
+不能乱。
+也不能心情不好，重整雄风，战起来！">
+<meta property="og:updated_time" content="2015-09-02T14:54:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一维数组与指针">
-<meta name="twitter:description" content="数组名为常量指针1int b[];
-因此：
-
-数组名是一个常量指针，此处为指向int的常量指针。
-注意常量指针不同于指针变量。
-
-数组名不充当指针常量的特例(仅这两种情况)
-当数组名作为sizeof操作符。
-或者单目操作符&amp;amp;的操作数时。例如：1234int size = sizeof(b);//返回数组的长度int *c;c = &amp;amp;a[0];//指向第一个元素的指针c = a;//">
+<meta name="twitter:title" content="最近状态">
+<meta name="twitter:description" content="感觉到找工作的难度啊。
+就是有时候你付出很多，过程也很好，结果却是意外。
+安静下来，好好干。
+不能乱。
+也不能心情不好，重整雄风，战起来！">
   
     <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
   
@@ -193,11 +181,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-ptr-arr" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-feeling9-2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/24/ptr-arr/" class="article-date">
-  	<time datetime="2015-08-24T15:20:10.000Z" itemprop="datePublished">2015-08-24</time>
+      <a href="/2015/09/02/feeling9-2/" class="article-date">
+  	<time datetime="2015-09-02T14:47:55.000Z" itemprop="datePublished">2015-09-02</time>
 </a>
     </div>
   
@@ -210,7 +198,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      一维数组与指针
+      最近状态
     </h1>
   
 
@@ -220,7 +208,7 @@
         
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
+	<a class="article-category-link" href="/categories/life/">life</a>
 	</div>
 
 
@@ -230,24 +218,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数组名为常量指针">数组名为常量指针</h1><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> b<span class="literal">[]</span>;</span><br></pre></td></tr></table></figure>
-<p>因此：</p>
-<ol>
-<li>数组名是一个<strong>常量指针</strong>，此处为指向int的常量指针。</li>
-<li>注意<strong>常量指针</strong>不同于<strong>指针变量</strong>。</li>
-</ol>
-<h2 id="数组名不充当指针常量的特例(仅这两种情况)">数组名不充当指针常量的特例(仅这两种情况)</h2><ol>
-<li>当数组名作为<code>sizeof</code>操作符。</li>
-<li>或者单目操作符<code>&amp;</code>的操作数时。<br>例如：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = <span class="keyword">sizeof</span>(b);<span class="comment">//返回数组的长度</span></span><br><span class="line"><span class="keyword">int</span> *c;</span><br><span class="line">c = &amp;a[<span class="number">0</span>];<span class="comment">//指向第一个元素的指针</span></span><br><span class="line">c = a;<span class="comment">//等价，指向第一个元素的指针</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>效果：<br></p>
-<ol>
-<li>sizeof返回的是整个数组的长度，而不是指向数组的指针的长度。</li>
-<li>取一个数组名的地址所产生的是一个指向数组的指针，而不是指向某个常量值的指针。</li>
-</ol>
-<hr>
-<p>注：C语言中下标引用和间接访问表达式是一样的。</p>
+        <p>感觉到找工作的难度啊。</p>
+<p>就是有时候你付出很多，过程也很好，结果却是意外。</p>
+<p>安静下来，好好干。</p>
+<p>不能乱。</p>
+<p>也不能心情不好，重整雄风，战起来！</p>
 
       
     </div>
@@ -257,18 +232,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/09/02/feeling9-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          最近状态
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/22/deblank/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">去除字符串中多余的空格</div>
+    <a href="/2015/08/24/ptr-arr/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一维数组与指针</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -297,7 +263,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ptr-arr" data-title="一维数组与指针" data-url="http://yoursite.com/2015/08/24/ptr-arr/"></div>
+	<div class="ds-thread" data-thread-key="feeling9-2" data-title="最近状态" data-url="http://yoursite.com/2015/09/02/feeling9-2/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
