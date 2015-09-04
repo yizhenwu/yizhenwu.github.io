@@ -21,7 +21,7 @@ ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器
 
 翻译环境:源代码-&amp;gt;可执行的机器指令。
 一个或多个源文件编译转化成目标代码(.o或.obj文件)。包括预处理器处理（预处理器在源代码上执行一些文本操作，如#define的替换以及读入#include包含的文件内容）。源代码解析(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后优化器(对目标">
-<meta property="og:updated_time" content="2015-09-04T14:49:42.000Z">
+<meta property="og:updated_time" content="2015-09-04T14:57:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《C和指针》总结">
 <meta name="twitter:description" content="第二章
@@ -252,9 +252,9 @@ ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器
 <li>没有链接属性的标识符none，表示总是被当做单独的个体，即当该标识符的多个声明，也被当做是多个不同且独立的个体。</li>
 <li>internal链接属性表示标识符在同一个源文件中的所有声明指的是同一个个体，位于不同文件的其他多个声明军属于不同的实体。</li>
 <li>external链接属性，即不论声明多少次，在多少个文件，都是同一个实体。</li>
-<li><em>Note</em>：修改链接器属性的两个关键字：<code>external</code>和<code>static</code>，分别对应于external链接属性和internal链接属性。<pre><code>- <span class="escape">`s</span>tatic<span class="escape">`关</span>键字修改属性是有限制的，其只能对缺省为external的属性的声明才可以改变其链接属性为internal链接属性。在其他位置，<span class="escape">`s</span>tatic<span class="escape">`关</span>键字是声明为静态变量。
-- 此外，<span class="escape">`e</span>xternal<span class="escape">`关</span>键字 声明链接属性需要在标识符第一次被声明时指定。
-</code></pre></li>
+<li><em>Note</em>：修改链接器属性的两个关键字：<code>external</code>和<code>static</code>，分别对应于external链接属性和internal链接属性。</li>
+<li><code>static</code>关键字修改属性是有限制的，其只能对缺省为external的属性的声明才可以改变其链接属性为internal链接属性。在其他位置，<code>static</code>关键字是声明为静态变量。</li>
+<li>此外，<code>external</code>关键字 声明链接属性需要在标识符第一次被声明时指定。</li>
 </ul>
 </li>
 </ol>

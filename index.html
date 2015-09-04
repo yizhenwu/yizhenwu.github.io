@@ -227,9 +227,9 @@
 <li>没有链接属性的标识符none，表示总是被当做单独的个体，即当该标识符的多个声明，也被当做是多个不同且独立的个体。</li>
 <li>internal链接属性表示标识符在同一个源文件中的所有声明指的是同一个个体，位于不同文件的其他多个声明军属于不同的实体。</li>
 <li>external链接属性，即不论声明多少次，在多少个文件，都是同一个实体。</li>
-<li><em>Note</em>：修改链接器属性的两个关键字：<code>external</code>和<code>static</code>，分别对应于external链接属性和internal链接属性。<pre><code>- <span class="escape">`s</span>tatic<span class="escape">`关</span>键字修改属性是有限制的，其只能对缺省为external的属性的声明才可以改变其链接属性为internal链接属性。在其他位置，<span class="escape">`s</span>tatic<span class="escape">`关</span>键字是声明为静态变量。
-- 此外，<span class="escape">`e</span>xternal<span class="escape">`关</span>键字 声明链接属性需要在标识符第一次被声明时指定。
-</code></pre></li>
+<li><em>Note</em>：修改链接器属性的两个关键字：<code>external</code>和<code>static</code>，分别对应于external链接属性和internal链接属性。</li>
+<li><code>static</code>关键字修改属性是有限制的，其只能对缺省为external的属性的声明才可以改变其链接属性为internal链接属性。在其他位置，<code>static</code>关键字是声明为静态变量。</li>
+<li>此外，<code>external</code>关键字 声明链接属性需要在标识符第一次被声明时指定。</li>
 </ul>
 </li>
 </ol>
