@@ -170,6 +170,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-reference" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/19/reference/" class="article-date">
+  	<time datetime="2015-08-19T08:27:24.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/reference/">引用初识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Notes:">Notes:</h1><ol>
+<li><p>对reference的所有操作都是对“reference所代表的对象”操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;val = ival;<span class="comment">//val是ival的一个引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *pi = &amp;val;<span class="comment">//将ival的地址赋值给pi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为什么使用reference？<br><br>a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。<br><br>b. 可实现直接对所传入的对象进行修改。<br><br>c. 如果不想对原对象进行修改，则用<code>const</code>修饰该引用。<br></p>
+</li>
+<li><p>提领一个指针前，一定要对这个指针做证空处理。</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p==<span class="literal">NULL</span>)<span class="keyword">return</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传递内置类型时，一般不适用传址方式。传址机制一般用于class object。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-work-hunting" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -741,83 +807,6 @@
 </li>
 </ol>
 <h1 id="结论">结论</h1><p>对于满足条件已经进入分支，case语句没有break，分支后面的语句都是会被执行，包括default。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-c++memory management" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/14/c++memory management/" class="article-date">
-  	<time datetime="2015-08-14T13:04:03.000Z" itemprop="datePublished">2015-08-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/14/c++memory management/">C++内存管理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="32位/64位系统中不同类型变量对应的字节数">32位/64位系统中不同类型变量对应的字节数</h1><ol>
-<li>char: 1字节；<br></li>
-<li>char*: 4字节(32位)/8字节(64位)；<br></li>
-<li>short int: 2字节；<br></li>
-<li>int: 4字节；<br></li>
-<li>unsigned int: 4字节；<br></li>
-<li>float: 4字节；<br></li>
-<li>double: 8字节；<br></li>
-<li>long: 4字节(32位)/8字节(64位)；<br></li>
-<li>long long: 8字节；<br></li>
-<li>usingned long: 4字节(32位)/8字节(64位)；<br></li>
-</ol>
-<h1 id="内存管理">内存管理</h1><h2 id="64位系统中内存管理遵循8字节对齐">64位系统中内存管理遵循8字节对齐</h2><p>原则：按照8字节为单位分配存储空间，如果不足，则自动补齐，本次分配不足以存放下一个变量时，会重新分配空间。</p>
-<pre><code><span class="keyword">struct</span> A{
-   <span class="keyword">unsigned</span> <span class="keyword">int</span> a;<span class="comment">//a占4字节,开辟一个8字节内存P;</span>
-   <span class="keyword">char</span> b[<span class="number">2</span>];<span class="comment">//b[]占1*2=2字节,在a后的连续2字节内存放，</span>
-             <span class="comment">//P还剩2字节;</span>
-   <span class="keyword">double</span> c;<span class="comment">//c占8字节,P不足以存放,因此将剩余的2字节补全</span>
-            <span class="comment">//因此开辟新8个字节存放c</span>
-   <span class="keyword">short</span> d;<span class="comment">//d占2字节，开辟新的8字节内存，存放d。</span>
-           <span class="comment">//将剩余6字节补全.</span>
-}
-</code></pre><p><strong>So：</strong>总共开辟了3个8字节的空间，即24字节空间来存储该结构。</p>
 
       
     </div>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《C和指针》总结 | Dobest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第二章
+ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器）：
+
+
+翻译环境:源代码-&amp;gt;可执行的机器指令。
+一个或多个源文件编译转化成目标代码(.o或.obj文件)。包括预处理器处理（预处理器在源代码上执行一些文本操作，如#define的替换以及读入#include包含的文件内容）。源代码解析(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后优化器(对目标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《C和指针》总结">
+<meta property="og:url" content="http://yoursite.com/2015/09/04/pointeronC/index.html">
+<meta property="og:site_name" content="Dobest">
+<meta property="og:description" content="第二章
+ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器）：
+
+
+翻译环境:源代码-&amp;gt;可执行的机器指令。
+一个或多个源文件编译转化成目标代码(.o或.obj文件)。包括预处理器处理（预处理器在源代码上执行一些文本操作，如#define的替换以及读入#include包含的文件内容）。源代码解析(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后优化器(对目标">
+<meta property="og:updated_time" content="2015-09-04T14:49:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《C和指针》总结">
+<meta name="twitter:description" content="第二章
+ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器）：
+
+
+翻译环境:源代码-&amp;gt;可执行的机器指令。
+一个或多个源文件编译转化成目标代码(.o或.obj文件)。包括预处理器处理（预处理器在源代码上执行一些文本操作，如#define的替换以及读入#include包含的文件内容）。源代码解析(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后优化器(对目标">
+  
+    <link rel="alternative" href="/atom.xml" title="Dobest" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://cdn.duitang.com/uploads/item/201507/28/20150728160222_aTuiS.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Yizhen Wu</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">it is my true life.</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.givesmehope.com/">GivesMeHope</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">源码之前，了无秘密。感叹学无止境！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Yizhen Wu</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://cdn.duitang.com/uploads/item/201507/28/20150728160222_aTuiS.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Yizhen Wu</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">it is my true life.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-pointeronC" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/04/pointeronC/" class="article-date">
+  	<time datetime="2015-09-04T14:48:23.000Z" itemprop="datePublished">2015-09-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《C和指针》总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第二章">第二章</h2><ol>
+<li>ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器）：</li>
+</ol>
+<ul>
+<li>翻译环境:源代码-&gt;可执行的机器指令。<ol>
+<li>一个或多个源文件<strong>编译</strong>转化成目标代码(.o或.obj文件)。包括<strong>预处理器处理</strong>（预处理器在源代码上执行一些文本操作，如<code>#define</code>的替换以及读入<code>#include</code>包含的文件内容）。<strong>源代码解析</strong>(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后<strong>优化器</strong>(对目标代码进一步优化)<ol>
+<li>多个目标文件由<strong>链接器</strong>链接在一起，形成一个可执行程序。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>运行环境:实际执行代码。</li>
+</ul>
+<hr>
+<h2 id="第三章">第三章</h2><ol>
+<li>有符号整型变量范围：<code>INT_MIN,INT_MAX</code>。</li>
+<li>将字符转化为二进制：<code>value=value-&#39;0&#39;;</code></li>
+<li>枚举类型就是指其值为符号常量而不是字面值类型，<code>enum Type {apple, banana, Carton };</code>声明类型为<code>Type</code>，这些变量实际是以整型的方式存储，符号名的实际值都是整数值。apple是0，banana是1，默认时后一个符号比前一个符号大1，意味着可以指定符号的整型值。如<code>enum Type {apple=12, banana=15, Carton=20 };</code>。</li>
+<li>每个变量占用一个特定的位置，变量的值都是存储在计算机内存中，每个内存位置都是由<strong>地址</strong>唯一确定并引用。指针变量是地址的另一个名字，指针变量的值是另一个变量的地址。Note：指针常量意义不大！</li>
+<li>字符串常量：字符串常量存放在静态数据区，双引号括起来的部分，对字符串常量修改的结果是未定义的，在使用的时候字符串常量实际上是一个<strong>指针</strong>。如，<code>&quot;Hello&quot;</code>, <code>&quot;\aWorld\a&quot;</code>, <code>&quot;&quot;</code>，最后一个空的也是字符串常量，也是具有一个<code>NIL</code>终止符字节。</li>
+<li>字符串常量不可以给一个数组<strong>赋值</strong>。这句话的强调的是<strong>赋值</strong>。当然<code>char str[]=&quot;hello world&quot;;</code>这句是可以的，因为这是在数组创建的时候为用静态存储区的<code>&quot;hello world&quot;</code>来初始化数组，即<code>str</code>数组拥有一份<code>hello world</code><strong>拷贝</strong>，与字符串常量<code>&quot;hello world&quot;</code>是两个东西。–      <ul>
+<li>Why：字符串常量为何也存储在静态存储区呢？</li>
+<li>Reason：细说静态存储区，静态存储区存储的是静态变量和全局变量。而字符串常量在程序中，只有一份拷贝，但是却可以被多次使用，这和静态变量类似。</li>
+</ul>
+</li>
+<li><code>typedef</code>关键字，允许为各种数据类型定义新名字。需要注意<code>#define</code>与<code>typedef</code>关键字创建新类型名字的区别，如<code>#define ptr_to_char char*; prt_to_char a,b;</code>，此处只有<code>a</code>被正确声明为一个指针，而<code>b</code>仅仅是字符。</li>
+<li>作用域的概念，即变量只在作用域才可以被使用。对于<strong>编译器</strong>来说可以分四种作用域：文件作用域、函数作用域、代码块作用域和函数原型作用域。</li>
+<li>链接属性，对于<strong>链接器</strong>来说可分为三种属性：外部external，内部internal，无none。<ul>
+<li>没有链接属性的标识符none，表示总是被当做单独的个体，即当该标识符的多个声明，也被当做是多个不同且独立的个体。</li>
+<li>internal链接属性表示标识符在同一个源文件中的所有声明指的是同一个个体，位于不同文件的其他多个声明军属于不同的实体。</li>
+<li>external链接属性，即不论声明多少次，在多少个文件，都是同一个实体。</li>
+<li><em>Note</em>：修改链接器属性的两个关键字：<code>external</code>和<code>static</code>，分别对应于external链接属性和internal链接属性。<pre><code>- <span class="escape">`s</span>tatic<span class="escape">`关</span>键字修改属性是有限制的，其只能对缺省为external的属性的声明才可以改变其链接属性为internal链接属性。在其他位置，<span class="escape">`s</span>tatic<span class="escape">`关</span>键字是声明为静态变量。
+- 此外，<span class="escape">`e</span>xternal<span class="escape">`关</span>键字 声明链接属性需要在标识符第一次被声明时指定。
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="第四章">第四章</h2><ol>
+<li><code>break</code>和<code>continue</code>语句，<code>break</code>是永久终止循环，<code>continue</code>是终止本次循环，接下来检测表达式的值，以决定是否继续执行循环。</li>
+<li>条件测试时，当前一个条件不满足时，后一个条件语句就不用执行。</li>
+</ol>
+<hr>
+<h2 id="第五章">第五章</h2><ol>
+<li>移位操作符：&lt;&lt;,左移位；&gt;&gt;,右移位。注意有符号数右移位时用1作为填充。</li>
+<li>位操作符：&amp;，|，^：与，或，异或。<br>举例：<code>value=value | 1&lt;&lt;bit_number;</code>将某位置1。<code>value=value &amp; ~(1&lt;&lt;bit_number);</code>将某位置0。</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/09/02/str-permutation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字符串的全排列</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pointeronC" data-title="《C和指针》总结" data-url="http://yoursite.com/2015/09/04/pointeronC/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Yizhen Wu
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
