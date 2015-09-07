@@ -170,6 +170,178 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-HttpRequest" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/07/HttpRequest/" class="article-date">
+  	<time datetime="2015-09-07T04:20:00.000Z" itemprop="datePublished">2015-09-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/07/HttpRequest/">HttpRequest</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个http的请求过程：<br>即在浏览器输入<a href="http://yizhenwu.github.io/2015/09/04/pointeronC/index.html，揭开幕后的一切。" target="_blank" rel="external">http://yizhenwu.github.io/2015/09/04/pointeronC/index.html，揭开幕后的一切。</a></p>
+<hr>
+<p>明确一点，http是应用层协议，是通信双方进行通讯的事先约定的规范。</p>
+<ol>
+<li><p>建立连接</p>
+<ul>
+<li>当我们在浏览器输入一个url请求时，首先需要建立一个socket连接。</li>
+<li>又，建立socket连接需要通过IP地址和端口号建立。</li>
+<li>所以，需要根据url进行DNS解析出IP地址的过程。【DNS解析过程：在本地机器在配置网络时都会填写DNS，因此本机将会把url发送给这个配置的DNS服务器；如果能够找到响应的url即返回其IP地址，否则将该DNS继续解析该请求发给上级DNS（DNS是一个树状结构），该请求将被一直发送到根并直到获得结果；解析完成后，就获得目标IP地址和端口号，可以进行下一步，建立socket连接】</li>
+<li>此外，如果url中不包含端口号，则需要用协议的默认端口号(PORT:8O)。</li>
+<li>socket(),bind(),connect(),send()。</li>
+</ul>
+</li>
+<li><p>请求</p>
+<ul>
+<li>连接建立成功后，开始向wed服务器发送请求，该请求一般是GET或POST命令（POST命令用于FORM参数的传递）。 </li>
+<li>GET命令格式： GET 路径/文件名 HTTP/1.0，指出所访问的文件；指出Web浏览器使用的HTTP版本。<br>因此，GET命令如下： GET /2015/09/04/pointeronC/index.html HTTP/1.0</li>
+</ul>
+</li>
+<li><p>应答</p>
+<ul>
+<li>Web服务收到请求后，进行处理。从其文档空间搜索子目录/pointeronC的index.html。如果找到该文件，web服务器将该文件传送给相应的Web浏览器。</li>
+<li>为了告知浏览器，Web服务器首先传送一些HTTP头信息，然后传送具体的内容（HTTP体信息）。HTTP体信息和HTTP头信息之间以一个空行分开。 HTTP头信息包括：1.HTTP 1.0 200 OK，是Web服务器应答的第一行，列出服务器正在运行的HTTP版本号和应答代码，”200 OK”表示请求完成。2.MIME_Version:1.0，表示MIME类型的版本。3.content_type，指示HTTP体信息的MIME类型，如content_type:text/html表达传送的数据是HTML文档。4.content_length，指示HTTP体信息的长度(字节)。</li>
+</ul>
+</li>
+<li><p>关闭连接<br>应答结束后，Web浏览器与Web服务器必须断开，以保证其他Web浏览器与Web服务器建立连接。</p>
+</li>
+</ol>
+<hr>
+<p>HTTP组成：HTTP请求(POST和GET)、HTTP响应。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Network/">Network</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-HuntingJobs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/07/HuntingJobs/" class="article-date">
+  	<time datetime="2015-09-07T04:17:10.000Z" itemprop="datePublished">2015-09-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/07/HuntingJobs/">HuntingJobs</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="已投岗位">已投岗位</h2><ol>
+<li><p>2015.9.2,自投-Intel-数据中心事业部(SDN/NFV Software Engineer)-在线测评(已完成)。</p>
+</li>
+<li><p>2015.9.2,自投-360-软件开发(虚拟化研发工程师-python),等待通知。</p>
+</li>
+<li><p>2015.9.5,自投-大疆无人机-移动端开发工程师。</p>
+</li>
+<li><p>2015.9.6,自投-腾讯-后台开发工程师-在线笔试(已完成)。</p>
+</li>
+<li><p>2015.9.7,自投-招商银行信用卡中心-软件开发-在线笔试(已完成)</p>
+</li>
+<li><p>2015.9.8,自投-CVTE-C/C++软件开发工程师-在线笔试19:00~20:30。</p>
+</li>
+<li><p>2015.9.9,内推-口袋-PHP工程师-电话面试,14：00pm(待完成)。</p>
+</li>
+</ol>
+<hr>
+<h2 id="未投岗位">未投岗位</h2><ol>
+<li>百度;</li>
+<li>美团-后端开发工程师;</li>
+<li>微软;</li>
+<li>搜狐;</li>
+<li>搜狗;</li>
+<li>中国银联;</li>
+<li>网易互联网;</li>
+<li>科大讯飞;</li>
+<li>NVDIA;</li>
+<li>北京云知声;</li>
+<li>合肥美亚光电;</li>
+</ol>
+<hr>
+<h2 id="招聘会">招聘会</h2><ol>
+<li>2015.9.14,16:00pm,西区学生活动中心二楼学术报告厅,创新工场(涂鸦移动)-现场接收纸质版简历。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Work/">Work</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-pointeronC" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -756,134 +928,9 @@
 
 
   
-    <article id="post-function-template" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/19/function-template/" class="article-date">
-  	<time datetime="2015-08-19T14:31:49.000Z" itemprop="datePublished">2015-08-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/function-template/">函数模板，模板函数，模板类等</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="需求">需求</h1><p>只定义一份函数内容，就可以支持其他类型，即将单一函数的内容与希望支持多个类型绑定起来。</p>
-<h1 id="函数模板">函数模板</h1><ol>
-<li><p>函数模板(function template)将参数列表中制度的全部(或部分)参数类型信息抽离出来。以<code>&lt;typename elemType&gt;</code>来表示在使用时才确定(必须确定)的数据类型。</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">string</span> &amp;str, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>函数模板也可以是重载函数。</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">string</span> &amp;str, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">int</span> &amp;age, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="模板函数和模板类">模板函数和模板类</h1><blockquote>
-<p><a href="http://blog.csdn.net/sunxx1986/article/details/6619144" target="_blank" rel="external">more</a></p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-default-parameter-value" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/19/default-parameter-value/" class="article-date">
-  	<time datetime="2015-08-19T09:24:04.000Z" itemprop="datePublished">2015-08-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/default-parameter-value/">透过指针提供默认参数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="程序的编写原则是">程序的编写原则是</h1><p>参数传递比直接在file-scope域适当。</p>
-<h2 id="例子">例子</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream &amp;ofil)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br><span class="line"><span class="comment">//默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream *ofil=<span class="number">0</span>)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br></pre></td></tr></table></figure>
-<h2 id="说明">说明</h2><ol>
-<li>无法设置引用=0，因为引用都代表某个对象。</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
