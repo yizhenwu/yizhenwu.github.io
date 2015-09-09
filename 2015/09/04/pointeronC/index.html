@@ -21,7 +21,7 @@ ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器
 
 翻译环境:源代码-&amp;gt;可执行的机器指令。
 一个或多个源文件编译转化成目标代码(.o或.obj文件)。包括预处理器处理（预处理器在源代码上执行一些文本操作，如#define的替换以及读入#include包含的文件内容）。源代码解析(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后优化器(对目标">
-<meta property="og:updated_time" content="2015-09-04T14:57:14.000Z">
+<meta property="og:updated_time" content="2015-09-09T04:33:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《C和指针》总结">
 <meta name="twitter:description" content="第二章
@@ -268,6 +268,104 @@ ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器
 <li>移位操作符：&lt;&lt;,左移位；&gt;&gt;,右移位。注意有符号数右移位时用1作为填充。</li>
 <li>位操作符：&amp;，|，^：与，或，异或。<br>举例：<code>value=value | 1&lt;&lt;bit_number;</code>将某位置1。<code>value=value &amp; ~(1&lt;&lt;bit_number);</code>将某位置0。</li>
 </ol>
+<h2 id="第六-九章">第六-九章</h2><p><code>int arr[10];</code><br>数组名并不用作<strong>指针常量</strong>的场合：</p>
+<ol>
+<li>当数组名作为sizeof操作符的操作数时，如，<strong>sizeof返回整个数组的长度</strong>，而不是指向数组的指针的长度。</li>
+<li>当数组名作为单目操作符&amp;的操作数时，如，取一个数组名的地址所产生的一个指向数组的指针，是一个指向某个指针常量的指针。</li>
+</ol>
+<hr>
+<p>下标引用和指针间接访问表达式<strong>是一样</strong>的</p>
+<ol>
+<li><code>arr[num];</code>等同于<code>*(arr+(num));</code>。</li>
+</ol>
+<hr>
+<p>数组和指针一样吗？<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> *b;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>声明数组时，编译器根据声明所指定元素的数量为数组保留内存空间，然后再创建数组名，它的值是一个常量，指向这段空间的起始位置。</li>
+<li>声明一个指针时，编译器只为指针本身保留内存空间，并不为任何整型值预留空间。而且直接使用<code>*b</code>是非法的，因为没有初始化b的指向。</li>
+</ol>
+<hr>
+<p>数组名做函数参数时</p>
+<ol>
+<li>由于数组名的值是指向数组第一个元素的指针，因此传递给函数的是一份该指针的拷贝。</li>
+</ol>
+<hr>
+<p>字符数组的初始化<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> message[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> message[] = <span class="string">"hello"</span>;<span class="comment">//初始化列表</span></span><br><span class="line"><span class="keyword">char</span> *message = <span class="string">"hello"</span>; <span class="comment">//字符串常量</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>以上两种初始化均可，第一种显得笨拙，对与非常短的字符串，可以这么干。</li>
+<li>第二种是语音标准提供的快速方法，但注意区分<code>&quot;hello&quot;</code><strong>并不是</strong>一个字符串常量，它只是第一种的<strong>初始化列表</strong>的另一种写法。</li>
+<li>因此，<code>&quot;hello&quot;</code>是否为一个字符串常量，取决于是否为用于初始化一个字符数组，那么它就是一个初始化列表，否则它就是字符串常量。</li>
+</ol>
+<hr>
+<p>多维数组</p>
+<ol>
+<li>多维数组的存储：是按行存储，右下标率先变化的原则。</li>
+<li>如<code>int matrix[2][3];</code>，可以认为创建一个一维数组，包含二个元素，其中每个元素又是包含3个元素的数组，因此matrix是指向一个包含三个元素的整型数组的指针，即是一个指针的指针。因此，matrix+1是指向该数组的第二个元素，这个元素也是一个包含三个元素的数组。</li>
+</ol>
+<hr>
+<p>分析：<code>int (*p)[10];</code>怎么判断p指向什么呢？</p>
+<ol>
+<li>假设是对表达式求值的过程，<strong>下标优先级高于间接访问</strong>，但是间接访问有括号。因此，<code>p</code>是一个指针，是指向某种类型的指针。</li>
+<li>接下来看下标操作，所以<code>p</code>是指向某种类型的数组的指针。</li>
+<li>对<code>(*p)[10]</code>表达式求值得到一个整型，因此<code>p</code>是一个指向整型数组的指针。</li>
+</ol>
+<hr>
+<p>多维数组matrix充当函数参数时，函数的原型为：</p>
+<ol>
+<li><code>int func1 (int (*P)[3]);</code>正确。</li>
+<li><code>int func2 (int p[][3]);</code>正确。</li>
+<li><code>int func3 (int **p);</code>是错误的，因为针对一个多维数组，无法知道调整的长度。和一维数组不一样，虽然一维数组可以这么干。</li>
+</ol>
+<hr>
+<p>指针数组</p>
+<ol>
+<li>指针数组是一个数组，其元素类型是执行某种类型的指针。</li>
+<li>如<code>int *api[10];</code>分析如下，假设是对这个表达式进行求值。由于<strong>下标优先级高于间接访问</strong>，因此首先执行的是下标引用，因此api是某种类型的数组，并且该数组包含10个元素。通过下标在取得一个数组元素后，随即执行的是间接访问操作。间接访问操作后得到的是一个整型值。所以，api是一个数组，其元素类型是指向整型的指针。</li>
+</ol>
+<hr>
+<p>字符串函数的使用</p>
+<ol>
+<li><code>char* strcpy(char *dst, char const *src);</code>因此，<code>strcpy</code>函数的dst必须是一个可以修改的参数，因此，dst必须是一个字符数组或者是一个指向动态分配内存的数组的指针。<strong>注意</strong>，不能是一个字符串常量。<strong>此外</strong>，如果src比dst大，将会覆盖存储与数组后面的内存空间的值！</li>
+</ol>
+<ul>
+<li><code>char dst[] = &quot;hello world&quot;;</code>正确。</li>
+<li><code>char *dst = (char*)malloc(sizeof(char)*10);</code>正确。</li>
+<li><code>char *dst = &quot;error&quot;;</code>错误。</li>
+</ul>
+<ol>
+<li><code>int strcmp(char const* s1,char const* s2);</code>该函数是比较两个字符串涉及对两个字符串对应的字符逐个进行比较，直到发现不匹配为止，最先不匹配的为止。</li>
+</ol>
+<ul>
+<li>若s1小于s2，返回-1；</li>
+<li>若s1大于s2，返回1；</li>
+<li>若s1等于s2，返回0；</li>
+</ul>
+<hr>
+<p>字符串查找</p>
+<ol>
+<li>查找一个字符：</li>
+</ol>
+<ul>
+<li><code>char *strchr(char const *str, int ch);</code>如,查到该字符(第一次出现)，则返回指向该字符的指针(含该字符)。若找不到，则返回NULL。</li>
+<li><code>char *strrchr(char const *str, int ch);</code>如,查到该字符(最后一次出现)，则返回指向该字符的指针(含该字符)。若找不到，则返回NULL。</li>
+<li>调用如下：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> <span class="built_in">string</span>[]=<span class="string">"hello,world"</span>;</span><br><span class="line"><span class="keyword">char</span> *ans;</span><br><span class="line">ans = <span class="built_in">strchr</span>(<span class="built_in">string</span>,<span class="string">'l'</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans;<span class="comment">//输出：llo,world</span></span><br><span class="line">ans = <span class="built_in">strrchr</span>(<span class="built_in">string</span>,<span class="string">'l'</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans;<span class="comment">//输出：ld;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>查找任何几个字符-查找任何一组字符第一次在字符串中出现的位置。</li>
+</ol>
+<ul>
+<li><code>char *strpbrk(char const *str,char const *group);</code>函数返回指向str中第1个匹配group中的任何一个字符的字符位置。若找不到，则返回NULL。</li>
+<li>调用如下：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>]=<span class="string">"hello there, hoeny."</span>;</span><br><span class="line"><span class="keyword">char</span> *ans1;</span><br><span class="line">ans1 = <span class="built_in">strpbrk</span>(str,<span class="string">"aeiou"</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans1&lt;&lt;endl;<span class="comment">//输出：ello there, hoeny.</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>查找一个子串-在字符串中查找一个子串</li>
+</ol>
+<ul>
+<li><code>char *strstr(char const* s1,char const *s2);</code>函数在s1中查找整个s2<strong>第一次出现的起始位置</strong>，并返回一个指向该位置的指针。如果s1中并没有完整匹配s2，则返回NULL。此外，如果第二个参数s2为空，则直接返回第一个参数s1。</li>
+<li>在字符串中查找一个子串，返回最后一次出现的位置<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">my_strrstr</span><span class="params">(<span class="keyword">char</span> <span class="keyword">const</span>* s1, <span class="keyword">char</span> <span class="keyword">const</span> *s2)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *last = <span class="literal">NULL</span>;<span class="comment">//指向前一次匹配出现的位置</span></span><br><span class="line">	<span class="keyword">char</span> *current;<span class="comment">//当前匹配到的匹配位置</span></span><br><span class="line">	<span class="keyword">if</span>(*s2 != <span class="string">'\0'</span>)<span class="comment">//s2不为空，否则直接返回s1</span></span><br><span class="line">	&#123;</span><br><span class="line">		current = <span class="built_in">strstr</span>(s1,s2);</span><br><span class="line">		<span class="keyword">while</span>(current != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			last = current;</span><br><span class="line">			current =<span class="built_in">strstr</span>(last+<span class="number">1</span>,s2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
