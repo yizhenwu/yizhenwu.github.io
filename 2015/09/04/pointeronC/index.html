@@ -21,7 +21,7 @@ ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器
 
 翻译环境:源代码-&amp;gt;可执行的机器指令。
 一个或多个源文件编译转化成目标代码(.o或.obj文件)。包括预处理器处理（预处理器在源代码上执行一些文本操作，如#define的替换以及读入#include包含的文件内容）。源代码解析(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后优化器(对目标">
-<meta property="og:updated_time" content="2015-09-09T04:33:44.000Z">
+<meta property="og:updated_time" content="2015-09-09T04:37:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《C和指针》总结">
 <meta name="twitter:description" content="第二章
@@ -268,6 +268,7 @@ ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器
 <li>移位操作符：&lt;&lt;,左移位；&gt;&gt;,右移位。注意有符号数右移位时用1作为填充。</li>
 <li>位操作符：&amp;，|，^：与，或，异或。<br>举例：<code>value=value | 1&lt;&lt;bit_number;</code>将某位置1。<code>value=value &amp; ~(1&lt;&lt;bit_number);</code>将某位置0。</li>
 </ol>
+<hr>
 <h2 id="第六-九章">第六-九章</h2><p><code>int arr[10];</code><br>数组名并不用作<strong>指针常量</strong>的场合：</p>
 <ol>
 <li>当数组名作为sizeof操作符的操作数时，如，<strong>sizeof返回整个数组的长度</strong>，而不是指向数组的指针的长度。</li>
