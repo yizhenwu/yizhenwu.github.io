@@ -170,6 +170,95 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-koudai" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/09/koudai/" class="article-date">
+  	<time datetime="2015-09-09T14:19:46.000Z" itemprop="datePublished">2015-09-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/09/koudai/">北京口袋-PHP工程师-一面</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>终于在9.9这样的好日子，迎来了口袋的一面。<br>接到电话后，对方说你能找一台座机吗？我说干啥。然后对方说考虑到面试时间很长，手机辐射大。<br>哈哈哈~<br>对PHP一点不懂，师兄说C++转PHP一周足够，然后就内推进师兄的部门搞PHP了，面试开始。</p>
+<hr>
+<ol>
+<li>面试官首先让我来一个3分钟的自我介绍。我就巴拉巴拉的介绍了下。</li>
+<li>面试官问我，有没有做过很多的编码工作，我回答只是项目中涉及到的仿真会在Linux下用C++语言实现。</li>
+<li>我补充说，之前做的演示工作是实际的动手，在动手中，安装MPTCP以及组网等工作，代码量不多。</li>
+<li>后来，面试官问我，我熟悉的常用Linux指令有哪些？</li>
+</ol>
+<ul>
+<li>我说了几个我比较熟悉的，top，crontab，pwd等。</li>
+<li>后来又问我，如何在一个目录下寻找一个文件，我说find。</li>
+<li>最后，那如何寻找这个文件中出现的某个字符串，我说可以用grep -n “wu” a.txt。</li>
+<li>进一步，如何有序按行输出一个文件中的内容呢？我犹豫了，对方提示管道命令。后来说可以加以竖线，在前一命令基础上操作。</li>
+</ul>
+<ol>
+<li>面试官说，我遇到一个问题，首先想到用什么语言解决问题？我说C++。</li>
+<li>会不会脚本语言？我说Python会一点，不精通。</li>
+</ol>
+<hr>
+<p>智力题开始</p>
+<ol>
+<li>6L和5L的瓶子，如何量出3L的水？[对勾]</li>
+<li>24L的油，用5L，11L，13L的杯子，如何3等分？[对勾]</li>
+<li>火柴拼出的2+7-2+7，如何只动一根火柴，使表达式的值等于30？[对勾]</li>
+<li>给两个箱子，50个红球和50个篮球，现在把红球和篮球放入箱子中，使得取出红球的概率最大，请问怎么放？[没搞定] </li>
+</ol>
+<hr>
+<p>结束面试官让我问两个问题：</p>
+<ol>
+<li>北京有户口不？明知故问，不过还是想确认一下，对方细致解释，thx。</li>
+<li>有培训不？对方说公司会安排导师带一到三个月。</li>
+</ol>
+<hr>
+<p>至此，口袋一面结束，没问PHP。让我一个C++的，有希望见到有二面的机会。<br>总结一句，把会的搞得很清楚，很透彻，不会的就不扯淡。</p>
+<p>加油~哪家公司，尽力就好，勿执念太深。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Interview/">Interview</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-HttpRequest" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -940,75 +1029,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/Interview/">Interview</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-all-variables" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/19/all-variables/" class="article-date">
-  	<time datetime="2015-08-19T14:59:20.000Z" itemprop="datePublished">2015-08-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/all-variables/">不同变量、作用域归纳分析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++中不同变量具有不同的生命周期，具有不同的作用域。</p>
-<h1 id="作用域">作用域</h1><ol>
-<li>全局作用域；</li>
-<li>局部作用域；</li>
-<li>类作用域；</li>
-<li>文件作用域；</li>
-<li>命名空间作用域</li>
-</ol>
-<h2 id="从作用域对变量进行划分">从作用域对变量进行划分</h2><ol>
-<li>全局变量(全局作用域): 全局变量在一个源文件中定义，可以作用在多个源文件(前提需要，在不直接包含该全局变量的位置，用<code>extern</code>关键字再次声明)。</li>
-<li>静态局部变量</li>
-</ol>
-<blockquote>
-<p><a href="http://blog.csdn.net/tigerjibo/article/details/7425580" target="_blank" rel="external">more</a></p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
 	</div>
 
 
