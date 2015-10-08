@@ -170,6 +170,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-quick-sort" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/15/quick-sort/" class="article-date">
+  	<time datetime="2015-08-15T15:39:06.000Z" itemprop="datePublished">2015-08-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/15/quick-sort/">快速排序</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#算法要点</p>
+<ol>
+<li>基准数;</li>
+<li>哨兵i=0(指向序列最左边);</li>
+<li>哨兵j=length-1(指向序列最右边);</li>
+<li>哨兵j先行,j–,直到发现第一个<strong>小于基准数</strong>的位置;</li>
+<li>随后,哨兵i后行,i++,直到发现第一个<strong>大于基准数</strong>的位置;</li>
+<li>交换哨兵i,哨兵j所指向的元素;</li>
+<li>goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;</li>
+<li>处理()</li>
+</ol>
+<p>#算法实现<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(left&gt;=right)<span class="keyword">return</span>;</span><br><span class="line">	temp=a[left] <span class="comment">//基准数temp,temp首先为待排序数组的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i=left; <span class="comment">//哨兵i</span></span><br><span class="line">	<span class="keyword">int</span> j=right-<span class="number">1</span>; <span class="comment">//哨兵j</span></span><br><span class="line">	<span class="keyword">while</span>(i != j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(a[j] &gt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(a[i] &lt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=a[i];</span><br><span class="line">			a[i]=a[j];</span><br><span class="line">			a[j]=t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//算法要点step7</span></span><br><span class="line">	a[left]=a[i];</span><br><span class="line">	a[i]=temp;</span><br><span class="line">	<span class="comment">//递归继续处理左边的</span></span><br><span class="line">	quick_sort(left,i);</span><br><span class="line">	<span class="comment">//递归继续处理右边的</span></span><br><span class="line">	quick_sort(i,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#复杂度分析<br>每次执行都一分为二的递归实现,因此完成排序复杂度O(NlogN)。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a><a class="article-category-link" href="/categories/C/Algriothm/">Algriothm</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-DFS" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -808,89 +875,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/Linux/">Linux</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-day1-python" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/13/day1-python/" class="article-date">
-  	<time datetime="2015-08-13T13:51:19.000Z" itemprop="datePublished">2015-08-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/13/day1-python/">笔记:python基本语法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="python基本入门">python基本入门</h1><p>1.中文乱码</p>
-<pre><code><span class="preprocessor"># coding gdb</span>
-</code></pre><p>2.python数据类型</p>
-<ol>
-<li>列表:</li>
-<li>元组:相对于列表,不可重新赋值修改。</li>
-<li>集合:<ul>
-<li>基本运算:交集、并集、差集</li>
-<li>高级功能:利用集合的元素都是唯一的,去除重复元素:<br>  a=set(“absccssgs”)<br>  b=set(a)</li>
-<li>字典–关联数组<br>  zidian={‘name’:’weiwei’,’home’:’anhui’}</li>
-</ul>
-</li>
-</ol>
-<p>4.pickle</p>
-<pre><code>- 序列化对象的过程(腌制)
-    import pickle
-    val1=pickle.<span class="function"><span class="title">dumps</span><span class="params">(val)</span></span>
-- 反序列化过程(对象恢复原样)
-    val2=pickle.<span class="function"><span class="title">loads</span><span class="params">(val1)</span></span>
-- 将对象存储到文件里面序列化  <span class="function"><span class="title">dump</span><span class="params">(object,file)</span></span>
-    import pickle
-    f1=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'wb'</span>)</span></span> #<span class="string">'wb'</span>是写
-    val1=pickle.<span class="function"><span class="title">dump</span><span class="params">(val,f1,True)</span></span>
-    f1.<span class="function"><span class="title">close</span><span class="params">()</span></span>
-- 将<span class="function"><span class="title">dump</span><span class="params">()</span></span>存储的文件里面的数据回复(对象恢复原样)`<span class="function"><span class="title">load</span><span class="params">(object,file)</span></span>`
-    f2=<span class="function"><span class="title">file</span><span class="params">(<span class="string">'1.pk1'</span>,<span class="string">'rb'</span>)</span></span> #<span class="string">'rb'</span>是读
-    t=pickel.<span class="function"><span class="title">load</span><span class="params">(f2)</span></span>
-    f2.<span class="function"><span class="title">close</span><span class="params">()</span></span>
-</code></pre><p>5.<strong>python缩进</strong>(这是和其他语言的最大区别)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
 	</div>
 
 

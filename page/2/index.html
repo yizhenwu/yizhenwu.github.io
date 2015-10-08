@@ -170,6 +170,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-deblank" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/22/deblank/" class="article-date">
+  	<time datetime="2015-08-22T03:45:07.000Z" itemprop="datePublished">2015-08-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/22/deblank/">去除字符串中多余的空格</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c++"><figcaption><span>删除多余空格问题</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deblank</span><span class="params">(<span class="keyword">char</span> <span class="built_in">string</span>[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="comment">//两个指针：p用来扫描空格，j用来存储</span></span><br><span class="line">	<span class="keyword">char</span> *p = <span class="built_in">string</span>;</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(*p == <span class="string">' '</span>)<span class="comment">//起始空格的处理，删除所有起始空格</span></span><br><span class="line">	&#123;</span><br><span class="line">		p++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(*p != <span class="string">'\0'</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(*p != <span class="string">' '</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span>[j] = *p;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>( *p == <span class="string">' '</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				p++;</span><br><span class="line">			&#125;</span><br><span class="line">				p--;</span><br><span class="line">				<span class="built_in">string</span>[j] = <span class="string">' '</span>;</span><br><span class="line">				j++;</span><br><span class="line">		&#125;</span><br><span class="line">			p++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">string</span>[j] = <span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> <span class="built_in">string</span>[] = <span class="string">"    Hello my    world !    "</span>;</span><br><span class="line">	deblank( <span class="built_in">string</span> );</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">string</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a><a class="article-category-link" href="/categories/C/Algriothm/">Algriothm</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-baidu-interview-third" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -799,73 +854,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-quick-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/quick-sort/" class="article-date">
-  	<time datetime="2015-08-15T15:39:06.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/quick-sort/">快速排序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#算法要点</p>
-<ol>
-<li>基准数;</li>
-<li>哨兵i=0(指向序列最左边);</li>
-<li>哨兵j=length-1(指向序列最右边);</li>
-<li>哨兵j先行,j–,直到发现第一个<strong>小于基准数</strong>的位置;</li>
-<li>随后,哨兵i后行,i++,直到发现第一个<strong>大于基准数</strong>的位置;</li>
-<li>交换哨兵i,哨兵j所指向的元素;</li>
-<li>goto 3 until 哨兵i位置=哨兵j位置,将当前哨兵i和j所指的元素与基准数交换;</li>
-<li>处理()</li>
-</ol>
-<p>#算法实现<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归实现快速排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(left&gt;=right)<span class="keyword">return</span>;</span><br><span class="line">	temp=a[left] <span class="comment">//基准数temp,temp首先为待排序数组的第一个元素</span></span><br><span class="line">	<span class="keyword">int</span> i=left; <span class="comment">//哨兵i</span></span><br><span class="line">	<span class="keyword">int</span> j=right-<span class="number">1</span>; <span class="comment">//哨兵j</span></span><br><span class="line">	<span class="keyword">while</span>(i != j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(a[j] &gt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(a[i] &lt;= temp &amp;&amp; i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t=a[i];</span><br><span class="line">			a[i]=a[j];</span><br><span class="line">			a[j]=t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//算法要点step7</span></span><br><span class="line">	a[left]=a[i];</span><br><span class="line">	a[i]=temp;</span><br><span class="line">	<span class="comment">//递归继续处理左边的</span></span><br><span class="line">	quick_sort(left,i);</span><br><span class="line">	<span class="comment">//递归继续处理右边的</span></span><br><span class="line">	quick_sort(i,right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>#复杂度分析<br>每次执行都一分为二的递归实现,因此完成排序复杂度O(NlogN)。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a><a class="article-category-link" href="/categories/C/Algriothm/">Algriothm</a>
 	</div>
 
 
