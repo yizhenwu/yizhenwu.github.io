@@ -170,6 +170,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-life20151017" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/17/life20151017/" class="article-date">
+  	<time datetime="2015-10-17T14:02:57.000Z" itemprop="datePublished">2015-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/17/life20151017/">life20151017</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>找工作到这个时候已经不想找了，整个人都不想动了。目前也没有自己非常满意的offer，也没有自己不满意的offer。互联网公司到底适不适合我？自己也没有做过互联网公司的项目，感觉自己编程也不是太厉害。倒是经常以没有做过编程项目来说服自己，让自己以为自己可能还是适合大规模编码活动的。或者，觉得编程是个人培训一下都可以，我也可以。</p>
+<p>但是，我到底适不适合编码？目前我自己也搞不清楚。</p>
+<p>目前华为的offer也是定下来就是special offer，但是具体工资也是没有定下来。对于华为的这个offer的岗位我个人也不是很清楚，就是知道是做云计算等等工作，也是比较有兴趣的。当然，其年终奖也是比较诱人，但是需要根据绩效来定。</p>
+<p>目前远景能源给我的offer也是比较nice的，也是非常有诚意的一家了。而且工作性质也是比较火的大数据，这对于远景能源来说，大数据岗位也是有很多能源数据的，并不失为一家很好的雇主。</p>
+<p>远景or华为，我还不知道，目前可能更偏向华为吧。</p>
+<p>不管是哪家，定下来，我就会为之而学习，工作一定可以做好！</p>
+<hr>
+<p>最近，还是比较想找个项目做一做，这个项目到底是做啥呢？</p>
+<ol>
+<li>学习云计算，做一个云相关的项目？</li>
+<li>继续搞之前java微信公共平台，为实验室贡献一个微信平台，也是挺有意思的工作？</li>
+<li>在github上找一个c++开源项目，学学跟跟？</li>
+</ol>
+<p>总之，不想闲下来！！！不过还有那可恨的论文没修改好，罪过罪过啊~~~</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Life/">Life</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-huntingworks2015-10-8" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -935,78 +1003,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/life/">life</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-ptr-arr" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/24/ptr-arr/" class="article-date">
-  	<time datetime="2015-08-24T15:20:10.000Z" itemprop="datePublished">2015-08-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/24/ptr-arr/">一维数组与指针</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数组名为常量指针">数组名为常量指针</h1><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> b<span class="literal">[]</span>;</span><br></pre></td></tr></table></figure>
-<p>因此：</p>
-<ol>
-<li>数组名是一个<strong>常量指针</strong>，此处为指向int的常量指针。</li>
-<li>注意<strong>常量指针</strong>不同于<strong>指针变量</strong>。</li>
-</ol>
-<h2 id="数组名不充当指针常量的特例(仅这两种情况)">数组名不充当指针常量的特例(仅这两种情况)</h2><ol>
-<li>当数组名作为<code>sizeof</code>操作符。</li>
-<li>或者单目操作符<code>&amp;</code>的操作数时。<br>例如：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = <span class="keyword">sizeof</span>(b);<span class="comment">//返回数组的长度</span></span><br><span class="line"><span class="keyword">int</span> *c;</span><br><span class="line">c = &amp;a[<span class="number">0</span>];<span class="comment">//指向第一个元素的指针</span></span><br><span class="line">c = a;<span class="comment">//等价，指向第一个元素的指针</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>效果：<br></p>
-<ol>
-<li>sizeof返回的是整个数组的长度，而不是指向数组的指针的长度。</li>
-<li>取一个数组名的地址所产生的是一个指向数组的指针，而不是指向某个常量值的指针。</li>
-</ol>
-<hr>
-<p>注：C语言中下标引用和间接访问表达式是一样的。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
 	</div>
 
 

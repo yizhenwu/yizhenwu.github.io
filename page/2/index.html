@@ -170,6 +170,78 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-ptr-arr" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/24/ptr-arr/" class="article-date">
+  	<time datetime="2015-08-24T15:20:10.000Z" itemprop="datePublished">2015-08-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/24/ptr-arr/">一维数组与指针</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数组名为常量指针">数组名为常量指针</h1><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> b<span class="literal">[]</span>;</span><br></pre></td></tr></table></figure>
+<p>因此：</p>
+<ol>
+<li>数组名是一个<strong>常量指针</strong>，此处为指向int的常量指针。</li>
+<li>注意<strong>常量指针</strong>不同于<strong>指针变量</strong>。</li>
+</ol>
+<h2 id="数组名不充当指针常量的特例(仅这两种情况)">数组名不充当指针常量的特例(仅这两种情况)</h2><ol>
+<li>当数组名作为<code>sizeof</code>操作符。</li>
+<li>或者单目操作符<code>&amp;</code>的操作数时。<br>例如：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = <span class="keyword">sizeof</span>(b);<span class="comment">//返回数组的长度</span></span><br><span class="line"><span class="keyword">int</span> *c;</span><br><span class="line">c = &amp;a[<span class="number">0</span>];<span class="comment">//指向第一个元素的指针</span></span><br><span class="line">c = a;<span class="comment">//等价，指向第一个元素的指针</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>效果：<br></p>
+<ol>
+<li>sizeof返回的是整个数组的长度，而不是指向数组的指针的长度。</li>
+<li>取一个数组名的地址所产生的是一个指向数组的指针，而不是指向某个常量值的指针。</li>
+</ol>
+<hr>
+<p>注：C语言中下标引用和间接访问表达式是一样的。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-deblank" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -783,67 +855,6 @@
 <span class="tag">val-------</span>低地址
 </code></pre><hr>
 <p>因此：当dst数组溢出的时候，将会是向<strong>高地址</strong>溢出，因此<strong>val1</strong>将会被覆盖。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-double-equal" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/double-equal/" class="article-date">
-  	<time datetime="2015-08-15T15:40:53.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/double-equal/">如何比较两个double(float)是否相等?</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#原理<br>计算机内部表示小数(float,double型小数)都是有误差的(因为计算机只有0,1)。</p>
-<p>#方法</p>
-<ol>
-<li>判断两个小数是否相等,只能判断它们之差的绝对值是不是在一个很小的范围内(我觉得超过其要求的精度即可)。</li>
-<li>如果两个数之差很小,那么就可以认为他们是相等的。</li>
-</ol>
-<p>#代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以double为例</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">equal</span><span class="params">(<span class="keyword">double</span> num1,<span class="keyword">double</span> num2)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(num1 - num2 &gt; -<span class="number">0.000001</span> &amp;&amp; num1-num2 &lt; <span class="number">0.00001</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
