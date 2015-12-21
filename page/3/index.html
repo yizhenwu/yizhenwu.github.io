@@ -170,6 +170,144 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-reference" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/19/reference/" class="article-date">
+  	<time datetime="2015-08-19T08:27:24.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/reference/">引用初识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Notes:">Notes:</h1><ol>
+<li><p>对reference的所有操作都是对“reference所代表的对象”操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;val = ival;<span class="comment">//val是ival的一个引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *pi = &amp;val;<span class="comment">//将ival的地址赋值给pi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为什么使用reference？<br><br>a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。<br><br>b. 可实现直接对所传入的对象进行修改。<br><br>c. 如果不想对原对象进行修改，则用<code>const</code>修饰该引用。<br></p>
+</li>
+<li><p>提领一个指针前，一定要对这个指针做证空处理。</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p==<span class="literal">NULL</span>)<span class="keyword">return</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传递内置类型时，一般不适用传址方式。传址机制一般用于class object。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-work-hunting" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/19/work-hunting/" class="article-date">
+  	<time datetime="2015-08-19T04:36:56.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/work-hunting/">目前找工作形势(2015秋季)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="已投的岗位">已投的岗位</h1><ol>
+<li>2015.7.15, [内推]阿里巴巴基础平台研发工程师。内推2面挂了；</li>
+<li>2015.7.24, [内推]美团云。目前没消息。</li>
+<li>2015.7.31, [内推]腾讯TEG。之前简历被锁定，目前没消息。</li>
+<li>2015.8.05, [内推]网易游戏游戏运维工程师。8.19收到系统消息称简历筛选结果9.12前通知。</li>
+<li>2015.8.05, [自投]百度BFE。8.10收到一面电话，等二面中。</li>
+<li>2015.8.13, [特招]TP-Link精英计划-云计算研发工程师，8.19晚师兄见面会，到时去现场看看，据说8.21面试。 </li>
+<li>2015.8.15, [内推]蘑菇街基础产品开发攻城师。师兄回复收到简历，目前没消息。</li>
+<li>2015.8.16, [内推]IBM的Software Defined Storage Developer。目前没消息。</li>
+<li>2015.8.18, [优招]华为通信性能算法工程师。技术面通过，基本可以拿到华为offer。</li>
+</ol>
+<hr>
+<h1 id="最新消息">最新消息</h1><ol>
+<li>2015.8.19, [华为]华为通信性能算法工程师，面试官推荐special offer。</li>
+<li>2015.8.19, [特招]TP-Link精英计划，<em>8.23</em>日面试(一面)，共计两面，9.1前发offer，签两方协议。</li>
+<li>2015.8.23, [校招]阿里巴巴基础平台研发工程师。在线笔试。</li>
+<li>2015.8.20, [自投]百度BFE。终于等到了二面(8.20,19:00pm)，最近保持手机畅通，最近通知我结果。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Work/">Work</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-address-increament" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -679,137 +817,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-c++memory management" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/14/c++memory management/" class="article-date">
-  	<time datetime="2015-08-14T13:04:03.000Z" itemprop="datePublished">2015-08-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/14/c++memory management/">C++内存管理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="32位/64位系统中不同类型变量对应的字节数">32位/64位系统中不同类型变量对应的字节数</h1><ol>
-<li>char: 1字节；<br></li>
-<li>char*: 4字节(32位)/8字节(64位)；<br></li>
-<li>short int: 2字节；<br></li>
-<li>int: 4字节；<br></li>
-<li>unsigned int: 4字节；<br></li>
-<li>float: 4字节；<br></li>
-<li>double: 8字节；<br></li>
-<li>long: 4字节(32位)/8字节(64位)；<br></li>
-<li>long long: 8字节；<br></li>
-<li>usingned long: 4字节(32位)/8字节(64位)；<br></li>
-</ol>
-<h1 id="内存管理">内存管理</h1><h2 id="64位系统中内存管理遵循8字节对齐">64位系统中内存管理遵循8字节对齐</h2><p>原则：按照8字节为单位分配存储空间，如果不足，则自动补齐，本次分配不足以存放下一个变量时，会重新分配空间。</p>
-<pre><code><span class="keyword">struct</span> A{
-   <span class="keyword">unsigned</span> <span class="keyword">int</span> a;<span class="comment">//a占4字节,开辟一个8字节内存P;</span>
-   <span class="keyword">char</span> b[<span class="number">2</span>];<span class="comment">//b[]占1*2=2字节,在a后的连续2字节内存放，</span>
-             <span class="comment">//P还剩2字节;</span>
-   <span class="keyword">double</span> c;<span class="comment">//c占8字节,P不足以存放,因此将剩余的2字节补全</span>
-            <span class="comment">//因此开辟新8个字节存放c</span>
-   <span class="keyword">short</span> d;<span class="comment">//d占2字节，开辟新的8字节内存，存放d。</span>
-           <span class="comment">//将剩余6字节补全.</span>
-}
-</code></pre><p><strong>So：</strong>总共开辟了3个8字节的空间，即24字节空间来存储该结构。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Algorithm-SORT" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/14/Algorithm-SORT/" class="article-date">
-  	<time datetime="2015-08-13T16:25:31.000Z" itemprop="datePublished">2015-08-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/14/Algorithm-SORT/">冒泡排序及优化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="bubble_sort">bubble_sort</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标准冒泡排序:不带优化的,即使没有交换仍然继续执行。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buble_sort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> length)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(arr == <span class="literal">NULL</span> || length&lt;=<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> end=length-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(end;end&gt;<span class="number">0</span>;end--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=end-<span class="number">1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i] &lt; arr[i+<span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> temp=arr[i];</span><br><span class="line">				arr[i]=arr[i+<span class="number">1</span>];</span><br><span class="line">				arr[i+<span class="number">1</span>]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//优化冒泡排序:引入flag在没有交换后即认为排序结束。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buble_sort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> length)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(arr == <span class="literal">NULL</span> || length&lt;=<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> end=length-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> flag=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(end;end&gt;<span class="number">0</span> &amp;&amp; flag;end--)</span><br><span class="line">	&#123;</span><br><span class="line">		flag=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=end-<span class="number">1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i] &lt; arr[i+<span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> temp=arr[i];</span><br><span class="line">				arr[i]=arr[i+<span class="number">1</span>];</span><br><span class="line">				arr[i+<span class="number">1</span>]=temp;</span><br><span class="line">				<span class="keyword">if</span>(flag==<span class="number">0</span>)flag=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a><a class="article-category-link" href="/categories/C/Algriothm/">Algriothm</a>
 	</div>
 
 
