@@ -170,206 +170,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-pointeronC" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/09/04/pointeronC/" class="article-date">
-  	<time datetime="2015-09-04T14:48:23.000Z" itemprop="datePublished">2015-09-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/04/pointeronC/">《C和指针》总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第二章">第二章</h2><ol>
-<li>ANSIC的任何一种实现种均包含两种环境（不必位于同一台机器）：</li>
-</ol>
-<ul>
-<li>翻译环境:源代码-&gt;可执行的机器指令。<ol>
-<li>一个或多个源文件<strong>编译</strong>转化成目标代码(.o或.obj文件)。包括<strong>预处理器处理</strong>（预处理器在源代码上执行一些文本操作，如<code>#define</code>的替换以及读入<code>#include</code>包含的文件内容）。<strong>源代码解析</strong>(判断语句的意思，是产生绝大多数警告和错误的阶段，解析后产生目标代码)。最后<strong>优化器</strong>(对目标代码进一步优化)<ol>
-<li>多个目标文件由<strong>链接器</strong>链接在一起，形成一个可执行程序。</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>运行环境:实际执行代码。</li>
-</ul>
-<hr>
-<h2 id="第三章">第三章</h2><ol>
-<li>有符号整型变量范围：<code>INT_MIN,INT_MAX</code>。</li>
-<li>将字符转化为二进制：<code>value=value-&#39;0&#39;;</code></li>
-<li>枚举类型就是指其值为符号常量而不是字面值类型，<code>enum Type {apple, banana, Carton };</code>声明类型为<code>Type</code>，这些变量实际是以整型的方式存储，符号名的实际值都是整数值。apple是0，banana是1，默认时后一个符号比前一个符号大1，意味着可以指定符号的整型值。如<code>enum Type {apple=12, banana=15, Carton=20 };</code>。</li>
-<li>每个变量占用一个特定的位置，变量的值都是存储在计算机内存中，每个内存位置都是由<strong>地址</strong>唯一确定并引用。指针变量是地址的另一个名字，指针变量的值是另一个变量的地址。Note：指针常量意义不大！</li>
-<li>字符串常量：字符串常量存放在静态数据区，双引号括起来的部分，对字符串常量修改的结果是未定义的，在使用的时候字符串常量实际上是一个<strong>指针</strong>。如，<code>&quot;Hello&quot;</code>, <code>&quot;\aWorld\a&quot;</code>, <code>&quot;&quot;</code>，最后一个空的也是字符串常量，也是具有一个<code>NIL</code>终止符字节。</li>
-<li>字符串常量不可以给一个数组<strong>赋值</strong>。这句话的强调的是<strong>赋值</strong>。当然<code>char str[]=&quot;hello world&quot;;</code>这句是可以的，因为这是在数组创建的时候为用静态存储区的<code>&quot;hello world&quot;</code>来初始化数组，即<code>str</code>数组拥有一份<code>hello world</code><strong>拷贝</strong>，与字符串常量<code>&quot;hello world&quot;</code>是两个东西。–      <ul>
-<li>Why：字符串常量为何也存储在静态存储区呢？</li>
-<li>Reason：细说静态存储区，静态存储区存储的是静态变量和全局变量。而字符串常量在程序中，只有一份拷贝，但是却可以被多次使用，这和静态变量类似。</li>
-</ul>
-</li>
-<li><code>typedef</code>关键字，允许为各种数据类型定义新名字。需要注意<code>#define</code>与<code>typedef</code>关键字创建新类型名字的区别，如<code>#define ptr_to_char char*; prt_to_char a,b;</code>，此处只有<code>a</code>被正确声明为一个指针，而<code>b</code>仅仅是字符。</li>
-<li>作用域的概念，即变量只在作用域才可以被使用。对于<strong>编译器</strong>来说可以分四种作用域：文件作用域、函数作用域、代码块作用域和函数原型作用域。</li>
-<li>链接属性，对于<strong>链接器</strong>来说可分为三种属性：外部external，内部internal，无none。<ul>
-<li>没有链接属性的标识符none，表示总是被当做单独的个体，即当该标识符的多个声明，也被当做是多个不同且独立的个体。</li>
-<li>internal链接属性表示标识符在同一个源文件中的所有声明指的是同一个个体，位于不同文件的其他多个声明军属于不同的实体。</li>
-<li>external链接属性，即不论声明多少次，在多少个文件，都是同一个实体。</li>
-<li><em>Note</em>：修改链接器属性的两个关键字：<code>external</code>和<code>static</code>，分别对应于external链接属性和internal链接属性。</li>
-<li><code>static</code>关键字修改属性是有限制的，其只能对缺省为external的属性的声明才可以改变其链接属性为internal链接属性。在其他位置，<code>static</code>关键字是声明为静态变量。</li>
-<li>此外，<code>external</code>关键字 声明链接属性需要在标识符第一次被声明时指定。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="第四章">第四章</h2><ol>
-<li><code>break</code>和<code>continue</code>语句，<code>break</code>是永久终止循环，<code>continue</code>是终止本次循环，接下来检测表达式的值，以决定是否继续执行循环。</li>
-<li>条件测试时，当前一个条件不满足时，后一个条件语句就不用执行。</li>
-</ol>
-<hr>
-<h2 id="第五章">第五章</h2><ol>
-<li>移位操作符：&lt;&lt;,左移位；&gt;&gt;,右移位。注意有符号数右移位时用1作为填充。</li>
-<li>位操作符：&amp;，|，^：与，或，异或。<br>举例：<code>value=value | 1&lt;&lt;bit_number;</code>将某位置1。<code>value=value &amp; ~(1&lt;&lt;bit_number);</code>将某位置0。</li>
-</ol>
-<hr>
-<h2 id="第六-九章">第六-九章</h2><p><code>int arr[10];</code><br>数组名并不用作<strong>指针常量</strong>的场合：</p>
-<ol>
-<li>当数组名作为sizeof操作符的操作数时，如，<strong>sizeof返回整个数组的长度</strong>，而不是指向数组的指针的长度。</li>
-<li>当数组名作为单目操作符&amp;的操作数时，如，取一个数组名的地址所产生的一个指向数组的指针，是一个指向某个指针常量的指针。</li>
-</ol>
-<hr>
-<p>下标引用和指针间接访问表达式<strong>是一样</strong>的</p>
-<ol>
-<li><code>arr[num];</code>等同于<code>*(arr+(num));</code>。</li>
-</ol>
-<hr>
-<p>数组和指针一样吗？<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> *b;</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>声明数组时，编译器根据声明所指定元素的数量为数组保留内存空间，然后再创建数组名，它的值是一个常量，指向这段空间的起始位置。</li>
-<li>声明一个指针时，编译器只为指针本身保留内存空间，并不为任何整型值预留空间。而且直接使用<code>*b</code>是非法的，因为没有初始化b的指向。</li>
-</ol>
-<hr>
-<p>数组名做函数参数时</p>
-<ol>
-<li>由于数组名的值是指向数组第一个元素的指针，因此传递给函数的是一份该指针的拷贝。</li>
-</ol>
-<hr>
-<p>字符数组的初始化<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> message[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> message[] = <span class="string">"hello"</span>;<span class="comment">//初始化列表</span></span><br><span class="line"><span class="keyword">char</span> *message = <span class="string">"hello"</span>; <span class="comment">//字符串常量</span></span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>以上两种初始化均可，第一种显得笨拙，对与非常短的字符串，可以这么干。</li>
-<li>第二种是语音标准提供的快速方法，但注意区分<code>&quot;hello&quot;</code><strong>并不是</strong>一个字符串常量，它只是第一种的<strong>初始化列表</strong>的另一种写法。</li>
-<li>因此，<code>&quot;hello&quot;</code>是否为一个字符串常量，取决于是否为用于初始化一个字符数组，那么它就是一个初始化列表，否则它就是字符串常量。</li>
-</ol>
-<hr>
-<p>多维数组</p>
-<ol>
-<li>多维数组的存储：是按行存储，右下标率先变化的原则。</li>
-<li>如<code>int matrix[2][3];</code>，可以认为创建一个一维数组，包含二个元素，其中每个元素又是包含3个元素的数组，因此matrix是指向一个包含三个元素的整型数组的指针，即是一个指针的指针。因此，matrix+1是指向该数组的第二个元素，这个元素也是一个包含三个元素的数组。</li>
-</ol>
-<hr>
-<p>分析：<code>int (*p)[10];</code>怎么判断p指向什么呢？</p>
-<ol>
-<li>假设是对表达式求值的过程，<strong>下标优先级高于间接访问</strong>，但是间接访问有括号。因此，<code>p</code>是一个指针，是指向某种类型的指针。</li>
-<li>接下来看下标操作，所以<code>p</code>是指向某种类型的数组的指针。</li>
-<li>对<code>(*p)[10]</code>表达式求值得到一个整型，因此<code>p</code>是一个指向整型数组的指针。</li>
-</ol>
-<hr>
-<p>多维数组matrix充当函数参数时，函数的原型为：</p>
-<ol>
-<li><code>int func1 (int (*P)[3]);</code>正确。</li>
-<li><code>int func2 (int p[][3]);</code>正确。</li>
-<li><code>int func3 (int **p);</code>是错误的，因为针对一个多维数组，无法知道调整的长度。和一维数组不一样，虽然一维数组可以这么干。</li>
-</ol>
-<hr>
-<p>指针数组</p>
-<ol>
-<li>指针数组是一个数组，其元素类型是执行某种类型的指针。</li>
-<li>如<code>int *api[10];</code>分析如下，假设是对这个表达式进行求值。由于<strong>下标优先级高于间接访问</strong>，因此首先执行的是下标引用，因此api是某种类型的数组，并且该数组包含10个元素。通过下标在取得一个数组元素后，随即执行的是间接访问操作。间接访问操作后得到的是一个整型值。所以，api是一个数组，其元素类型是指向整型的指针。</li>
-</ol>
-<hr>
-<p>字符串函数的使用</p>
-<ol>
-<li><code>char* strcpy(char *dst, char const *src);</code>因此，<code>strcpy</code>函数的dst必须是一个可以修改的参数，因此，dst必须是一个字符数组或者是一个指向动态分配内存的数组的指针。<strong>注意</strong>，不能是一个字符串常量。<strong>此外</strong>，如果src比dst大，将会覆盖存储与数组后面的内存空间的值！</li>
-</ol>
-<ul>
-<li><code>char dst[] = &quot;hello world&quot;;</code>正确。</li>
-<li><code>char *dst = (char*)malloc(sizeof(char)*10);</code>正确。</li>
-<li><code>char *dst = &quot;error&quot;;</code>错误。</li>
-</ul>
-<ol>
-<li><code>int strcmp(char const* s1,char const* s2);</code>该函数是比较两个字符串涉及对两个字符串对应的字符逐个进行比较，直到发现不匹配为止，最先不匹配的为止。</li>
-</ol>
-<ul>
-<li>若s1小于s2，返回-1；</li>
-<li>若s1大于s2，返回1；</li>
-<li>若s1等于s2，返回0；</li>
-</ul>
-<hr>
-<p>字符串查找</p>
-<ol>
-<li>查找一个字符：</li>
-</ol>
-<ul>
-<li><code>char *strchr(char const *str, int ch);</code>如,查到该字符(第一次出现)，则返回指向该字符的指针(含该字符)。若找不到，则返回NULL。</li>
-<li><code>char *strrchr(char const *str, int ch);</code>如,查到该字符(最后一次出现)，则返回指向该字符的指针(含该字符)。若找不到，则返回NULL。</li>
-<li>调用如下：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> <span class="built_in">string</span>[]=<span class="string">"hello,world"</span>;</span><br><span class="line"><span class="keyword">char</span> *ans;</span><br><span class="line">ans = <span class="built_in">strchr</span>(<span class="built_in">string</span>,<span class="string">'l'</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans;<span class="comment">//输出：llo,world</span></span><br><span class="line">ans = <span class="built_in">strrchr</span>(<span class="built_in">string</span>,<span class="string">'l'</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans;<span class="comment">//输出：ld;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol>
-<li>查找任何几个字符-查找任何一组字符第一次在字符串中出现的位置。</li>
-</ol>
-<ul>
-<li><code>char *strpbrk(char const *str,char const *group);</code>函数返回指向str中第1个匹配group中的任何一个字符的字符位置。若找不到，则返回NULL。</li>
-<li>调用如下：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>]=<span class="string">"hello there, hoeny."</span>;</span><br><span class="line"><span class="keyword">char</span> *ans1;</span><br><span class="line">ans1 = <span class="built_in">strpbrk</span>(str,<span class="string">"aeiou"</span>);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans1&lt;&lt;endl;<span class="comment">//输出：ello there, hoeny.</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol>
-<li>查找一个子串-在字符串中查找一个子串</li>
-</ol>
-<ul>
-<li><code>char *strstr(char const* s1,char const *s2);</code>函数在s1中查找整个s2<strong>第一次出现的起始位置</strong>，并返回一个指向该位置的指针。如果s1中并没有完整匹配s2，则返回NULL。此外，如果第二个参数s2为空，则直接返回第一个参数s1。</li>
-<li>在字符串中查找一个子串，返回最后一次出现的位置<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">my_strrstr</span><span class="params">(<span class="keyword">char</span> <span class="keyword">const</span>* s1, <span class="keyword">char</span> <span class="keyword">const</span> *s2)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *last = <span class="literal">NULL</span>;<span class="comment">//指向前一次匹配出现的位置</span></span><br><span class="line">	<span class="keyword">char</span> *current;<span class="comment">//当前匹配到的匹配位置</span></span><br><span class="line">	<span class="keyword">if</span>(*s2 != <span class="string">'\0'</span>)<span class="comment">//s2不为空，否则直接返回s1</span></span><br><span class="line">	&#123;</span><br><span class="line">		current = <span class="built_in">strstr</span>(s1,s2);</span><br><span class="line">		<span class="keyword">while</span>(current != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			last = current;</span><br><span class="line">			current =<span class="built_in">strstr</span>(last+<span class="number">1</span>,s2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-str-permutation" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -951,6 +751,72 @@
 <h2 id="例子">例子</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream &amp;ofil)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br><span class="line"><span class="comment">//默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;vec,ofstream *ofil=<span class="number">0</span>)</span></span><br><span class="line"></span>&#123;...&#125;</span><br><span class="line"><span class="comment">//每次都需要传递ofil参数</span></span><br></pre></td></tr></table></figure>
 <h2 id="说明">说明</h2><ol>
 <li>无法设置引用=0，因为引用都代表某个对象。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-reference" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/19/reference/" class="article-date">
+  	<time datetime="2015-08-19T08:27:24.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/reference/">引用初识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Notes:">Notes:</h1><ol>
+<li><p>对reference的所有操作都是对“reference所代表的对象”操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;val = ival;<span class="comment">//val是ival的一个引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *pi = &amp;val;<span class="comment">//将ival的地址赋值给pi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为什么使用reference？<br><br>a. 为使用reference之后，不需要再创建对象的副本，省去了一定的复制工作。<br><br>b. 可实现直接对所传入的对象进行修改。<br><br>c. 如果不想对原对象进行修改，则用<code>const</code>修饰该引用。<br></p>
+</li>
+<li><p>提领一个指针前，一定要对这个指针做证空处理。</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(p==<span class="literal">NULL</span>)<span class="keyword">return</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传递内置类型时，一般不适用传址方式。传址机制一般用于class object。</p>
+</li>
 </ol>
 
       
