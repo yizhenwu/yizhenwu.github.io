@@ -170,6 +170,88 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-switch-break" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/14/switch-break/" class="article-date">
+  	<time datetime="2015-08-14T14:04:03.000Z" itemprop="datePublished">2015-08-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/14/switch-break/">switch语句与break分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="例子">例子</h1><pre><code><span class="comment">//程序中没有break，分析程序输出。</span>
+<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)
+{
+    <span class="keyword">switch</span>(i)
+    {
+        <span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+        <span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+        <span class="keyword">default</span>:<span class="built_in">printf</span>(<span class="string">"%d"</span>,i);
+    }
+}
+</code></pre><h1 id="分析">分析</h1><ol>
+<li>i=0: <ul>
+<li>case 0:printf(“%d”,i);   0</li>
+<li>case 2:printf(“%d”,i);   0</li>
+<li>default:printf(“%d”,i);  0</li>
+</ul>
+</li>
+<li>i=1:<ul>
+<li>default:printf(“%d”,i);  1    </li>
+</ul>
+</li>
+<li>i=2:<ul>
+<li>case 2:printf(“%d”,i);   2</li>
+<li>default:printf(“%d”,i);  2</li>
+</ul>
+</li>
+</ol>
+<h1 id="结论">结论</h1><p>对于满足条件已经进入分支，case语句没有break，分支后面的语句都是会被执行，包括default。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-c++memory management" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
