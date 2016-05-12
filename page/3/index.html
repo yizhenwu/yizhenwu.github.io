@@ -170,6 +170,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-function-template" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/19/function-template/" class="article-date">
+  	<time datetime="2015-08-19T14:31:49.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/function-template/">函数模板，模板函数，模板类等</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="需求">需求</h1><p>只定义一份函数内容，就可以支持其他类型，即将单一函数的内容与希望支持多个类型绑定起来。</p>
+<h1 id="函数模板">函数模板</h1><ol>
+<li><p>函数模板(function template)将参数列表中制度的全部(或部分)参数类型信息抽离出来。以<code>&lt;typename elemType&gt;</code>来表示在使用时才确定(必须确定)的数据类型。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">string</span> &amp;str, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数模板也可以是重载函数。</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">string</span> &amp;str, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br><span class="line"><span class="keyword">template</span>&lt;typename elemType&gt;</span><br><span class="line"><span class="type">void</span> display(<span class="type">int</span> &amp;age, <span class="keyword">const</span> vector&lt;elemType&gt; &amp;vec);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="模板函数和模板类">模板函数和模板类</h1><blockquote>
+<p><a href="http://blog.csdn.net/sunxx1986/article/details/6619144" target="_blank" rel="external">more</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-default-parameter-value" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -758,63 +824,9 @@
 
 
   
-    <article id="post-Im-a-translator" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/Im-a-translator/" class="article-date">
-  	<time datetime="2015-08-15T04:35:31.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/Im-a-translator/">翻译EPC一书</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/life/">life</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
