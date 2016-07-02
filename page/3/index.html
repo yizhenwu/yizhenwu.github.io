@@ -170,6 +170,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-all-variables" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/19/all-variables/" class="article-date">
+  	<time datetime="2015-08-19T14:59:20.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/all-variables/">不同变量、作用域归纳分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C++中不同变量具有不同的生命周期，具有不同的作用域。</p>
+<h1 id="作用域">作用域</h1><ol>
+<li>全局作用域；</li>
+<li>局部作用域；</li>
+<li>类作用域；</li>
+<li>文件作用域；</li>
+<li>命名空间作用域</li>
+</ol>
+<h2 id="从作用域对变量进行划分">从作用域对变量进行划分</h2><ol>
+<li>全局变量(全局作用域): 全局变量在一个源文件中定义，可以作用在多个源文件(前提需要，在不直接包含该全局变量的位置，用<code>extern</code>关键字再次声明)。</li>
+<li>静态局部变量</li>
+</ol>
+<blockquote>
+<p><a href="http://blog.csdn.net/tigerjibo/article/details/7425580" target="_blank" rel="external">more</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-function-template" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -750,62 +819,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/C/">C++</a><a class="article-category-link" href="/categories/C/Algriothm/">Algriothm</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-address-num" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/15/address-num/" class="article-date">
-  	<time datetime="2015-08-15T15:04:03.000Z" itemprop="datePublished">2015-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/15/address-num/">取变量还是取地址</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>c++中定义了<code>-&gt;</code>运算符，该运算符是把<strong>解引用</strong>和<strong>成员访问</strong>两个操作结合在一起。即<code>it-&gt;men</code>与<code>(*it).men</code>的含义相同。</p>
-<p>因此注意区分：<br>对数组：<br><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="keyword">str_t</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> len;</span><br><span class="line">	<span class="keyword">char</span> data[<span class="number">32</span>];</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="keyword">data1_t</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> len;</span><br><span class="line">	<span class="keyword">char</span> data1[<span class="number">2</span>]</span><br><span class="line">	<span class="keyword">int</span> *data2[<span class="number">2</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="keyword">str_t</span> str;</span><br><span class="line"><span class="built_in">memset</span>((<span class="keyword">void</span>*)&amp;str,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>));</span><br><span class="line">   str.len=<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="keyword">str_t</span>)-<span class="keyword">sizeof</span>(<span class="keyword">int</span>);</span><br><span class="line">   </span><br><span class="line"><span class="keyword">struct</span> <span class="keyword">data_t</span> *pData=(<span class="keyword">struct</span> <span class="keyword">data1_t</span>*)&amp;str;</span><br><span class="line">(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是数值，不是首地址**！！！</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">char</span>*)pData-&gt;data[<span class="number">0</span>];<span class="comment">//**这个是地址**</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
 	</div>
 
 
