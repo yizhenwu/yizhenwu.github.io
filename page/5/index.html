@@ -170,6 +170,78 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-congestion-control" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/12/congestion-control/" class="article-date">
+  	<time datetime="2015-08-11T16:13:41.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/congestion-control/">TCP拥塞控制</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="TCP拥塞控制">TCP拥塞控制</h1><h2 id="什么是拥塞">什么是拥塞</h2><p>对网络的某一资源的需求超过资源的可用范围，网络性能变坏,这就是拥塞。</p>
+<h2 id="区分拥塞控制和流量控制">区分拥塞控制和流量控制</h2><ul>
+<li>拥塞控制:全局性的过程,防止过多的<strong>发送方</strong>数据注入网络中,避免路由器和链路不发生过载;</li>
+<li>流量控制:点对点的通信量控制。</li>
+</ul>
+<h3 id="拥塞控制对象">拥塞控制对象</h3><p>拥塞的原因即负载过大,因此拥塞控制的对象就是发送者的流量(源头),TCP的滑动窗口协议,窗口大小取决于接收窗口和拥塞控制窗口。<em>区分:发送窗口 &lt;= 拥塞窗口</em><br><strong>发送窗口=min(rwnd,cwnd)</strong></p>
+<h3 id="拥塞控制方法">拥塞控制方法</h3><p>发送方维护一个拥塞窗口<strong>cwnd(congestion window)</strong>的状态变量。拥塞窗口取决于网络的拥塞情况,并且动态变化。</p>
+<ul>
+<li><p>慢启动<br>思路:一开始不发送大量的数据,先探测网路的拥塞程度,因此从小到大增加拥塞窗口。假定每个TCP报文都按照MSS最大报文长度来发送。<br>Start          ——&gt;    cwnd=1;<br>after 1 RTT    ——&gt;    cwnd=2;<br>after 2 RTT    ——&gt;    cwnd=4;<br>after 3 RTT    ——&gt;    cwnd=8;<br>…<br>慢启动实质是起点低,但是增长速度很快(指数级)。RTT*log2W时间即可占满W带宽(假设允许无线增长下去,当然不允许这样下去)。</p>
+</li>
+<li><p>慢启动门限(ssthresh)<br>即:当cwnd超过该门限,慢启动过程结束,进入<strong>拥塞避免</strong>阶段。</p>
+</li>
+<li><p>拥塞避免阶段做法<br>化指数增长为加法增长,此时每收到一次确认:<strong>cwnd=cwnd+1</strong>。慢慢的将吞吐量调整到最大值。</p>
+</li>
+<li><p>拥塞检测<br>TCP认为网络拥塞的主体是拥塞丢包,即每个TCP报文都有一个定时器(RTO:重传定时器),当RTO超时还没有得到ACK,TCP就对该报文进行重传,而且TCP即认为是网络出现拥塞了:<br>++ 把ssthresh降低为cwnd的一半;<br>++ 把cwnd设置为1;<br>++ 重新进入慢启动过程。</p>
+</li>
+</ul>
+<p><img src="http://cdn.sinacloud.net/tcp-congesstion/tcp%20congestion.png?KID=sina,1awq5ega2SHpsPkwpitm&amp;Expires=1439316191&amp;ssig=qgEN6GLS9r" alt="cwrd变化"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/TCP-IP/">TCP/IP</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-baidu-interview-first" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
