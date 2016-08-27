@@ -170,6 +170,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-feeling9-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/02/feeling9-2/" class="article-date">
+  	<time datetime="2015-09-02T14:47:55.000Z" itemprop="datePublished">2015-09-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/02/feeling9-2/">最近状态</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>感觉到找工作的难度啊。</p>
+<p>就是有时候你付出很多，过程也很好，结果却是意外。</p>
+<p>安静下来，好好干。</p>
+<p>不能乱。</p>
+<p>也不能心情不好，重整雄风，战起来！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/life/">life</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-ptr-arr" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -781,90 +840,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/Work/">Work</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-address-increament" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/16/address-increament/" class="article-date">
-  	<time datetime="2015-08-16T15:44:03.000Z" itemprop="datePublished">2015-08-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/16/address-increament/">栈的地址生长方式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="栈的地址生长方式">栈的地址生长方式</h1><pre><code><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> src[<span class="number">16</span>])</span>
-</span>{
-    <span class="keyword">int</span> val1=<span class="number">0</span>;
-    <span class="keyword">int</span> dst[<span class="number">16</span>]={<span class="number">0</span>};
-    <span class="keyword">int</span> val2=<span class="number">0</span>;
-    <span class="keyword">const</span> <span class="keyword">int</span> *psrc=src;
-    <span class="comment">//问题1：如下代码行输出什么？</span>
-    <span class="built_in">fprintf</span>(<span class="built_in">stdout</span>,<span class="string">"size of src=%lu\n"</span>,<span class="keyword">sizeof</span>(src));
-    <span class="comment">//问题2：如下代码有什么副作用？</span>
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">16</span>;i++)<span class="comment">//越dst[16]界</span>
-    {
-        dst[i]=*psrc+i;
-        psrc++;
-    }
-        <span class="keyword">return</span> <span class="number">0</span>;
- }
-</code></pre><hr>
-<p>常说：</p>
-<ol>
-<li>栈和堆的区别中，有一点是，栈的地址从高地址到低地址生长；</li>
-</ol>
-<p>因此在栈中：</p>
-<pre><code><span class="tag">val1------</span>高地址
-     <span class="tag">bigger</span> <span class="tag">than</span>
-<span class="tag">dst</span><span class="attr_selector">[]</span><span class="tag">-----</span>中地址
-    且: &amp;<span class="tag">dst</span><span class="attr_selector">[1]</span> &lt; &amp;<span class="tag">dst</span><span class="attr_selector">[2]</span> &lt;... &lt; &amp;<span class="tag">dst</span><span class="attr_selector">[15]</span>    
-     <span class="tag">bigger</span> <span class="tag">than</span>
-<span class="tag">val-------</span>低地址
-</code></pre><hr>
-<p>因此：当dst数组溢出的时候，将会是向<strong>高地址</strong>溢出，因此<strong>val1</strong>将会被覆盖。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/C/">C++</a>
 	</div>
 
 
